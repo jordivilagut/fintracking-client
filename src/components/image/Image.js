@@ -1,7 +1,8 @@
 import React from "react";
+import "./Image.scss"
 
 export const Image = ({imageUrl}) => (
     <div
-        className="roundImg"
+        className="img"
         style={{backgroundImage: `url(${imageUrl})`}}/>
 )
