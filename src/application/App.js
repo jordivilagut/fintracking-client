@@ -1,5 +1,4 @@
 import React from 'react';
-import {Homepage} from "../pages/homepage/Homepage";
 import {Department} from "../pages/department/Department";
 import {ProductDetail} from "../pages/product-detail/ProductDetail";
 import {FintrackingNavBar} from "../components/navbar/FintrackingNavBar";
@@ -12,6 +11,7 @@ import {User} from "../model/User";
 import {ServerError} from "../pages/server-error/ServerError";
 import {UserProfile} from "../pages/user-profile/UserProfile";
 import {UserApi} from "../api/UserApi";
+import {Homepage} from "../pages/homepage/Homepage";
 
 class App extends React.Component {
 

@@ -1,30 +1,25 @@
 import React, {Component} from "react";
-import {Mosaic} from "../../components/mosaic/Mosaic";
-import {StoreApi} from "../../api/StoreApi";
+import {BigBannerWithButton} from "../../components/big-banner/BigBannerWithButton";
+
 
 export class Homepage extends Component {
 
-    state = {
-        storeDepartments: [],
-        allProducts: [],
-        productSearchText: ""
-    };
-
-    /*searchBoxHandler = e => {
-        this.setState({productSearchText: e.target.value})
-    };*/
-
-    componentDidMount() {
-        StoreApi.getDepartments()
-            .then(
-                response => this.setState({storeDepartments: response.body}),
-                error => this.props.history.push("error"));
+    getStartedHandler = e => {
+        e.preventDefault()
+        this.props.history.push("login")
     }
 
     render() {
         return(
             <div>
-                <Mosaic tiles={this.state.storeDepartments}/>
+                <BigBannerWithButton
+                    action={this.getStartedHandler}
+                    imageUrl="https://pbs.twimg.com/profile_images/1138504682865926144/Km7uuVsw_400x400.png"
+                    mainText="Fintracking App"
+                    secondaryText="Your Pocket Finance Advisor"
+                    buttonText="Get Started"
+                    buttonColor="3cc249"
+                    buttonTextColor="FFFFFF"/>
             </div>
         );
     }
