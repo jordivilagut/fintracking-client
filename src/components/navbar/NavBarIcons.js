@@ -1,5 +1,5 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCreditCard, faUser} from "@fortawesome/free-regular-svg-icons";
+import {faUser} from "@fortawesome/free-regular-svg-icons";
 import React from "react";
 import {Link} from "react-router-dom";
 
