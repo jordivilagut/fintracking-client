@@ -1,12 +1,9 @@
 import React from 'react';
-import {Department} from "../pages/department/Department";
-import {ProductDetail} from "../pages/product-detail/ProductDetail";
 import {FintrackingNavBar} from "../components/navbar/FintrackingNavBar";
 import {Route, withRouter} from "react-router-dom";
 import {Login} from "../pages/login/Login";
 import {Signup} from "../pages/signup/Signup";
 import {CookiesService} from "../services/CookiesService";
-import {Checkout} from "../pages/checkout/Checkout";
 import {User} from "../model/User";
 import {ServerError} from "../pages/server-error/ServerError";
 import {UserProfile} from "../pages/user-profile/UserProfile";
@@ -47,20 +44,21 @@ class App extends React.Component {
         return (
             <div className="page">
                 <FintrackingNavBar user={this.state.user}/>
-                <Route exact path="/" component={Homepage}/>
-                <Route exact path="/home" component={Homepage}/>
-                <Route exact path="/store" component={Department}/>
-                <Route exact path="/product-detail/:productId" component={ProductDetail}/>
-                <Route exact path="/login" render={() => (<Login
-                    authHandler={this.authenticateUser}
-                    authFailedHandler={this.logUserOut}/>)}/>
-                <Route exact path="/signup" render={() => (<Signup
-                    authHandler={this.authenticateUser}
-                    authFailedHandler={this.logUserOut}/>)}/>
-                <Route exact path="/checkout" render={() => (<Checkout
-                    authFailedHandler={this.logUserOut}/>)}/>
-                <Route exact path="/profile" render={() => (<UserProfile
-                    logoutHandler={this.logUserOut}/>)}/>
+                <Route exact path="/" render={() => (
+                    <Homepage user={this.state.user}/>)}/>
+                <Route exact path="/home" render={() => (
+                    <Homepage user={this.state.user}/>)}/>
+                <Route exact path="/login" render={() => (
+                    <Login
+                        authHandler={this.authenticateUser}
+                        authFailedHandler={this.logUserOut}/>)}/>
+                <Route exact path="/signup" render={() => (
+                    <Signup
+                        authHandler={this.authenticateUser}
+                        authFailedHandler={this.logUserOut}/>)}/>
+                <Route exact path="/profile" render={() => (
+                    <UserProfile
+                        logoutHandler={this.logUserOut}/>)}/>
                 <Route exact path="/error" component={ServerError}/>
             </div>
         );
