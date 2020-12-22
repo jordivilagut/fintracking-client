@@ -1,0 +1,35 @@
+.banner {
+
+  margin-top: 20px;
+  padding: 40px 20px;
+  border-radius: 4px;
+  box-shadow: 0 0 2px lightgray;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+
+  h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+  }
+
+  h3 {
+    padding: 10px 0 20px 0;
+  }
+
+  .big {
+    height: 600px;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner {
+
+    h2 {
+      font-size: 20px;
+    }
+  }
+}

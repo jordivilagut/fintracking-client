@@ -1,0 +1,70 @@
+
+.mosaic {
+  display: flex;
+}
+
+.tile {
+  background-position: center;
+  background-size: cover;
+  width: 280px;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+
+    & .textBox {
+      opacity: 0.9;
+    }
+  }
+
+  .textBox {
+    text-align: center;
+    background-color: #211A1E;
+    opacity: 0.8;
+    color: white;
+    font-family: Open Sans Condensed, serif;
+    padding: 10px;
+
+    h3 {
+      font-size: 18px;
+      padding-bottom: 5px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (min-width: 920px) {
+  .tile {
+    &.large {
+      height: 280px;
+    }
+  }
+}
+
+@media (min-width: 480px) {
+  .mosaic {
+
+    flex-wrap: wrap;
+
+    .tile {
+      flex-grow: 1;
+      margin: 10px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .mosaic {
+    flex-direction: column;
+  }
+
+  .tile {
+    width: 100%;
+  }
+}

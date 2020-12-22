@@ -1,0 +1,53 @@
+.userForm {
+  display: flex;
+  flex-direction: column;
+  max-width: 320px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 0 2px lightgray;
+
+  form {
+    padding-top: 20px;
+  }
+
+  h2 {
+    font-weight: bold;
+    font-size: 32px;
+  }
+
+  h3 {
+    font-size: 14px;
+    padding: 20px 0 10px 0;
+    color: cornflowerblue;
+    text-decoration: underline;
+    text-align: center;
+  }
+}
+
+.formItem {
+  display: flex;
+  flex-direction: column;
+  padding: 4px 0;
+
+  input {
+    padding-left: 10px;
+  }
+
+  input, button {
+    height: 40px;
+    margin-top: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .userForm {
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 320px) {
+  .userForm {
+    max-width: 240px;
+  }
+}
