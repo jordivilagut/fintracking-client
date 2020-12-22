@@ -45,9 +45,13 @@ class App extends React.Component {
             <div className="page">
                 <FintrackingNavBar user={this.state.user}/>
                 <Route exact path="/" render={() => (
-                    <Homepage user={this.state.user}/>)}/>
+                    <Homepage
+                        user={this.state.user}
+                        history={this.props.history}/>)}/>
                 <Route exact path="/home" render={() => (
-                    <Homepage user={this.state.user}/>)}/>
+                    <Homepage
+                        user={this.state.user}
+                        history={this.props.history}/>)}/>
                 <Route exact path="/login" render={() => (
                     <Login
                         authHandler={this.authenticateUser}
