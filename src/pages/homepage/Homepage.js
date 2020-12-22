@@ -6,6 +6,6 @@ export class Homepage extends Component {
 
     render() {
         const userIsLogged = this.props.user != null;
-        return userIsLogged ? <Dashboard/> : <StaticHomepage/>;
+        return userIsLogged ? <Dashboard/> : <StaticHomepage {...props}/>;
     }
 }
