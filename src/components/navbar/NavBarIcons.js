@@ -8,6 +8,5 @@ export const NavBarIcons = ({user}) => (
         <Link className="icon" to={user != null ? "/profile" : "/login"}><FontAwesomeIcon icon={faUser} />
             {user?.email}
         </Link>
-        <Link className="icon" to="/checkout"><FontAwesomeIcon icon={faCreditCard} /></Link>
     </div>
 );
