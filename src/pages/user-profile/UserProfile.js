@@ -19,7 +19,7 @@ export class UserProfile extends Component {
                     action={this.handleLogout}
                     imageUrl="https://pbs.twimg.com/profile_images/1138504682865926144/Km7uuVsw_400x400.png"
                     mainText="Tom Nook"
-                    secondaryText="tom.nook@animalcrossing.com"
+                    secondaryText={this.props.user?.email}
                     buttonText="Log Out"
                     buttonColor="d6cac9"
                     buttonTextColor="FFFFFF"/>

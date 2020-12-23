@@ -62,6 +62,7 @@ class App extends React.Component {
                         authFailedHandler={this.logUserOut}/>)}/>
                 <Route exact path="/profile" render={() => (
                     <UserProfile
+                        user={this.state.user}
                         logoutHandler={this.logUserOut}/>)}/>
                 <Route exact path="/error" component={ServerError}/>
             </div>
