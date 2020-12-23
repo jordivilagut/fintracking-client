@@ -19,3 +19,13 @@
 .logo h4 {
   color: #0292B7;
 }
+
+@media (max-width: 480px) {
+  .logo h1 {
+    font-size: 16px;
+  }
+
+  .logo h4 {
+    font-size: 12px;
+  }
+}

@@ -13,11 +13,15 @@
     background-size: cover;
   }
 
-  @media (max-width: 480px) {
-    #logo {
-      height: 40px;
-      width: 80px;
-      background-size: cover;
+  .iconButton {
+    display: flex;
+    padding: 10px;
+    font-size: 12px;
+    border-radius: 4px;
+    box-shadow: 0 0 2px lightgray;
+
+    p {
+      padding-left: 10px;
     }
   }
 
@@ -27,5 +31,11 @@
       .icon {
         padding: 10px;
       }
+  }
+}
+
+@media (max-width: 480px) {
+  .iconButton {
+    font-size: 10px;
   }
 }
