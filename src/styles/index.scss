@@ -31,6 +31,17 @@ a:hover {
   margin: auto;
 }
 
+.ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.no-wrap {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 @media (max-width: 920px) {
   .mainPageElement {
     max-width: 600px;
