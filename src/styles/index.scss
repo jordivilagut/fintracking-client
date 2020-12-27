@@ -26,11 +26,6 @@ a:hover {
   text-decoration: none;
 }
 
-.mainPageElement {
-  max-width: 900px;
-  margin: auto;
-}
-
 .ellipsis {
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -40,28 +35,4 @@ a:hover {
 .no-wrap {
   white-space: nowrap;
   overflow: hidden;
-}
-
-@media (max-width: 920px) {
-  .mainPageElement {
-    max-width: 600px;
-  }
-}
-
-@media (max-width: 680px) {
-  .mainPageElement {
-    max-width: 400px;
-  }
-}
-
-@media (max-width: 480px) {
-  .mainPageElement {
-    max-width: 260px;
-  }
-}
-
-@media (max-width: 320px) {
-  .mainPageElement {
-    max-width: 240px;
-  }
 }

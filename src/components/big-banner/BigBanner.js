@@ -3,7 +3,7 @@ import {Image} from "../image/Image";
 import "./BigBanner.scss"
 
 export const BigBanner = ({mainText, secondaryText, imageUrl, color, textColor}) => (
-    <div className="mainPageElement banner big"
+    <div className="banner big"
          style={{
              background: `#${color}`,
              color: `#${textColor}`

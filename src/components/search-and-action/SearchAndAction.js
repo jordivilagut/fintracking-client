@@ -10,6 +10,8 @@ export const SearchAndAction = ({searchPlaceholder, searchBoxHandler, buttonActi
             onChangeHandler={searchBoxHandler}/>
         <Button
             action={buttonAction}
-            mainText={buttonText}/>
+            mainText={buttonText}
+            color="0292B7"
+            textColor="FFFFFF"/>
     </div>
 )
