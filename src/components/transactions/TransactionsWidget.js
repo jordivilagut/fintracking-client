@@ -13,16 +13,17 @@ export class TransactionsWidget extends Component {
     };
 
     componentDidMount() {
-        TransactionsApi.getTransactions()
-            .then(response => this.setState({transactions: response.body}));
+        this.refreshTransactions();
     }
+
+    refreshTransactions = () => TransactionsApi.getTransactions().then(response => this.setState({transactions: response.body}));
 
     toggleModal = () => {
-        const isDisplayed = this.state.showModal
-        this.setState({showModal: !isDisplayed})
+        const isDisplayed = this.state.showModal;
+        this.setState({showModal: !isDisplayed});
     }
 
-    searchBoxHandler = e => this.setState({searchText: e.target.value})
+    searchBoxHandler = e => this.setState({searchText: e.target.value});
 
     transactionsFilter = t => t.description.toLowerCase().includes(this.state.searchText.toLowerCase());
 
@@ -38,7 +39,7 @@ export class TransactionsWidget extends Component {
                     buttonText="Add Transaction"
                     buttonAction={this.toggleModal}/>
                 <Transactions transactions={filteredTransactions}/>
-                <AddTransactionModal showModal={this.state.showModal} toggleModal={this.toggleModal}/>
+                <AddTransactionModal showModal={this.state.showModal} toggleModal={this.toggleModal} refreshTransactions={this.refreshTransactions}/>
             </div>
         );
     }

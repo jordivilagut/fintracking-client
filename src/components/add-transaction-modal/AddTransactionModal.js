@@ -29,7 +29,7 @@ export class AddTransactionModal extends Component {
             this.state.amount,
             this.state.description,
             EnumUtils.valueToEnumValue(this.state.selectedExpenseType))
-        TransactionsApi.addTransaction(form).then(response => console.log("Now refresh component"))
+        TransactionsApi.addTransaction(form).then(response => this.props.refreshTransactions())
     }
 
     inputChangeHandler = e => {
