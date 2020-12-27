@@ -1,0 +1,23 @@
+.cashierRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 8px;
+}
+
+.cashierRow #operationDropdown {
+    margin-right: 4px;
+}
+
+.cashierRow #customInput {
+    margin-right: 4px;
+}
+
+.cashierRow #amountInput {
+    margin-right: 4px;
+}
+
+.cashierRow #submitButton {
+    width: 200px;
+    white-space: nowrap;
+}
