@@ -3,5 +3,7 @@ import {CookiesService} from "../services/CookiesService";
 
 export const TransactionsApi = {
     getTransactions: () =>
-        api.get('/transactions').set("Authorization", CookiesService.get("authToken"))
+        api.get('/transactions').set("Authorization", CookiesService.get("authToken")),
+    addTransaction: (transaction) =>
+        api.post('/transactions', transaction).set("Authorization", CookiesService.get("authToken"))
 };

@@ -9,6 +9,7 @@ import {AmountInput} from "../amount-input/AmountInput";
 import {CustomInput} from "../custom-input/CustomInput";
 import {EnumUtils} from "../../utils/enumUtils";
 import {TransactionForm} from "../../model/TransactionForm";
+import {TransactionsApi} from "../../api/TransactionsApi";
 
 export class AddTransactionModal extends Component {
 
@@ -27,8 +28,8 @@ export class AddTransactionModal extends Component {
         const form = new TransactionForm(
             this.state.amount,
             this.state.description,
-            this.state.selectedExpenseType)
-        console.log("Submitted form.", form)
+            EnumUtils.valueToEnumValue(this.state.selectedExpenseType))
+        TransactionsApi.addTransaction(form).then(response => console.log("Now refresh component"))
     }
 
     inputChangeHandler = e => {
