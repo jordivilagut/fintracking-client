@@ -1,10 +1,15 @@
 .action-button {
   height: 40px;
-  width: 140px;
   border: none;
   border-radius: 4px;
   box-shadow: 0 0 2px lightgray;
   cursor: pointer;
   font-size: 14px;
   font-weight: bold;
+}
+
+@media (min-width: 640px) {
+  .action-button {
+    min-width: 140px;
+  }
 }
