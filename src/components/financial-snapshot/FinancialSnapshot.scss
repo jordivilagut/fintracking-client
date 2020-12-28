@@ -5,7 +5,7 @@
 }
 
 #financialSnapshot .scoreboard {
-  flex-grow: 0.5;
+  flex-grow: 1;
   margin-right: 10px;
   display: flex;
   flex-direction: column;
@@ -26,7 +26,7 @@
 
 #financialSnapshot .monthlyBalance {
   flex-grow: 2;
-  padding: 40px 0 40px 40px;
+  padding: 20px;
 }
 
 @media (max-width: 480px) {

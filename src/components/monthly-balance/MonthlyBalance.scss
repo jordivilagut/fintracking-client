@@ -1,1 +1,27 @@
+.monthlyBalance {
 
+  background: rgb(2,0,36);
+  background: linear-gradient(152deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 19%, rgba(0,212,255,1) 100%);
+  color: white;
+
+  h2 {
+    font-size: 18px;
+    font-weight: bold;
+    padding-bottom: 40px;
+  }
+
+  .bar {
+    width: 80px;
+    border: solid white 1px;
+    border-radius: 4px;
+  }
+
+  .green {
+    background: rgba(255,255,255,0.4);
+  }
+
+  .red {
+    background: rgba(255,255,255,0.4);
+  }
+
+}

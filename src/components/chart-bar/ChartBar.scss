@@ -1,0 +1,17 @@
+
+.barFrame {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+
+  p {
+    font-size: 12px;
+    padding-bottom: 4px;
+  }
+
+  h3 {
+    padding-top: 6px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+}
