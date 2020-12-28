@@ -20,7 +20,9 @@ class App extends React.Component {
         const authToken = CookiesService.get("authToken")
         if (authToken != null) {
             UserApi.autoLogin()
-                .then(response => this.setState({user: response.body}))
+                .then(
+                    response => this.setState({user: response.body}),
+                    error => this.logUserOut(null, "home"))
         }
     }
 

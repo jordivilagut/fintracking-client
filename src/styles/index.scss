@@ -15,6 +15,7 @@ code {
 .page {
   max-width: 920px;
   margin: auto;
+  padding: 10px;
 }
 
 a {
@@ -35,4 +36,9 @@ a:hover {
 .no-wrap {
   white-space: nowrap;
   overflow: hidden;
+}
+
+.light-border {
+  border-radius: 4px;
+  box-shadow: 0 0 2px lightgray;
 }
