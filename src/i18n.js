@@ -9,28 +9,68 @@ i18n
     resources: {
         english: {
             translations: {
+
+                //APPLICATION
                 "app.name": "Fintracking",
                 "app.subtitle": "Pocket Finance Advisor",
-                "app.welcome": "Welcome to Fintracking",
-                "get.started": "Get Started",
+
+                //GENERAL
                 "general.about": "About",
                 "general.team": "The Team",
                 "general.support": "Support",
                 "general.tos": "Terms of Service",
-                "copyright.text": "© 2020 Fintracking, Inc. All rights reserved"
+                "general.income": "Income",
+                "general.expenses": "Expenses",
+                "general.close": "Close",
+
+                //FOOTER
+                "copyright.text": "© 2020 Fintracking, Inc. All rights reserved",
+
+                //USER ACCESS
+                "log.in": "Log In",
+                "sign.up": "Sign Up",
+                "have.account": "I already have an account",
+                "dont.have.account": "I don't have an account",
+
+                //HOMEPAGE
+                "app.welcome": "Welcome to Fintracking",
+                "get.started": "Get Started",
+
+                //DASHBOARD
+                "current.funds": "Current Funds",
+                "add.transaction": "Add Transaction",
+                "new.transaction": "New Transaction",
+                "this.month": "This Month"
             }
         },
         spanish: {
             translations: {
+
+                //APPLICATION
                 "app.name": "Fintracking",
                 "app.subtitle": "Pocket Finance Advisor",
-                "app.welcome": "Bienvenido a Fintracking",
-                "get.started": "Empezar",
+
+                //GENERAL
                 "general.about": "Sobre Fintracking",
                 "general.team": "Equipo",
                 "general.support": "Soporte",
                 "general.tos": "Términos del servicio",
-                "copyright.text": "© 2020 Fintracking, Inc. Todos los derechos reservados"
+                "general.income": "Ingresos",
+                "general.expenses": "Gastos",
+                "general.close": "Cerrar",
+
+                //FOOTER
+                "copyright.text": "© 2020 Fintracking, Inc. Todos los derechos reservados",
+
+                //HOMEPAGE
+                "app.welcome": "Bienvenido a Fintracking",
+                "get.started": "Empezar",
+
+                //DASHBOARD
+                "current.funds": "Fondos actuales",
+                "add.transaction": "Añadir transacción",
+                "new.transaction": "Nueva transacción",
+                "this.month": "Mes actual"
             }
         },
 

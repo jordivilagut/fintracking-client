@@ -58,13 +58,9 @@ class App extends React.Component {
                 <div className="content">
                     <div className="page">
                         <Route exact path="/" render={() => (
-                            <Homepage
-                                user={this.state.user}
-                                history={this.props.history}/>)}/>
+                            <Homepage user={this.state.user}/>)}/>
                         <Route exact path="/home" render={() => (
-                            <Homepage
-                                user={this.state.user}
-                                history={this.props.history}/>)}/>
+                            <Homepage user={this.state.user}/>)}/>
                         <Route exact path="/login" render={() => (
                             <Login
                                 authHandler={this.authenticateUser}

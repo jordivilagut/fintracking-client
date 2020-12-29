@@ -1,13 +1,15 @@
 import React from 'react';
 import {MonthlyBalance} from "../monthly-balance/MonthlyBalance";
 import "./FinancialSnapshot.scss";
+import {useTranslation} from 'react-i18next';
 
-export const FinancialSnapshot = props => (
-    <section id="financialSnapshot">
+export function FinancialSnapshot() {
+    const {t} = useTranslation();
+    return <section id="financialSnapshot">
         <div className="scoreboard light-border">
             <h1>17.438,00€</h1>
-            <p>Current Funds</p>
+            <p>{t("current.funds")}</p>
         </div>
         <MonthlyBalance/>
     </section>
-)
+}
