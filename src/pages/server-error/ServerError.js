@@ -5,7 +5,7 @@ export class ServerError extends Component {
 
     render() {
         return(
-            <div className="page">
+            <div>
                 <BigBanner
                     imageUrl="https://previews.123rf.com/images/pyotr/pyotr1702/pyotr170200117/71184249-explosion-in-the-laboratory-funny-crazy-scientist-boy-working-in-a-laboratory.jpg"
                     mainText="Oops! Something went wrong"

@@ -2,12 +2,13 @@ import DropdownItem from "react-bootstrap/DropdownItem";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import React from "react";
 
-export const CustomDropdown = ({values, selected, handler}) => (
+export const CustomDropdown = ({values, selected, handler, size}) => (
     <DropdownButton
         variant="light"
         id="operationDropdown"
         value={selected}
-        title={selected}>
+        title={selected}
+        size={size}>
 
         {values.map((val, index) => (
             <DropdownItem

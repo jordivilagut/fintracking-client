@@ -1,0 +1,27 @@
+.footer {
+  background: #ebebeb;
+  border-top: solid #dddddd 1px;
+  flex-shrink: 0;
+}
+
+#sitemap {
+  height: 200px;
+}
+
+#footerBottom {
+  padding: 10px;
+  border-top: solid #dddddd 1px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#sitemap ul {
+
+  padding-top: 40px;
+
+  a {
+    color: #0292B7;
+  }
+}

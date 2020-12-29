@@ -9,14 +9,21 @@ import {ServerError} from "../pages/server-error/ServerError";
 import {UserProfile} from "../pages/user-profile/UserProfile";
 import {UserApi} from "../api/UserApi";
 import {Homepage} from "../pages/homepage/Homepage";
+import {FintrackingFooter} from "../components/footer/FintrackingFooter";
 
 class App extends React.Component {
 
     state = {
-        user: null
+        user: null,
+        languages: ["english ", "spanish"],
+        selectedLanguage: null
+
     }
 
+    languageChangeHandler = lang => this.setState({selectedLanguage: lang})
+
     componentDidMount() {
+        this.setState({selectedLanguage: this.state.languages[0]})
         const authToken = CookiesService.get("authToken")
         if (authToken != null) {
             UserApi.autoLogin()
@@ -44,29 +51,37 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className="page">
+            <div id="application">
                 <FintrackingNavBar user={this.state.user}/>
-                <Route exact path="/" render={() => (
-                    <Homepage
-                        user={this.state.user}
-                        history={this.props.history}/>)}/>
-                <Route exact path="/home" render={() => (
-                    <Homepage
-                        user={this.state.user}
-                        history={this.props.history}/>)}/>
-                <Route exact path="/login" render={() => (
-                    <Login
-                        authHandler={this.authenticateUser}
-                        authFailedHandler={this.logUserOut}/>)}/>
-                <Route exact path="/signup" render={() => (
-                    <Signup
-                        authHandler={this.authenticateUser}
-                        authFailedHandler={this.logUserOut}/>)}/>
-                <Route exact path="/profile" render={() => (
-                    <UserProfile
-                        user={this.state.user}
-                        logoutHandler={this.logUserOut}/>)}/>
-                <Route exact path="/error" component={ServerError}/>
+                <div className="content">
+                    <div className="page">
+                        <Route exact path="/" render={() => (
+                            <Homepage
+                                user={this.state.user}
+                                history={this.props.history}/>)}/>
+                        <Route exact path="/home" render={() => (
+                            <Homepage
+                                user={this.state.user}
+                                history={this.props.history}/>)}/>
+                        <Route exact path="/login" render={() => (
+                            <Login
+                                authHandler={this.authenticateUser}
+                                authFailedHandler={this.logUserOut}/>)}/>
+                        <Route exact path="/signup" render={() => (
+                            <Signup
+                                authHandler={this.authenticateUser}
+                                authFailedHandler={this.logUserOut}/>)}/>
+                        <Route exact path="/profile" render={() => (
+                            <UserProfile
+                                user={this.state.user}
+                                logoutHandler={this.logUserOut}/>)}/>
+                        <Route exact path="/error" component={ServerError}/>
+                    </div>
+                </div>
+                <FintrackingFooter
+                    languages={this.state.languages}
+                    selectedLanguage={this.state.selectedLanguage}
+                    languageChangeHandler={this.languageChangeHandler}/>
             </div>
         );
     }

@@ -14,7 +14,7 @@ export class UserProfile extends Component {
 
     render() {
         return(
-            <div className="page">
+            <div>
                 <BigBannerWithButton
                     action={this.handleLogout}
                     imageUrl="https://pbs.twimg.com/profile_images/1138504682865926144/Km7uuVsw_400x400.png"

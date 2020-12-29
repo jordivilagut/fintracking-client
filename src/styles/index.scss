@@ -7,9 +7,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+#application {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.content {
+  flex: 1 0 auto;
 }
 
 .page {
