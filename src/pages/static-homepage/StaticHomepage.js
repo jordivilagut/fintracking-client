@@ -3,7 +3,7 @@ import {BigBannerWithButton} from "../../components/big-banner/BigBannerWithButt
 import {useTranslation} from 'react-i18next';
 import {useHistory} from "react-router";
 
-export function StaticHomepage() {
+export const StaticHomepage = () => {
 
     const {t} = useTranslation();
     const history = useHistory();

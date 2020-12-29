@@ -3,8 +3,8 @@ import {api} from "./agent";
 import {CookiesService} from "../services/CookiesService";
 
 export const UserApi = {
-    signup: (email, password) =>
-        api.post('/auth/signup', new AuthRequest(email, password)),
+    signup: (email, password, name) =>
+        api.post('/auth/signup', new AuthRequest(email, password, name)),
     login: (email, password) =>
         api.post('/auth/login', new AuthRequest(email, password)),
     autoLogin: () =>

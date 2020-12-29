@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {useState} from "react";
 import "../../styles/UserForm.scss"
 import {FormButton} from "../../components/form/form-button/FormButton";
 import {EmailInput} from "../../components/form/form-input/EmailInput";
@@ -6,42 +6,35 @@ import {PasswordInput} from "../../components/form/form-input/PasswordInput";
 import {NameInput} from "../../components/form/form-input/NameInput";
 import {Link} from "react-router-dom";
 import {UserApi} from "../../api/UserApi";
+import {useTranslation} from "react-i18next";
 
-export class Signup extends Component {
+export const Signup = props => {
 
-    state = {
-        name: "",
-        email: "",
-        password: ""
-    };
-
-    handleSubmit = e => {
+    const {t} = useTranslation();
+    const {authHandler, authFailedHandler} = props
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const nameChangeHandler = e => setName(e.target.value)
+    const emailChangeHandler = e => setEmail(e.target.value)
+    const passwordChangeHandler = e => setPassword(e.target.value)
+    const handleSubmit = e => {
         e.preventDefault();
-        const {email, password} = this.state
-        const {authHandler, authFailedHandler} = this.props
-        UserApi.signup(email, password)
+        UserApi.signup(email, password, name)
             .then(
                 response => authHandler(response.body),
                 error => authFailedHandler(error.message));
     }
 
-    inputChangeHandler = e => {
-        const {name, value} = e.target;
-        this.setState({[name]: value})
-    }
+    return <div className="userForm">
+        <h2>{t("sign.up")}</h2>
+        <form onSubmit={handleSubmit}>
+            <NameInput onChangeHandler={nameChangeHandler}/>
+            <EmailInput onChangeHandler={emailChangeHandler}/>
+            <PasswordInput onChangeHandler={passwordChangeHandler}/>
+            <FormButton text={t("create.account")}/>
+        </form>
+        <Link to="/login"><h3>{t("have.account")}</h3></Link>
+    </div>
 
-    render() {
-        return(
-            <div className="userForm">
-                <h2>Sign Up</h2>
-                <form onSubmit={this.handleSubmit}>
-                    <NameInput onChangeHandler={this.inputChangeHandler} value={this.state.name}/>
-                    <EmailInput onChangeHandler={this.inputChangeHandler} value={this.state.email}/>
-                    <PasswordInput onChangeHandler={this.inputChangeHandler} value={this.state.password}/>
-                    <FormButton text="Create Account"/>
-                </form>
-                <Link to="/login"><h3>I already have an account</h3></Link>
-            </div>
-        );
-    }
 }

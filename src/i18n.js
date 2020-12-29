@@ -22,6 +22,7 @@ i18n
                 "general.income": "Income",
                 "general.expenses": "Expenses",
                 "general.close": "Close",
+                "general.name": "Name",
 
                 //FOOTER
                 "copyright.text": "© 2020 Fintracking, Inc. All rights reserved",
@@ -29,6 +30,7 @@ i18n
                 //USER ACCESS
                 "log.in": "Log In",
                 "sign.up": "Sign Up",
+                "create.account": "Create Account",
                 "have.account": "I already have an account",
                 "dont.have.account": "I don't have an account",
 
@@ -58,9 +60,17 @@ i18n
                 "general.income": "Ingresos",
                 "general.expenses": "Gastos",
                 "general.close": "Cerrar",
+                "general.name": "Nombre",
 
                 //FOOTER
                 "copyright.text": "© 2020 Fintracking, Inc. Todos los derechos reservados",
+
+                //USER ACCESS
+                "log.in": "Acceso",
+                "sign.up": "Registro",
+                "create.account": "Crear cuenta",
+                "have.account": "Ya tengo una cuenta",
+                "dont.have.account": "No tengo una cuenta",
 
                 //HOMEPAGE
                 "app.welcome": "Bienvenido a Fintracking",
