@@ -18,7 +18,7 @@ export function FintrackingFooter({languages, selectedLanguage, languageChangeHa
             </ul>
         </div>
         <div id="footerBottom" className="page">
-            <p>© 2020 Fintracking, Inc. All rights reserved</p>
+            <p>{t("copyright.text")}</p>
             <CustomDropdown
                 size="sm"
                 values={languages.map(l => StringUtils.capitalise(l))}

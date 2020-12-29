@@ -16,7 +16,8 @@ i18n
                 "general.about": "About",
                 "general.team": "The Team",
                 "general.support": "Support",
-                "general.tos": "Terms of Service"
+                "general.tos": "Terms of Service",
+                "copyright.text": "© 2020 Fintracking, Inc. All rights reserved"
             }
         },
         spanish: {
@@ -28,7 +29,8 @@ i18n
                 "general.about": "Sobre Fintracking",
                 "general.team": "Equipo",
                 "general.support": "Soporte",
-                "general.tos": "Términos del servicio"
+                "general.tos": "Términos del servicio",
+                "copyright.text": "© 2020 Fintracking, Inc. Todos los derechos reservados"
             }
         },
 
