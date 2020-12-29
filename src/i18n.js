@@ -23,12 +23,18 @@ i18n
                 "general.expenses": "Expenses",
                 "general.close": "Close",
                 "general.name": "Name",
+                "general.search": "Search...",
+
+                //ERRORS
+                "server.error": "Oops! Something went wrong",
+                "server.error.detailed": "We're working hard to provide you with the best experience possible, please catch us up on Twitter for information and status updates.",
 
                 //FOOTER
                 "copyright.text": "© 2020 Fintracking, Inc. All rights reserved",
 
                 //USER ACCESS
                 "log.in": "Log In",
+                "log.out": "Log Out",
                 "sign.up": "Sign Up",
                 "create.account": "Create Account",
                 "have.account": "I already have an account",
@@ -42,7 +48,10 @@ i18n
                 "current.funds": "Current Funds",
                 "add.transaction": "Add Transaction",
                 "new.transaction": "New Transaction",
-                "this.month": "This Month"
+                "this.month": "This Month",
+
+                //TRANSACTIONS MODAL
+                "description.placeholder": "Description: e.g. &quot;Grocery Shopping&quot;"
             }
         },
         spanish: {
@@ -61,12 +70,18 @@ i18n
                 "general.expenses": "Gastos",
                 "general.close": "Cerrar",
                 "general.name": "Nombre",
+                "general.search": "Buscar...",
+
+                //ERRORS
+                "server.error": "Uy! Algo ha fallado",
+                "server.error.detailed": "Estamos trabajando para proveer la mejor experiencia posible, síguenos en Twitter para actualizaciones sobre el servicio.",
 
                 //FOOTER
                 "copyright.text": "© 2020 Fintracking, Inc. Todos los derechos reservados",
 
                 //USER ACCESS
                 "log.in": "Acceso",
+                "log.out": "Cerrar Sesión",
                 "sign.up": "Registro",
                 "create.account": "Crear cuenta",
                 "have.account": "Ya tengo una cuenta",
@@ -80,7 +95,10 @@ i18n
                 "current.funds": "Fondos actuales",
                 "add.transaction": "Añadir transacción",
                 "new.transaction": "Nueva transacción",
-                "this.month": "Mes actual"
+                "this.month": "Mes actual",
+
+                //TRANSACTIONS MODAL
+                "description.placeholder": "Descripción: ej. &quot;Compra en supermercado&quot;"
             }
         },
 

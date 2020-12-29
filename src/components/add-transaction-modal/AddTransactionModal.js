@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useEffect, useState} from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Alert from "react-bootstrap/Alert";
@@ -10,105 +10,91 @@ import {CustomInput} from "../custom-input/CustomInput";
 import {EnumUtils} from "../../utils/enumUtils";
 import {TransactionForm} from "../../model/TransactionForm";
 import {TransactionsApi} from "../../api/TransactionsApi";
+import {useTranslation} from "react-i18next";
 
-export class AddTransactionModal extends Component {
+export const AddTransactionModal = props => {
 
-    state = {
-        isValidForm: true,
-        operations: [],
-        expenseTypes: [],
-        selectedOperation: null,
-        selectedExpenseType: null,
-        amount: 0,
-        description: ""
+    const {t} = useTranslation();
+    const {showModal, toggleModal, refreshTransactions} = props
+    const [validForm] = useState(true)
+    const [operations, setOperations] = useState([])
+    const [expenseTypes, setExpenseTypes] = useState([])
+    const [selectedOperation, setSelectedOperation] = useState(null)
+    const [selectedExpenseType, setSelectedExpenseType] = useState(null)
+    const [amount, setAmount] = useState(0)
+    const [description, setDescription] = useState("")
+
+    const operationChangeHandler = operation => setSelectedOperation(operation)
+    const expenseTypeChangeHandler = expenseType => setSelectedExpenseType(expenseType)
+    const amountChangeHandler = e => setAmount(e.target.value)
+    const descriptionChangeHandler = e => setDescription(e.target.value)
+
+    const handleSubmit = () => {
+        toggleModal()
+        const form = new TransactionForm(amount, description, EnumUtils.valueToEnumValue(selectedExpenseType))
+        TransactionsApi.addTransaction(form).then(response => refreshTransactions())
     }
 
-    handleSubmit = () => {
-        this.props.toggleModal()
-        const form = new TransactionForm(
-            this.state.amount,
-            this.state.description,
-            EnumUtils.valueToEnumValue(this.state.selectedExpenseType))
-        TransactionsApi.addTransaction(form).then(response => this.props.refreshTransactions())
-    }
-
-    inputChangeHandler = e => {
-        const {name, value} = e.target;
-        this.setState({[name]: value})
-    }
-
-    operationChangeHandler = operation => this.setState({selectedOperation: operation})
-    expenseTypeChangeHandler = expenseType => this.setState({selectedExpenseType: expenseType})
-
-    componentDidMount() {
+    const fetchModalData = () => {
         GeneralApi.getOperationTypes().then(response => {
             const operations = EnumUtils.enumListToList(response.body)
-            this.setState({
-                operations: operations,
-                selectedOperation: operations[0]
-            })
+            setOperations(operations)
+            setSelectedOperation(operations[0])
         })
         GeneralApi.getExpenseTypes().then(response => {
             const expenseTypes = EnumUtils.enumListToList(response.body)
-            this.setState({
-                expenseTypes: expenseTypes,
-                selectedExpenseType: expenseTypes[0]
-            })
+            setExpenseTypes(expenseTypes)
+            setSelectedExpenseType(expenseTypes[0])
         })
     }
 
-    render() {
+    useEffect(() => {fetchModalData()}, []);
 
-        const validForm = this.state.isValidForm;
+    return <Modal show={showModal} centered>
+        <Modal.Header>
+            <Modal.Title>{t("new.transaction")}</Modal.Title>
+        </Modal.Header>
 
-        return (
-            <Modal show={this.props.showModal} centered>
-                <Modal.Header>
-                    <Modal.Title>New Transaction</Modal.Title>
-                </Modal.Header>
+        <Modal.Body>
+            <Alert
+                className={validForm ? "d-none" : "d-block"}
+                variant={validForm ? "success" : "danger"}>
+                <p>This is an alert message.</p>
+            </Alert>
+            <div className="cashierRow">
+                <CustomDropdown
+                    values={operations}
+                    selected={selectedOperation}
+                    handler={operationChangeHandler}/>
+                <AmountInput
+                    value={amount}
+                    handler={amountChangeHandler}/>
+            </div>
+            <div className="cashierRow">
+                <CustomInput
+                    placeholder={t("description.placeholder")}
+                    name="description"
+                    value={description}
+                    handler={descriptionChangeHandler}/>
+                <CustomDropdown
+                    values={expenseTypes}
+                    selected={selectedExpenseType}
+                    handler={expenseTypeChangeHandler}/>
+            </div>
+        </Modal.Body>
 
-                <Modal.Body>
-                    <Alert
-                        className={validForm ? "d-none" : "d-block"}
-                        variant={validForm ? "success" : "danger"}>
-                        <p>This is an alert message.</p>
-                    </Alert>
-                    <div className="cashierRow">
-                        <CustomDropdown
-                            values={this.state.operations}
-                            selected={this.state.selectedOperation}
-                            handler={this.operationChangeHandler}/>
-                        <AmountInput
-                            value={this.state.amount}
-                            handler={this.inputChangeHandler}/>
-                    </div>
-                    <div className="cashierRow">
-                        <CustomInput
-                            placeholder="Description: e.g. &quot;Grocery Shopping&quot;"
-                            name="description"
-                            value={this.state.description}
-                            handler={this.inputChangeHandler}/>
-                        <CustomDropdown
-                            values={this.state.expenseTypes}
-                            selected={this.state.selectedExpenseType}
-                            handler={this.expenseTypeChangeHandler}/>
-                    </div>
-                </Modal.Body>
-
-                <Modal.Footer>
-                    <Button
-                        variant="secondary"
-                        onClick={this.props.toggleModal}>
-                        Close
-                    </Button>
-                    <Button
-                        id="submitButton"
-                        variant="primary"
-                        onClick={this.handleSubmit}>
-                        Add Transaction
-                    </Button>
-                </Modal.Footer>
-            </Modal>
-        );
-    };
+        <Modal.Footer>
+            <Button
+                variant="secondary"
+                onClick={toggleModal}>
+                {t("general.close")}
+            </Button>
+            <Button
+                id="submitButton"
+                variant="primary"
+                onClick={handleSubmit}>
+                {t("add.transaction")}
+            </Button>
+        </Modal.Footer>
+    </Modal>
 }

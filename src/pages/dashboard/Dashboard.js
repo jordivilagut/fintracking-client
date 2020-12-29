@@ -1,15 +1,10 @@
-import React, {Component} from "react";
-import {TransactionsWidget} from "../../components/transactions/TransactionsWidget";
+import React from "react";
+import {TransactionsBoard} from "../../components/transactions/TransactionsBoard";
 import {FinancialSnapshot} from "../../components/financial-snapshot/FinancialSnapshot";
 
-export class Dashboard extends Component {
-
-    render() {
-        return(
-            <div>
-                <FinancialSnapshot/>
-                <TransactionsWidget/>
-            </div>
-        );
-    }
+export const Dashboard = () => {
+    return <div>
+        <FinancialSnapshot/>
+        <TransactionsBoard/>
+    </div>
 }
