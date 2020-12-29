@@ -3,15 +3,18 @@ import "./FintrackingFooter.scss"
 import {SitemapLink} from "../sitemap-link/SitemapLink";
 import {CustomDropdown} from "../custom-dropdown/CustomDropdown";
 import {StringUtils} from "../../utils/StringUtils";
+import {useTranslation} from 'react-i18next';
 
-export const FintrackingFooter = ({languages, selectedLanguage, languageChangeHandler}) => (
-    <footer className="footer">
+export function FintrackingFooter({languages, selectedLanguage, languageChangeHandler}) {
+
+    const {t} = useTranslation();
+    return <footer className="footer">
         <div id="sitemap" className="page">
             <ul>
-                <SitemapLink text="About" url="/"/>
-                <SitemapLink text="The Team" url="/"/>
-                <SitemapLink text="Support" url="/"/>
-                <SitemapLink text="Terms of Service" url="/"/>
+                <SitemapLink text={t("general.about")} url="/"/>
+                <SitemapLink text={t("general.team")} url="/"/>
+                <SitemapLink text={t("general.support")} url="/"/>
+                <SitemapLink text={t("general.tos")} url="/"/>
             </ul>
         </div>
         <div id="footerBottom" className="page">
@@ -23,6 +26,5 @@ export const FintrackingFooter = ({languages, selectedLanguage, languageChangeHa
                 handler={languageChangeHandler}/>
         </div>
     </footer>
-)
-
+}
 

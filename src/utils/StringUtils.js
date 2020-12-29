@@ -3,5 +3,5 @@ export const StringUtils = {
 };
 
 function capitalise(str) {
-    return str != null ? str.charAt(0).toUpperCase() + str.slice(1).toLowerCase() : null;
+    return str != null ? str.charAt(0).toUpperCase() + str.slice(1).toLowerCase() : "";
 }

@@ -17,13 +17,15 @@ class App extends React.Component {
         user: null,
         languages: ["english ", "spanish"],
         selectedLanguage: null
-
     }
 
-    languageChangeHandler = lang => this.setState({selectedLanguage: lang})
+    languageChangeHandler = lang => {
+        this.props.i18n.changeLanguage(lang.toLowerCase())
+        this.setState({selectedLanguage: lang})
+    }
 
     componentDidMount() {
-        this.setState({selectedLanguage: this.state.languages[0]})
+        this.setState({selectedLanguage: this.props.i18n.language})
         const authToken = CookiesService.get("authToken")
         if (authToken != null) {
             UserApi.autoLogin()

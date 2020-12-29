@@ -6,11 +6,15 @@ import './styles/index.scss';
 import App from './application/App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from "react-router-dom";
+import { I18nextProvider } from "react-i18next";
+import i18n from "./i18n";
 
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
-            <App />
+            <I18nextProvider i18n={i18n}>
+                <App i18n={i18n}/>
+            </I18nextProvider>
         </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')
