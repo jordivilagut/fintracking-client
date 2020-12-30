@@ -31,7 +31,12 @@ export const AddTransactionModal = props => {
 
     const handleSubmit = () => {
         toggleModal()
-        const form = new TransactionForm(amount, description, EnumUtils.valueToEnumValue(selectedExpenseType))
+        const form = new TransactionForm(
+            amount,
+            description,
+            EnumUtils.valueToEnumValue(selectedExpenseType),
+            EnumUtils.valueToEnumValue(selectedOperation))
+
         TransactionsApi.addTransaction(form).then(response => refreshTransactions())
     }
 
