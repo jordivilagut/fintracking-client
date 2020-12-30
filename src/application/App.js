@@ -24,19 +24,6 @@ const App = (props) => {
         setLanguage(lang)
     }
 
-    const initApp = () => {
-        let lang = LanguageUtils.getLanguageFromSymbol(props.i18n.language);
-        props.i18n.changeLanguage(lang)
-        setLanguage(lang)
-        const authToken = CookiesService.get("authToken")
-        if (authToken != null) {
-            UserApi.autoLogin()
-                .then(
-                    response => setUser(response.body),
-                    error => logUserOut(null, "home"))
-        }
-    }
-
     const authenticateUser = (auth) => {
         const user = new User(auth.email, auth.token)
         setUser(user)
@@ -51,7 +38,22 @@ const App = (props) => {
         if (redirectUrl != null) redirectTo(redirectUrl)
     }
 
-    useEffect(() => {initApp()}, []);
+    useEffect(() => {
+        let lang = LanguageUtils.getLanguageFromSymbol(props.i18n.language);
+        props.i18n.changeLanguage(lang)
+        setLanguage(lang)
+        const authToken = CookiesService.get("authToken")
+        if (authToken != null) {
+            UserApi.autoLogin()
+                .then(
+                    response => setUser(response.body),
+                    error => {
+                        setUser(null)
+                        CookiesService.removeCookie("authToken")
+                        props.history.push("home")
+                    })
+        }
+    }, [props.i18n, props.history]);
 
     return <div id="application">
         <FintrackingNavBar user={user}/>
