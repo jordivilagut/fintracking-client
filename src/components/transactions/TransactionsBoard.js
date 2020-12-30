@@ -5,7 +5,7 @@ import {SearchAndAction} from "../search-and-action/SearchAndAction";
 import {useTranslation} from "react-i18next";
 import {TransactionsService} from "../../services/TransactionsService";
 
-export const TransactionsBoard = () => {
+export const TransactionsBoard = ({refreshSummary}) => {
 
     const {t} = useTranslation();
     const [transactions, setTransactions] = useState([])
@@ -13,11 +13,16 @@ export const TransactionsBoard = () => {
     const [showModal, setShowModal] = useState(false)
     const toggleModal = () => setShowModal(!showModal)
     const searchBoxHandler = e => setSearchText(e.target.value)
-    const refreshTransactions = () => TransactionsService.getCurrentMonthTransactions().then(response => setTransactions(response.body))
+    const refreshTransactions = () => TransactionsService.getCurrentMonthTransactions().then(response => {
+        setTransactions(response.body)
+        refreshSummary()
+    })
     const transactionsFilter = t => t.description.toLowerCase().includes(searchText.toLowerCase())
     const filteredTransactions = transactions.filter(transactionsFilter)
 
-    useEffect(() => {refreshTransactions()}, []);
+    useEffect(() => {
+        TransactionsService.getCurrentMonthTransactions().then(response => setTransactions(response.body))
+    }, []);
 
     return <div id="transactionsBoard">
         <SearchAndAction
