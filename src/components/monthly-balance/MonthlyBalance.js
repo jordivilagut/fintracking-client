@@ -6,8 +6,8 @@ import {useTranslation} from "react-i18next";
 export function MonthlyBalance({income, expenses}) {
 
     const {t} = useTranslation();
-    const incomeHeight = income/100;
-    const expensesHeight = expenses/100;
+    const incomeHeight = income/40;
+    const expensesHeight = expenses/40;
 
     return <div className="monthlyBalance light-border">
         <h2>{t("this.month")}</h2>
