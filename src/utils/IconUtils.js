@@ -1,13 +1,20 @@
 import {
     faBolt,
-    faCar, faCircleNotch,
-    faCoffee, faCoins,
-    faFilm, faHandHoldingHeart, faHome, faHospitalSymbol, faMoneyBill,
+    faCar,
+    faCircleNotch,
+    faCoffee,
+    faCoins,
+    faFilm,
+    faHandHoldingHeart,
+    faHome,
+    faHospitalSymbol,
+    faMoneyBill,
     faPhone,
     faPlane,
     faShoppingBasket,
     faTshirt,
-    faUserGraduate, faUtensils
+    faUserGraduate,
+    faUtensils
 } from '@fortawesome/free-solid-svg-icons'
 
 export const IconUtils = {
