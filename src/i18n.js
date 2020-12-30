@@ -51,7 +51,29 @@ i18n
                 "this.month": "This Month",
 
                 //TRANSACTIONS MODAL
-                "description.placeholder": "Description: e.g. &quot;Grocery Shopping&quot;"
+                "description.placeholder": "Description: e.g. &quot;Grocery Shopping&quot;",
+
+                //OPERATION TYPES
+                "EXPENSE": "Expense",
+                "INCOME": "Income",
+
+                //EXPENSE TYPES
+                "CLOTHING": "Clothing",
+                "EDUCATION": "Education",
+                "TRANSPORT": "Transport",
+                "TELCO": "Telcom Services",
+                "TRAVELS": "Travels",
+                "STREAMING_PLATFORMS": "Streaming Platforms",
+                "PERSONAL_CARE": "Personal Care",
+                "GROCERIES": "Groceries",
+                "RESTAURANTS": "Restaurants",
+                "HEALTHCARE": "Healthcare",
+                "SALARY": "Salary",
+                "TAXES": "Taxes",
+                "CHARITY": "Charity",
+                "HOUSING": "Housing",
+                "HOUSEHOLD_SUPPLIES": "Household Supplies",
+                "OTHER": "Other"
             }
         },
         spanish: {
@@ -98,7 +120,29 @@ i18n
                 "this.month": "Mes actual",
 
                 //TRANSACTIONS MODAL
-                "description.placeholder": "Descripción: ej. &quot;Compra en supermercado&quot;"
+                "description.placeholder": "Descripción: ej. &quot;Compra en supermercado&quot;",
+
+                //OPERATION TYPES
+                "EXPENSE": "Gasto",
+                "INCOME": "Ingreso",
+
+                //EXPENSE TYPES
+                "CLOTHING": "Ropa",
+                "EDUCATION": "Educación",
+                "TRANSPORT": "Transporte",
+                "TELCO": "Servicios de telefonía",
+                "TRAVELS": "Viajes",
+                "STREAMING_PLATFORMS": "Platformas de streaming",
+                "PERSONAL_CARE": "Cuidado Personal",
+                "GROCERIES": "Supermercado",
+                "RESTAURANTS": "Restaurantes",
+                "HEALTHCARE": "Salud",
+                "SALARY": "Sueldo",
+                "TAXES": "Impuestos",
+                "CHARITY": "Caridad",
+                "HOUSING": "Alojamiento",
+                "HOUSEHOLD_SUPPLIES": "Gastos (Electricidad, agua,...)",
+                "OTHER": "Otros"
             }
         },
 

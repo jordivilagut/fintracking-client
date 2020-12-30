@@ -7,7 +7,6 @@ import {GeneralApi} from "../../api/GeneralApi";
 import {CustomDropdown} from "../custom-dropdown/CustomDropdown";
 import {AmountInput} from "../amount-input/AmountInput";
 import {CustomInput} from "../custom-input/CustomInput";
-import {EnumUtils} from "../../utils/enumUtils";
 import {TransactionForm} from "../../model/TransactionForm";
 import {TransactionsApi} from "../../api/TransactionsApi";
 import {useTranslation} from "react-i18next";
@@ -34,20 +33,20 @@ export const AddTransactionModal = props => {
         const form = new TransactionForm(
             amount,
             description,
-            EnumUtils.valueToEnumValue(selectedExpenseType),
-            EnumUtils.valueToEnumValue(selectedOperation))
+            selectedExpenseType,
+            selectedOperation)
 
         TransactionsApi.addTransaction(form).then(response => refreshTransactions())
     }
 
     const fetchModalData = () => {
         GeneralApi.getOperationTypes().then(response => {
-            const operations = EnumUtils.enumListToList(response.body)
+            const operations = response.body
             setOperations(operations)
             setSelectedOperation(operations[0])
         })
         GeneralApi.getExpenseTypes().then(response => {
-            const expenseTypes = EnumUtils.enumListToList(response.body)
+            const expenseTypes = response.body
             setExpenseTypes(expenseTypes)
             setSelectedExpenseType(expenseTypes[0])
         })

@@ -1,13 +1,15 @@
 import DropdownItem from "react-bootstrap/DropdownItem";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import React from "react";
+import {useTranslation} from "react-i18next";
 
-export const CustomDropdown = ({values, selected, handler, size}) => (
-    <DropdownButton
+export const CustomDropdown = ({values, selected, handler, size}) => {
+    const {t} = useTranslation();
+    return <DropdownButton
         variant="light"
         id="operationDropdown"
         value={selected}
-        title={selected}
+        title={t(selected)}
         size={size}>
 
         {values.map((val, index) => (
@@ -15,7 +17,7 @@ export const CustomDropdown = ({values, selected, handler, size}) => (
                 key={index}
                 eventKey={val}
                 value={val}
-                onSelect={handler}>{val}</DropdownItem>
+                onSelect={handler}>{t(val)}</DropdownItem>
         ))}
     </DropdownButton>
-)
+}
