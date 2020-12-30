@@ -2,8 +2,8 @@ import {api} from "./agent";
 import {CookiesService} from "../services/CookiesService";
 
 export const TransactionsApi = {
-    getTransactions: () =>
-        api.get('/transactions').set("Authorization", CookiesService.get("authToken")),
+    getTransactions: (filter) =>
+        api.post('/transactions', filter).set("Authorization", CookiesService.get("authToken")),
     addTransaction: (transaction) =>
-        api.post('/transactions', transaction).set("Authorization", CookiesService.get("authToken"))
+        api.post('/transactions/add', transaction).set("Authorization", CookiesService.get("authToken"))
 };

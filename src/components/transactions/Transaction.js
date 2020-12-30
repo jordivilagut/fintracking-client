@@ -2,7 +2,7 @@ import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCoffee} from '@fortawesome/free-solid-svg-icons'
 import {CurrencyUtils} from '../../utils/currencyUtils'
-import {DateUtils} from '../../utils/dateUtils'
+import {DateUtils} from '../../utils/DateUtils'
 
 export const Transaction = ({transaction}) => (
     <div id="transaction">
