@@ -30,7 +30,9 @@ export const TransactionsBoard = ({refreshSummary}) => {
             searchBoxHandler={searchBoxHandler}
             buttonText={t("add.transaction")}
             buttonAction={toggleModal}/>
-        <Transactions transactions={filteredTransactions}/>
+        <Transactions
+            transactions={filteredTransactions}
+            refreshTransactions={refreshTransactions}/>
         <AddTransactionModal
             showModal={showModal}
             toggleModal={toggleModal}
