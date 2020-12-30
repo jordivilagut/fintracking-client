@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {FintrackingNavBar} from "../components/navbar/FintrackingNavBar";
 import {Route, withRouter} from "react-router-dom";
 import {Login} from "../pages/login/Login";
@@ -10,79 +10,77 @@ import {UserProfile} from "../pages/user-profile/UserProfile";
 import {UserApi} from "../api/UserApi";
 import {Homepage} from "../pages/homepage/Homepage";
 import {FintrackingFooter} from "../components/footer/FintrackingFooter";
+import {DateUtils as LanguageUtils} from "../utils/LanguageUtils";
 
-class App extends React.Component {
+const App = (props) => {
 
-    state = {
-        user: null,
-        languages: ["english ", "spanish"],
-        selectedLanguage: null
+    const [user, setUser] = useState(null)
+    const [languages] = useState(["english ", "spanish"])
+    const [language, setLanguage] = useState(null)
+    const redirectTo = (url) => props.history.push(url)
+
+    const languageChangeHandler = lang => {
+        props.i18n.changeLanguage(lang.toLowerCase())
+        setLanguage(lang)
     }
 
-    languageChangeHandler = lang => {
-        this.props.i18n.changeLanguage(lang.toLowerCase())
-        this.setState({selectedLanguage: lang})
-    }
-
-    componentDidMount() {
-        this.setState({selectedLanguage: this.props.i18n.language})
+    const initApp = () => {
+        let lang = LanguageUtils.getLanguageFromSymbol(props.i18n.language);
+        props.i18n.changeLanguage(lang)
+        setLanguage(lang)
         const authToken = CookiesService.get("authToken")
         if (authToken != null) {
             UserApi.autoLogin()
                 .then(
-                    response => this.setState({user: response.body}),
-                    error => this.logUserOut(null, "home"))
+                    response => setUser(response.body),
+                    error => logUserOut(null, "home"))
         }
     }
 
-    authenticateUser = (auth) => {
+    const authenticateUser = (auth) => {
         const user = new User(auth.email, auth.token)
-        this.setState({user: user})
+        setUser(user)
         CookiesService.storeCookie("authToken", auth.token)
-        this.redirectTo("home")
+        redirectTo("home")
     }
 
-    logUserOut = (errorMessage, redirectUrl) => {
-        this.setState({user: null})
+    const logUserOut = (errorMessage, redirectUrl) => {
+        setUser(null)
         CookiesService.removeCookie("authToken")
         if (errorMessage != null) alert(errorMessage)
-        if (redirectUrl != null) this.redirectTo(redirectUrl)
+        if (redirectUrl != null) redirectTo(redirectUrl)
     }
 
-    redirectTo = (url) => this.props.history.push(url)
+    useEffect(() => {initApp()}, []);
 
-    render() {
-        return (
-            <div id="application">
-                <FintrackingNavBar user={this.state.user}/>
-                <div className="content">
-                    <div className="page">
-                        <Route exact path="/" render={() => (
-                            <Homepage user={this.state.user}/>)}/>
-                        <Route exact path="/home" render={() => (
-                            <Homepage user={this.state.user}/>)}/>
-                        <Route exact path="/login" render={() => (
-                            <Login
-                                authHandler={this.authenticateUser}
-                                authFailedHandler={this.logUserOut}/>)}/>
-                        <Route exact path="/signup" render={() => (
-                            <Signup
-                                authHandler={this.authenticateUser}
-                                authFailedHandler={this.logUserOut}/>)}/>
-                        <Route exact path="/profile" render={() => (
-                            <UserProfile
-                                user={this.state.user}
-                                logoutHandler={this.logUserOut}/>)}/>
-                        <Route exact path="/error" component={ServerError}/>
-                    </div>
-                </div>
-                <FintrackingFooter
-                    languages={this.state.languages}
-                    selectedLanguage={this.state.selectedLanguage}
-                    languageChangeHandler={this.languageChangeHandler}/>
+    return <div id="application">
+        <FintrackingNavBar user={user}/>
+        <div className="content">
+            <div className="page">
+                <Route exact path="/" render={() => (
+                    <Homepage user={user}/>)}/>
+                <Route exact path="/home" render={() => (
+                    <Homepage user={user}/>)}/>
+                <Route exact path="/login" render={() => (
+                    <Login
+                        authHandler={authenticateUser}
+                        authFailedHandler={logUserOut}/>)}/>
+                <Route exact path="/signup" render={() => (
+                    <Signup
+                        authHandler={authenticateUser}
+                        authFailedHandler={logUserOut}/>)}/>
+                <Route exact path="/profile" render={() => (
+                    <UserProfile
+                        user={user}
+                        logoutHandler={logUserOut}/>)}/>
+                <Route exact path="/error" component={ServerError}/>
             </div>
-        );
-    }
+        </div>
+        <FintrackingFooter
+            languages={languages}
+            selectedLanguage={language}
+            languageChangeHandler={languageChangeHandler}/>
+    </div>
 }
 
 export default withRouter(App);
