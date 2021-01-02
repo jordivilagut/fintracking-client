@@ -7,11 +7,24 @@
 #financialSnapshot .scoreboard {
   flex-grow: 1;
   margin-right: 10px;
-  display: flex;
-  padding: 40px 0 40px 40px;
   color: #0292B7;
   background: lightgray;
-  justify-content: space-around;
+
+  .topElements {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 6px 0 0;
+
+    p {
+      cursor: pointer;
+    }
+  }
+
+  .bottomElements {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 0 40px 40px;
+  }
 
   h1 {
     font-size: 32px;

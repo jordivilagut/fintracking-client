@@ -5,20 +5,20 @@ import {AmountInput} from "../amount-input/AmountInput";
 import Button from "react-bootstrap/Button";
 import {FinanceApi} from "../../api/FinanceApi";
 
-export const AddFundsModal = ({showModal, toggleModal, refreshSummary}) => {
+export const AddFundsModal = ({modalTitle, showModal, toggleModal, refreshSummary}) => {
 
     const {t} = useTranslation();
-    const [amount, setAmount] = useState(0)
+    const [amount, setAmount] = useState(0) //TODO - getCurrentFunds
     const amountChangeHandler = e => setAmount(e.target.value)
 
     const handleSubmit = () => {
         toggleModal()
-        FinanceApi.setCurrentFunds(amount).then(response => refreshSummary)
+        FinanceApi.setCurrentFunds(amount).then(response => refreshSummary())
     }
 
     return <Modal show={showModal} centered>
         <Modal.Header>
-            <Modal.Title>{t("add.current.funds")}</Modal.Title>
+            <Modal.Title>{modalTitle}</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
