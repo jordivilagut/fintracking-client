@@ -12,7 +12,6 @@
   }
 
   .iconButton {
-    display: flex;
     padding: 10px;
     font-size: 12px;
     border-radius: 4px;
@@ -26,14 +25,32 @@
   #icons {
     display: flex;
 
-      .icon {
-        padding: 10px;
-      }
+    .icon {
+      padding: 10px;
+    }
+  }
+}
+
+@media (min-width: 480px) {
+  .mobileMenuIcon {
+    display: none;
+  }
+
+  .userProfileButton {
+    display: flex;
   }
 }
 
 @media (max-width: 480px) {
   .iconButton {
     font-size: 10px;
+  }
+
+  .mobileMenuIcon {
+    display: flex;
+  }
+
+  .userProfileButton {
+    display: none;
   }
 }
