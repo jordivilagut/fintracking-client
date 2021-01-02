@@ -27,7 +27,7 @@ export const CurrentFunds = ({currentFunds, refreshSummary}) => {
                 <p>{t("current.funds")}</p>
             </div>
             <Button
-                visible={currentFunds == null}
+                hidden={currentFunds != null}
                 action={toggleModal}
                 mainText={t("add.current.funds")}/>
             <AddFundsModal

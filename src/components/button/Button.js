@@ -1,8 +1,8 @@
 import React from "react";
 import "./Button.scss"
 
-export const Button = ({action, mainText, secondaryText, visible, color, textColor}) => {
-    const visibility = visible? "block" : "none";
+export const Button = ({action, mainText, secondaryText, hidden, color, textColor}) => {
+    const visibility = hidden? "none" : "block"
     return <div>
         <button
             onClick={action}

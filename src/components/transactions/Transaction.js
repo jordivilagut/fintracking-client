@@ -19,7 +19,11 @@ export const Transaction = ({transaction, refreshTransactions}) => {
                 <p className="no-wrap">{CurrencyUtils.formatCurrency(transaction.amount)}</p>
                 <p className="ellipsis">{transaction.description}</p>
                 <p className="text-right ellipsis">{DateUtils.formatDate(transaction.date)}</p>
-                <button onClick={deleteTransaction}><FontAwesomeIcon icon={faTrash} /></button>
+                <p className="clickable">
+                        <FontAwesomeIcon
+                            icon={faTrash}
+                            onClick={deleteTransaction}/>
+                </p>
         </div>
 }
 
