@@ -10,8 +10,8 @@ export const Transaction = ({transaction, refreshTransactions}) => {
 
         const deleteTransaction = () => {
                 TransactionsApi.deleteTransactions(transaction.id).then(
-                    refreshTransactions(),      //success
-                    console.log("error"))       //error
+                    response => refreshTransactions(),  //success
+                    error => console.log("error"))      //error
         }
 
         return  <div id="transaction">
