@@ -24,6 +24,7 @@ i18n
                 "general.close": "Close",
                 "general.name": "Name",
                 "general.search": "Search...",
+                "general.save": "Save",
 
                 //ERRORS
                 "server.error": "Oops! Something went wrong",
@@ -94,6 +95,7 @@ i18n
                 "general.close": "Cerrar",
                 "general.name": "Nombre",
                 "general.search": "Buscar...",
+                "general.save": "Guardar",
 
                 //ERRORS
                 "server.error": "Uy! Algo ha fallado",
