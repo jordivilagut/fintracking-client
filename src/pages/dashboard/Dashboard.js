@@ -6,11 +6,17 @@ import {FinanceApi} from "../../api/FinanceApi";
 export const Dashboard = () => {
 
     const [monthlySummary, setMonthlySummary] = useState({})
-    const getMonthlySummary = () => FinanceApi.getMonthlySummary().then(response => setMonthlySummary(response.body))
-    useEffect(() => {getMonthlySummary()}, []);
+    const [currentFunds, setCurrentFunds] = useState(null)
+    const fetchData = () => {
+        FinanceApi.getMonthlySummary().then(response => setMonthlySummary(response.body))
+        FinanceApi.getCurrentFunds().then(response => setCurrentFunds(response.body))
+    }
+    useEffect(() => {fetchData()}, []);
 
     return <div>
-        <FinancialSnapshot monthlySummary={monthlySummary}/>
-        <TransactionsBoard refreshSummary={getMonthlySummary}/>
+        <FinancialSnapshot
+            currentFunds={currentFunds}
+            monthlySummary={monthlySummary}/>
+        <TransactionsBoard refreshSummary={fetchData}/>
     </div>
 }

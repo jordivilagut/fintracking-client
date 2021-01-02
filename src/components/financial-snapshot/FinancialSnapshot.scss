@@ -8,10 +8,10 @@
   flex-grow: 1;
   margin-right: 10px;
   display: flex;
-  flex-direction: column;
   padding: 40px 0 40px 40px;
   color: #0292B7;
   background: lightgray;
+  justify-content: space-around;
 
   h1 {
     font-size: 32px;

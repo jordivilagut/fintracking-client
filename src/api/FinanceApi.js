@@ -4,4 +4,6 @@ import {CookiesService} from "../services/CookiesService";
 export const FinanceApi = {
     getMonthlySummary: () =>
         api.get('/finance').set("Authorization", CookiesService.get("authToken")),
+    getCurrentFunds: () =>
+        api.get('/finance/balance').set("Authorization", CookiesService.get("authToken"))
 };
