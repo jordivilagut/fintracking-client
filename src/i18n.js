@@ -49,6 +49,7 @@ i18n
                 "add.transaction": "Add Transaction",
                 "new.transaction": "New Transaction",
                 "this.month": "This Month",
+                "add.current.funds": "Add Current Funds",
 
                 //TRANSACTIONS MODAL
                 "description.placeholder": "Description: e.g. &quot;Grocery Shopping&quot;",
@@ -118,6 +119,7 @@ i18n
                 "add.transaction": "Añadir transacción",
                 "new.transaction": "Nueva transacción",
                 "this.month": "Mes actual",
+                "add.current.funds": "Añadir Fondos",
 
                 //TRANSACTIONS MODAL
                 "description.placeholder": "Descripción: ej. &quot;Compra en supermercado&quot;",

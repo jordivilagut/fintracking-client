@@ -9,6 +9,6 @@ export const CurrentFunds = ({currentFunds}) => {
             <h1>{currentFunds != null ? currentFunds : "???"}€</h1>
             <p>{t("current.funds")}</p>
         </div>
-        <Button mainText="Add Current Funds"/>
+        <Button mainText={t("add.current.funds")}/>
     </div>
 }
