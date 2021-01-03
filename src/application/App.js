@@ -12,6 +12,7 @@ import {Homepage} from "../pages/homepage/Homepage";
 import {FintrackingFooter} from "../components/footer/FintrackingFooter";
 import {DateUtils as LanguageUtils} from "../utils/LanguageUtils";
 import {MobileMenu} from "../pages/mobile-menu/MobileMenu";
+import {ForgotPassword} from "../pages/forgot-pwd/ForgotPassword";
 
 const App = (props) => {
 
@@ -77,6 +78,7 @@ const App = (props) => {
                         user={user}
                         logoutHandler={logUserOut}/>)}/>
                 <Route exact path="/error" component={ServerError}/>
+                <Route exact path="/forgotpwd" component={ForgotPassword}/>
                 <Route exact path="/menu" render={() => (
                     <MobileMenu
                         user={user}/>)}/>

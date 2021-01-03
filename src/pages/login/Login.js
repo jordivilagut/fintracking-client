@@ -31,5 +31,6 @@ export const Login = props => {
             <FormButton text={t("log.in")}/>
         </form>
         <Link to="/signup"><h3 className="link">{t("dont.have.account")}</h3></Link>
+        <Link to="/forgotpwd"><h3 className="link">{t("forgot.password")}</h3></Link>
     </div>
 }

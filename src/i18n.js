@@ -27,6 +27,8 @@ i18n
                 "general.save": "Save",
                 "coming.soon": "Coming Soon",
                 "password.about": "Password must be at least 8 alhpanumeric characters",
+                "forgot.password": "I forgot my password",
+                "recover.password": "Recover password",
 
                 //MENU
                 "menu.home": "HOME",
@@ -106,6 +108,8 @@ i18n
                 "general.save": "Guardar",
                 "coming.soon": "Próximamente",
                 "password.about": "La contraseña debe tener al menos 8 caracteres alfanuméricos.",
+                "forgot.password": "Olvidé mi contraseña",
+                "recover.password": "Recuperar contraseña",
 
                 //MENU
                 "menu.home": "INICIO",
