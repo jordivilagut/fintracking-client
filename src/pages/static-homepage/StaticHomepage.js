@@ -21,7 +21,7 @@ export const StaticHomepage = () => {
             title="Investor"
             titleClassname="zelda"
             buttonText={t("get.started")}
-            buttonColor="3cc249"
+            buttonColor="0292B7"
             buttonTextColor="FFFFFF"/>
         <UserPlan
             action={getStartedHandler}

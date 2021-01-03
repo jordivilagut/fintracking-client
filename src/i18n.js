@@ -103,7 +103,7 @@ i18n
                 "general.name": "Nombre",
                 "general.search": "Buscar...",
                 "general.save": "Guardar",
-                "coming.soon": "Coming Soon",
+                "coming.soon": "Próximamente",
 
                 //MENU
                 "menu.home": "INICIO",
