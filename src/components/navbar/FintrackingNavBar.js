@@ -3,14 +3,20 @@ import "./NavBar.scss"
 import {NavBarIcons} from "./NavBarIcons";
 import {Link} from "react-router-dom";
 import {Logo} from "../logo/Logo";
+import {useTranslation} from "react-i18next";
 
-export const FintrackingNavBar = ({user}) => (
-    <div className="navBarWrapper">
+export const FintrackingNavBar = ({user}) => {
+    const {t} = useTranslation();
+    return <div className="navBarWrapper">
         <div id="navBar" className="page">
-            <Link to="/">
-                <Logo/>
-            </Link>
+            <div className="desktopLinks">
+                <Link to="/">
+                    <Logo/>
+                </Link>
+                <Link to="/"><p>{t("menu.home")}</p></Link>
+                <Link to="/budget"><p>{t("menu.budget")}</p></Link>
+            </div>
             <NavBarIcons user={user}/>
         </div>
     </div>
-);
+}

@@ -26,6 +26,11 @@ i18n
                 "general.search": "Search...",
                 "general.save": "Save",
 
+                //MENU
+                "menu.home": "HOME",
+                "menu.budget": "BUDGET",
+                "menu.profile": "MI PROFILE",
+
                 //ERRORS
                 "server.error": "Oops! Something went wrong",
                 "server.error.detailed": "We're working hard to provide you with the best experience possible, please catch us up on Twitter for information and status updates.",
@@ -97,6 +102,11 @@ i18n
                 "general.name": "Nombre",
                 "general.search": "Buscar...",
                 "general.save": "Guardar",
+
+                //MENU
+                "menu.home": "INICIO",
+                "menu.budget": "PRESUPUESTO",
+                "menu.profile": "MI USUARIO",
 
                 //ERRORS
                 "server.error": "Uy! Algo ha fallado",

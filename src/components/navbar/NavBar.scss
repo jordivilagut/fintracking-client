@@ -39,6 +39,18 @@
   .userProfileButton {
     display: flex;
   }
+
+  .desktopLinks {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    p {
+      padding-left: 32px;
+      color: #0292B7;
+      font-size: 14px;
+    }
+  }
 }
 
 @media (max-width: 480px) {
@@ -51,6 +63,10 @@
   }
 
   .userProfileButton {
+    display: none;
+  }
+
+  .desktopLinks p {
     display: none;
   }
 }

@@ -11,6 +11,7 @@ import {UserApi} from "../api/UserApi";
 import {Homepage} from "../pages/homepage/Homepage";
 import {FintrackingFooter} from "../components/footer/FintrackingFooter";
 import {DateUtils as LanguageUtils} from "../utils/LanguageUtils";
+import {MobileMenu} from "../pages/mobile-menu/MobileMenu";
 
 const App = (props) => {
 
@@ -76,6 +77,9 @@ const App = (props) => {
                         user={user}
                         logoutHandler={logUserOut}/>)}/>
                 <Route exact path="/error" component={ServerError}/>
+                <Route exact path="/menu" render={() => (
+                    <MobileMenu
+                        user={user}/>)}/>
             </div>
         </div>
         <FintrackingFooter
