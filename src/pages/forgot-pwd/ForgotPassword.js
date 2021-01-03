@@ -13,7 +13,7 @@ export const ForgotPassword = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        UserApi.forgotPassword(email)
+        UserApi.recoverPassword(email)
             .then(
                 () => alert("Email sent"),              //response
                 () => alert("Something went wrong"));   //error

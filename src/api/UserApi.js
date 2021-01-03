@@ -10,5 +10,7 @@ export const UserApi = {
     autoLogin: () =>
         api.post('/auth/login').set("Authorization", CookiesService.get("authToken")),
     logout: () =>
-        api.del('/auth').set("Authorization", CookiesService.get("authToken"))
+        api.del('/auth').set("Authorization", CookiesService.get("authToken")),
+    recoverPassword: (email) =>
+        api.post('/auth/forgot-pwd', email)
 };
