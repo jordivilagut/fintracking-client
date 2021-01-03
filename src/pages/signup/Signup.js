@@ -32,9 +32,9 @@ export const Signup = props => {
             <NameInput onChangeHandler={nameChangeHandler}/>
             <EmailInput onChangeHandler={emailChangeHandler}/>
             <PasswordInput onChangeHandler={passwordChangeHandler}/>
+            <p className="remark">*{t("password.about")}</p>
             <FormButton text={t("create.account")}/>
         </form>
         <Link to="/login"><h3>{t("have.account")}</h3></Link>
     </div>
-
 }
