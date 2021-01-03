@@ -26,7 +26,7 @@ const App = (props) => {
     }
 
     const authenticateUser = (auth) => {
-        const user = new User(auth.email, auth.token)
+        const user = new User(auth.name, auth.email, auth.token)
         setUser(user)
         CookiesService.storeCookie("authToken", auth.token)
         redirectTo("home")

@@ -1,7 +1,8 @@
 
 export class User {
 
-    constructor(email, token) {
+    constructor(name, email, token) {
+        this.name = name;
         this.email = email;
         this.token = token;
     }
