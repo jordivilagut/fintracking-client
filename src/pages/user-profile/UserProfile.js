@@ -16,7 +16,7 @@ export const UserProfile = ({logoutHandler, user}) => {
     return <div>
         <BigBannerWithButton
             action={handleLogout}
-            imageUrl="https://pbs.twimg.com/profile_images/1138504682865926144/Km7uuVsw_400x400.png"
+            imageUrl="https://www.kindpng.com/picc/m/252-2524695_dummy-profile-image-jpg-hd-png-download.png"
             mainText={user?.name}
             secondaryText={user?.email}
             buttonText={t("log.out")}
