@@ -1,3 +1,23 @@
+@font-face {
+  font-family: 'Open Sans Condensed';
+  src: url('../fonts/open-sans-condensed/OpenSansCondensed-Light.ttf');
+}
+
+@font-face {
+  font-family: 'Cyberpunk';
+  src: url('../fonts/cyberpunk/Cyberpunk.ttf');
+}
+
+@font-face {
+  font-family: 'Dakwart';
+  src: url('../fonts/dakwart/Dakwart Letter.ttf');
+}
+
+@font-face {
+  font-family: 'Zelda';
+  src: url('../fonts/zelda/ZELDA Free.ttf');
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -55,4 +75,16 @@ a:hover {
 
 .clickable {
   cursor: pointer;
+}
+
+.cyberpunk {
+  font-family: Cyberpunk, serif;
+}
+
+.dakwart {
+  font-family: Dakwart, serif;
+}
+
+.zelda {
+  font-family: Zelda, serif;
 }

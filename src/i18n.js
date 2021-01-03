@@ -25,6 +25,7 @@ i18n
                 "general.name": "Name",
                 "general.search": "Search...",
                 "general.save": "Save",
+                "coming.soon": "Coming Soon",
 
                 //MENU
                 "menu.home": "HOME",
@@ -102,6 +103,7 @@ i18n
                 "general.name": "Nombre",
                 "general.search": "Buscar...",
                 "general.save": "Guardar",
+                "coming.soon": "Coming Soon",
 
                 //MENU
                 "menu.home": "INICIO",

@@ -1,0 +1,27 @@
+
+.userPlans {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  .userPlanWrapper {
+    margin-bottom: 20px;
+    background-size: cover;
+
+    .userPlan {
+      height: 300px;
+      width: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      background: rgba(0,0,0,0.4);
+
+      h2 {
+        font-size: 24px;
+        color: white;
+      }
+    }
+  }
+}
+
