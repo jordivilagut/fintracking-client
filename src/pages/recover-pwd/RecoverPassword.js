@@ -23,7 +23,7 @@ export const RecoverPassword = (props) => {
                 .then(
                     () => {
                         alert(t("password.changed"))
-                        history.replace("login")
+                        history.push("/login")
                     },
                     error => alert(error.message));
         } else {
