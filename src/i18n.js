@@ -31,6 +31,7 @@ i18n
                 "recover.password": "Recover password",
                 "general.password": "Password",
                 "general.password.confirmation": "Confirm Password",
+                "password.changed": "Your password has been updated.",
 
                 //MENU
                 "menu.home": "HOME",
@@ -114,6 +115,7 @@ i18n
                 "recover.password": "Recuperar contraseña",
                 "general.password": "Contraseña",
                 "general.password.confirmation": "Confirmar contraseña",
+                "password.changed": "La contraseña ha sido modificada.",
 
                 //MENU
                 "menu.home": "INICIO",
