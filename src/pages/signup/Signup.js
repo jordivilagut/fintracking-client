@@ -31,7 +31,9 @@ export const Signup = props => {
         <form onSubmit={handleSubmit}>
             <NameInput onChangeHandler={nameChangeHandler}/>
             <EmailInput onChangeHandler={emailChangeHandler}/>
-            <PasswordInput onChangeHandler={passwordChangeHandler}/>
+            <PasswordInput
+                placeHolder={t("general.password")}
+                onChangeHandler={passwordChangeHandler}/>
             <p className="remark">*{t("password.about")}</p>
             <FormButton text={t("create.account")}/>
         </form>

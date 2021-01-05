@@ -27,7 +27,9 @@ export const Login = props => {
         <h2>{t("log.in")}</h2>
         <form onSubmit={handleSubmit}>
             <EmailInput onChangeHandler={emailChangeHandler}/>
-            <PasswordInput onChangeHandler={passwordChangeHandler}/>
+            <PasswordInput
+                placeHolder={t("general.password")}
+                onChangeHandler={passwordChangeHandler}/>
             <FormButton text={t("log.in")}/>
         </form>
         <Link to="/signup"><h3 className="link">{t("dont.have.account")}</h3></Link>

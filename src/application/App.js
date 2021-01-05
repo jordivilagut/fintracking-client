@@ -13,6 +13,7 @@ import {FintrackingFooter} from "../components/footer/FintrackingFooter";
 import {DateUtils as LanguageUtils} from "../utils/LanguageUtils";
 import {MobileMenu} from "../pages/mobile-menu/MobileMenu";
 import {ForgotPassword} from "../pages/forgot-pwd/ForgotPassword";
+import {RecoverPassword} from "../pages/recover-pwd/RecoverPassword";
 
 const App = (props) => {
 
@@ -79,6 +80,7 @@ const App = (props) => {
                         logoutHandler={logUserOut}/>)}/>
                 <Route exact path="/error" component={ServerError}/>
                 <Route exact path="/forgotpwd" component={ForgotPassword}/>
+                <Route exact path="/recoverpwd/:token" component={RecoverPassword}/>
                 <Route exact path="/menu" render={() => (
                     <MobileMenu
                         user={user}/>)}/>

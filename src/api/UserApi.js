@@ -12,5 +12,7 @@ export const UserApi = {
     logout: () =>
         api.del('/auth').set("Authorization", CookiesService.get("authToken")),
     recoverPassword: (email) =>
-        api.post('/auth/forgot-pwd', email)
+        api.post('/auth/forgot-pwd', email),
+    changePassword: (token, password) =>
+        api.post('/auth/change-pwd', password).set("Authorization", token),
 };

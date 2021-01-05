@@ -15,8 +15,8 @@ export const ForgotPassword = () => {
         e.preventDefault();
         UserApi.recoverPassword(email)
             .then(
-                () => alert("Email sent"),              //response
-                () => alert("Something went wrong"));   //error
+                () => alert("Email sent"),
+                error => alert(error.message));
     }
 
     return <div className="userForm">

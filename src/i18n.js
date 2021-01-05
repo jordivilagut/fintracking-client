@@ -29,6 +29,8 @@ i18n
                 "password.about": "Password must be at least 8 alhpanumeric characters",
                 "forgot.password": "I forgot my password",
                 "recover.password": "Recover password",
+                "general.password": "Password",
+                "general.password.confirmation": "Confirm Password",
 
                 //MENU
                 "menu.home": "HOME",
@@ -110,6 +112,8 @@ i18n
                 "password.about": "La contraseña debe tener al menos 8 caracteres alfanuméricos.",
                 "forgot.password": "Olvidé mi contraseña",
                 "recover.password": "Recuperar contraseña",
+                "general.password": "Contraseña",
+                "general.password.confirmation": "Confirmar contraseña",
 
                 //MENU
                 "menu.home": "INICIO",
