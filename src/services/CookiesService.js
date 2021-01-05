@@ -22,7 +22,7 @@ function get(name) {
 }
 
 function getDefaultExpirationDate() {
-    const offset = 30 * 60 * 1000 //minutes * seconds * milliseconds
+    const offset = 2_592_000_000 //One month
     let expirationDate = new Date()
     expirationDate.setTime(expirationDate.getTime() + offset);
 
