@@ -40,7 +40,7 @@ export const Login = props => {
                 buttonText="Sign In with Google"
                 onSuccess={doNothing}
                 onFailure={doNothing}
-                cookiePolicy="single-host-origin"/>
+                cookiePolicy={"single_host_origin"}/>
         </form>
         <Link to="/signup"><h3 className="link">{t("dont.have.account")}</h3></Link>
         <Link to="/forgotpwd"><h3 className="link">{t("forgot.password")}</h3></Link>
