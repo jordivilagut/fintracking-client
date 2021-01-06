@@ -25,7 +25,13 @@ export const Login = props => {
                 error => authFailedHandler(error.message));
     }
 
-    const doNothing = e => {}
+    const handleSuccessfulGoogleLogin = response => {
+        console.log("Successful login: ", response.profileObj)
+    }
+
+    const handleFailedGoogleLogin = response => {
+        console.log("Failed login: ", response)
+    }
 
     return <div className="userForm">
         <h2>{t("log.in")}</h2>
@@ -38,8 +44,8 @@ export const Login = props => {
             <GoogleLogin
                 clientId={googleClientId}
                 buttonText="Sign In with Google"
-                onSuccess={doNothing}
-                onFailure={doNothing}
+                onSuccess={handleSuccessfulGoogleLogin}
+                onFailure={handleFailedGoogleLogin}
                 cookiePolicy={"single_host_origin"}/>
         </form>
         <Link to="/signup"><h3 className="link">{t("dont.have.account")}</h3></Link>
