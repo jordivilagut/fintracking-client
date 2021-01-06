@@ -6,10 +6,12 @@ import {PasswordInput} from "../../components/form/form-input/PasswordInput";
 import {Link} from "react-router-dom";
 import {UserApi} from "../../api/UserApi";
 import {useTranslation} from "react-i18next";
+import {GoogleLogin} from "react-google-login"
 
 export const Login = props => {
 
     const {t} = useTranslation();
+    const googleClientId = "294916012259-ocmapd0vo300beuhnqn8st9pd6k0jg1n.apps.googleusercontent.com"
     const {authHandler, authFailedHandler} = props
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -23,6 +25,8 @@ export const Login = props => {
                 error => authFailedHandler(error.message));
     }
 
+    const doNothing = e => {}
+
     return <div className="userForm">
         <h2>{t("log.in")}</h2>
         <form onSubmit={handleSubmit}>
@@ -31,6 +35,12 @@ export const Login = props => {
                 placeHolder={t("general.password")}
                 onChangeHandler={passwordChangeHandler}/>
             <FormButton text={t("log.in")}/>
+            <GoogleLogin
+                clientId={googleClientId}
+                buttonText="Sign In with Google"
+                onSuccess={doNothing}
+                onFailure={doNothing}
+                cookiePolicy="single-host-origin"/>
         </form>
         <Link to="/signup"><h3 className="link">{t("dont.have.account")}</h3></Link>
         <Link to="/forgotpwd"><h3 className="link">{t("forgot.password")}</h3></Link>
