@@ -46,6 +46,7 @@ export const Login = props => {
                 buttonText="Sign In with Google"
                 onSuccess={handleSuccessfulGoogleLogin}
                 onFailure={handleFailedGoogleLogin}
+                style={{width: `100%`}}
                 cookiePolicy={"single_host_origin"}/>
         </form>
         <Link to="/signup"><h3 className="link">{t("dont.have.account")}</h3></Link>

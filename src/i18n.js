@@ -47,6 +47,7 @@ i18n
 
                 //USER ACCESS
                 "log.in": "Log In",
+                "log.in.with.credentials": "Log In with Credentials",
                 "log.out": "Log Out",
                 "sign.up": "Sign Up",
                 "create.account": "Create Account",
@@ -131,6 +132,7 @@ i18n
 
                 //USER ACCESS
                 "log.in": "Acceso",
+                "log.in.with.credentials": "Acceso con credenciales",
                 "log.out": "Cerrar Sesión",
                 "sign.up": "Registro",
                 "create.account": "Crear cuenta",

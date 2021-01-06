@@ -9,6 +9,19 @@
 
   form {
     padding-top: 20px;
+
+    button {
+      width: 100%;
+      margin-bottom: 4px;
+    }
+
+    .formButton {
+      background: #0292B7;
+      border-radius: 2px;
+      color: white;
+      border: none;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;
+    }
   }
 
   h2 {
