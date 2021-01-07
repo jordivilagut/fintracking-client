@@ -27,6 +27,7 @@ export const Login = props => {
 
     const handleSuccessfulGoogleLogin = response => {
         console.log("Successful login: ", response.profileObj)
+        console.log("Id token: ", response.getAuthResponse().id_token)
     }
 
     const handleFailedGoogleLogin = response => {
