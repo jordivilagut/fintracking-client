@@ -17,8 +17,6 @@ export const UserApi = {
         api.post('/auth/change-pwd', password).set("Authorization", token),
     googleLogin: (googleIdToken) =>
         api.post('/auth/glogin', googleIdToken),
-    googleSignup: (googleIdToken) => {
-        console.log(googleIdToken)
+    googleSignup: (googleIdToken) =>
         api.post('/auth/gsignup', googleIdToken)
-    }
 };
