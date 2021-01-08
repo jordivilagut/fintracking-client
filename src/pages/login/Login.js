@@ -11,7 +11,7 @@ import {GoogleLogin} from "react-google-login"
 export const Login = props => {
 
     const {t} = useTranslation();
-    const googleClientId = "294916012259-ocmapd0vo300beuhnqn8st9pd6k0jg1n.apps.googleusercontent.com"
+    const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID
     const {authHandler, authFailedHandler} = props
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -26,13 +26,14 @@ export const Login = props => {
     }
 
     const handleSuccessfulGoogleLogin = response => {
-        console.log("Successful login: ", response.profileObj)
-        console.log("Id token: ", response.getAuthResponse().id_token)
+        const idToken = response.getAuthResponse().id_token
+        UserApi.googleLogin(idToken)
+            .then(
+                response => authHandler(response.body),
+                error => authFailedHandler(error.message));
     }
 
-    const handleFailedGoogleLogin = response => {
-        console.log("Failed login: ", response)
-    }
+    const handleFailedGoogleLogin = response => authFailedHandler(response.details)
 
     return <div className="userForm">
         <h2>{t("log.in")}</h2>
