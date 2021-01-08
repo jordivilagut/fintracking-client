@@ -1,7 +1,6 @@
 import {AuthRequest} from "../model/AuthRequest";
 import {api} from "./agent";
 import {CookiesService} from "../services/CookiesService";
-import {GoogleAuth} from "../model/GoogleAuth";
 
 export const UserApi = {
     signup: (email, password, name) =>
