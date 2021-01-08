@@ -16,8 +16,10 @@ export const UserApi = {
         api.post('/auth/forgot-pwd', email),
     changePassword: (token, password) =>
         api.post('/auth/change-pwd', password).set("Authorization", token),
-    googleLogin: (idToken) =>
-        api.post('/auth/glogin', new GoogleAuth(idToken)),
-    googleSignup: (idToken) =>
-        api.post('/auth/gsignup', new GoogleAuth(idToken)),
+    googleLogin: (googleIdToken) =>
+        api.post('/auth/glogin', googleIdToken),
+    googleSignup: (googleIdToken) => {
+        console.log(googleIdToken)
+        api.post('/auth/gsignup', googleIdToken)
+    }
 };
