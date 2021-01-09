@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './styles/reset.css';
 import './styles/fonts.css';
 import './styles/index.scss';
+import './styles/background-gradients.scss';
 import App from './application/App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from "react-router-dom";

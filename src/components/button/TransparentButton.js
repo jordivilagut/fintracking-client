@@ -1,15 +1,13 @@
 import React from "react";
 import "./Button.scss"
 
-export const Button = ({action, mainText, secondaryText, hidden, color, textColor}) => {
+export const TransparentButton = ({action, mainText, secondaryText, hidden}) => {
     const visibility = hidden? "none" : "block"
     return <div className="buttonWrapper">
         <button
             onClick={action}
-            className="actionButton"
+            className="transparentActionButton"
             style={{
-                background: `${color}`,
-                color: `${textColor}`,
                 display: visibility
             }}>
             <p>{mainText}</p>

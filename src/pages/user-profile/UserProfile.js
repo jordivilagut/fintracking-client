@@ -20,7 +20,7 @@ export const UserProfile = ({logoutHandler, user}) => {
             mainText={user?.name}
             secondaryText={user?.email}
             buttonText={t("log.out")}
-            buttonColor="d6cac9"
-            buttonTextColor="FFFFFF"/>
+            buttonColor="#d6cac9"
+            buttonTextColor="#FFFFFF"/>
     </div>
 }

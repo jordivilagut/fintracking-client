@@ -1,0 +1,57 @@
+
+.welcomeBannerWrapper {
+  background: url("https://static.billboard.com/files/media/nyc-skyline-2016-billboard-1548-compressed.jpg");
+  background-size: cover;
+}
+
+.welcomeBanner {
+  height: 400px;
+  font-family: Roboto, serif;
+  color: white;
+
+  .page {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .rightColumn {
+
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      font-size: 40px;
+      font-weight: 100;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 400;
+      margin: 0 0 20px 20px;
+    }
+
+    .buttonWrapper {
+      align-self: flex-end;
+      justify-self: flex-end;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .welcomeBanner {
+
+    text-align: right;
+
+    .buttonWrapper {
+      margin-right: 0;
+    }
+
+    h3 {
+      margin-right: 50px;
+    }
+  }
+}
+
+

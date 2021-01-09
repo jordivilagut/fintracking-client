@@ -14,6 +14,7 @@ import {DateUtils as LanguageUtils} from "../utils/LanguageUtils";
 import {MobileMenu} from "../pages/mobile-menu/MobileMenu";
 import {ForgotPassword} from "../pages/forgot-pwd/ForgotPassword";
 import {RecoverPassword} from "../pages/recover-pwd/RecoverPassword";
+import {WelcomeBanner} from "../components/welcome-banner/WelcomeBanner";
 
 const App = (props) => {
 
@@ -61,11 +62,11 @@ const App = (props) => {
     return <div id="application">
         <FintrackingNavBar user={user}/>
         <div className="content">
+            <Route exact path="/" render={() => (<WelcomeBanner user={user}/>)}/>
+            <Route exact path="/home" render={() => (<WelcomeBanner user={user}/>)}/>
             <div className="page">
-                <Route exact path="/" render={() => (
-                    <Homepage user={user}/>)}/>
-                <Route exact path="/home" render={() => (
-                    <Homepage user={user}/>)}/>
+                <Route exact path="/" render={() => (<Homepage user={user}/>)}/>
+                <Route exact path="/home" render={() => (<Homepage user={user}/>)}/>
                 <Route exact path="/login" render={() => (
                     <Login
                         authHandler={authenticateUser}

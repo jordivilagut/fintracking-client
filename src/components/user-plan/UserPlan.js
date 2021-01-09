@@ -17,7 +17,7 @@ export const UserPlan = ({
     <div
         className="userPlanWrapper light-border"
         style={{
-            color: `#${textColor}`,
+            color: {textColor},
             backgroundImage: `url(${imageUrl})`,
         }}>
         <div className="userPlan">
