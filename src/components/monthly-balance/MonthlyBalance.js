@@ -9,7 +9,7 @@ export function MonthlyBalance({income, expenses}) {
     const incomeHeight = income/40;
     const expensesHeight = expenses/40;
 
-    return <div className="monthlyBalance light-border">
+    return <div className="monthlyBalance light-border nightGradient">
         <h2>{t("this.month")}</h2>
         <TwoBarChart
             height1={incomeHeight}

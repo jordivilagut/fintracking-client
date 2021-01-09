@@ -12,7 +12,8 @@ i18n
 
                 //APPLICATION
                 "app.name": "Fintracking",
-                "app.subtitle": "Pocket Finance Advisor",
+                "app.subtitle": "Finance Made Easy",
+                "app.subtitle.old": "Pocket Finance Advisor",
 
                 //GENERAL
                 "general.about": "About",
@@ -43,7 +44,7 @@ i18n
                 "server.error.detailed": "We're working hard to provide you with the best experience possible, please catch us up on Twitter for information and status updates.",
 
                 //FOOTER
-                "copyright.text": "© 2020 Fintracking, Inc. All rights reserved",
+                "copyright.text": "© 2021 Fintracking, Inc. All rights reserved",
 
                 //USER ACCESS
                 "log.in": "Log In",
@@ -97,7 +98,8 @@ i18n
 
                 //APPLICATION
                 "app.name": "Fintracking",
-                "app.subtitle": "Pocket Finance Advisor",
+                "app.subtitle": "Finance Made Easy",
+                "app.subtitle.old": "Pocket Finance Advisor",
 
                 //GENERAL
                 "general.about": "Sobre Fintracking",
@@ -128,7 +130,7 @@ i18n
                 "server.error.detailed": "Estamos trabajando para proveer la mejor experiencia posible, síguenos en Twitter para actualizaciones sobre el servicio.",
 
                 //FOOTER
-                "copyright.text": "© 2020 Fintracking, Inc. Todos los derechos reservados",
+                "copyright.text": "© 2021 Fintracking, Inc. Todos los derechos reservados",
 
                 //USER ACCESS
                 "log.in": "Acceso",
