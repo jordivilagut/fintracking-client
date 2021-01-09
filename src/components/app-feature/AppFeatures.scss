@@ -1,8 +1,9 @@
 
 .appFeatures {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
-  padding: 20px 10px 40px 10px;
+  padding: 20px 10px 0 10px;
 
   .appFeature {
     display: flex;
@@ -12,6 +13,7 @@
     max-width: 180px;
     height: 140px;
     justify-content: space-around;
+    margin-bottom: 40px;
 
     h3 {
       font-size: 40px;
