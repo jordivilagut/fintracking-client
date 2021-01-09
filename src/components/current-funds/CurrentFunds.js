@@ -28,6 +28,7 @@ export const CurrentFunds = ({currentFunds, refreshSummary}) => {
             </div>
             <Button
                 hidden={currentFunds != null}
+                color="#dddddd"
                 action={toggleModal}
                 mainText={t("add.current.funds")}/>
             <AddFundsModal

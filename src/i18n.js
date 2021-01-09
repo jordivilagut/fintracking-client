@@ -58,6 +58,19 @@ i18n
                 //HOMEPAGE
                 "app.welcome": "Welcome to Fintracking",
                 "get.started": "Get Started",
+                "how.it.works": "How it Works",
+                "how.it.works.description": "Do you know how much you spend on food each month? " +
+                    "How much do you spend on Netflix each year? Have you ever wondered how long it " +
+                    "would take you to afford your dream home? Fintracking answers all these questions, " +
+                    "it takes your monthly expenses and income and it helps you design a budget that will" +
+                    "maximize your savings by the end of the year.",
+                "our.products": "Tailored Services",
+                "our.products.description": "Our services are tailored to satisfy a wide range of users. " +
+                    "Our Investor™ plan is what you need in order to take control of your household finances. " +
+                    "The Start-Up™ plan, for freelancers and small organisations and the " +
+                    "Enterprise™ plan, for larger corporations are under development and will be offered soon.",
+                "homepage.closure": "If you've got any inquiries, or need an " +
+                    "special product, please get in touch. We'll be happy to help!",
 
                 //DASHBOARD
                 "current.funds": "Current Funds",
@@ -144,6 +157,21 @@ i18n
                 //HOMEPAGE
                 "app.welcome": "Bienvenido a Fintracking",
                 "get.started": "Empezar",
+                "how.it.works": "Como funciona",
+                "how.it.works.description": "¿Controlas cuanto gastas en comida al mes? " +
+                    "¿Sabes cuanto te dejas cada año en Netflix? ¿Has pensado alguna vez en cuanto " +
+                    "tardarías en ahorrar lo suficiente para pagar la entrada de la casa de tus sueños? " +
+                    "Fintracking responde a todas estas preguntas." +
+                    "La aplicación estudia tus ganancias y gastos y diseña un presupuesto para que " +
+                    "puedas maximizar tus ahorros a final del año.",
+                "our.products": "Servicio a tu medida",
+                "our.products.description": "Ofrecemos servicios para satisfacer a distintios tipos " +
+                    "de usuario. Nuestro plan Investor™ es lo que necesitas para tomar el control " +
+                    "de tus finanzas personales. Los planes Start-Up™, para autónomos y Pymes, y " +
+                    "Enterprise™, para organizaciones con una estructura más compleja, están en " +
+                    "desarrollo y se ofreceran próximamente",
+                "homepage.closure": "Si tienes cualquier duda sobre nuestros planes, o necesitas un " +
+                    "producto a medida, ponte en contacto con nosotros y estaremos encantados de ayudarte.",
 
                 //DASHBOARD
                 "current.funds": "Fondos actuales",

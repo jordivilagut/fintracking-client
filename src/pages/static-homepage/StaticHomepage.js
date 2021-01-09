@@ -14,7 +14,15 @@ export const StaticHomepage = () => {
         history.push("login")
     }
 
-    return <div>
+    return <div className="homepage">
+        <div className="homepageText">
+            <h2>{t("how.it.works")}</h2>
+            <p>{t("how.it.works.description")}</p>
+        </div>
+        <div className="homepageText">
+            <h2>{t("our.products")}</h2>
+            <p>{t("our.products.description")}</p>
+        </div>
         <div className="userPlans">
             <UserPlan
                 action={getStartedHandler}
@@ -38,6 +46,9 @@ export const StaticHomepage = () => {
                 buttonText={t("coming.soon")}
                 buttonColor="#dddddd"
                 buttonTextColor="#000000"/>
+        </div>
+        <div className="homepageText">
+            <p>{t("homepage.closure")}</p>
         </div>
     </div>
 }
