@@ -1,0 +1,29 @@
+
+.appFeatures {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 10px 40px 10px;
+
+  .appFeature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 180px;
+    height: 140px;
+    justify-content: space-around;
+
+    h3 {
+      font-size: 40px;
+      padding-bottom: 32px;
+    }
+
+    h4 {
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 12px;
+    }
+  }
+}

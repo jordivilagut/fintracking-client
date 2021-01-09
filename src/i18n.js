@@ -72,6 +72,14 @@ i18n
                 "homepage.closure": "If you've got any inquiries, or need an " +
                     "special product, please get in touch. We'll be happy to help!",
 
+                //APP FEATURES
+                "app.feature.expenses": "Control Your Expenses",
+                "app.feature.budget": "Generate a Budget",
+                "app.feature.investments": "Track Your Investments",
+                "app.feature.expenses.description": "Register your daily expenses and income",
+                "app.feature.budget.description": "With your data, a budget will be generated",
+                "app.feature.investments.description": "Keep track of your investments and study their profitability",
+
                 //DASHBOARD
                 "current.funds": "Current Funds",
                 "add.transaction": "Add Transaction",
@@ -161,7 +169,7 @@ i18n
                 "how.it.works.description": "¿Controlas cuanto gastas en comida al mes? " +
                     "¿Sabes cuanto te dejas cada año en Netflix? ¿Has pensado alguna vez en cuanto " +
                     "tardarías en ahorrar lo suficiente para pagar la entrada de la casa de tus sueños? " +
-                    "Fintracking responde a todas estas preguntas." +
+                    "Fintracking responde a todas estas preguntas. " +
                     "La aplicación estudia tus ganancias y gastos y diseña un presupuesto para que " +
                     "puedas maximizar tus ahorros a final del año.",
                 "our.products": "Servicio a tu medida",
@@ -172,6 +180,14 @@ i18n
                     "desarrollo y se ofreceran próximamente",
                 "homepage.closure": "Si tienes cualquier duda sobre nuestros planes, o necesitas un " +
                     "producto a medida, ponte en contacto con nosotros y estaremos encantados de ayudarte.",
+
+                //APP FEATURES
+                "app.feature.expenses": "Controla tus gastos",
+                "app.feature.budget": "Genera un presupuesto",
+                "app.feature.investments": "Analiza tus inversiones",
+                "app.feature.expenses.description": "Registra tus gastos y ganancias diários",
+                "app.feature.budget.description": "Con los datos introducidos, se genera tu presupuesto",
+                "app.feature.investments.description": "Introduce tus inversiones y estudia su rentabilidad",
 
                 //DASHBOARD
                 "current.funds": "Fondos actuales",
