@@ -1,3 +1,5 @@
+@import "../../styles/colors";
+
 .logo {
   display: flex;
   flex-direction: column;
@@ -13,11 +15,11 @@
   padding-right: 4px;
   font-weight: bold;
   font-size: 34px;
-  color: #0292B7;
+  color: $base-font-color;
 }
 
 .logo h4 {
-  color: #0292B7;
+  color: $base-font-color;
 }
 
 @media (max-width: 480px) {

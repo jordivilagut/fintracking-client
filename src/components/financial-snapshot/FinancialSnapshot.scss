@@ -1,3 +1,5 @@
+@import "../../styles/colors";
+
 #financialSnapshot {
   display: flex;
   justify-content: space-between;
@@ -7,7 +9,7 @@
 #financialSnapshot .scoreboard {
   flex-grow: 1;
   margin-right: 10px;
-  color: #0292B7;
+  color: $base-font-color;
   background: lightgray;
 
   .topElements {

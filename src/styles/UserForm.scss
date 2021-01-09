@@ -1,3 +1,5 @@
+@import "../styles/colors";
+
 .userForm {
   display: flex;
   flex-direction: column;
@@ -16,11 +18,11 @@
     }
 
     .formButton {
-      background: #0292B7;
+      background: $base-font-color;
       border-radius: 2px;
       color: white;
       border: none;
-      box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;
+      box-shadow: rgba(0, 0, 0, 0.24) 0 2px 2px 0, rgba(0, 0, 0, 0.24) 0 0 1px 0;
     }
   }
 

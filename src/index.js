@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/reset.css';
 import './styles/fonts.css';
+import './styles/colors.scss';
 import './styles/index.scss';
 import './styles/background-gradients.scss';
 import App from './application/App';

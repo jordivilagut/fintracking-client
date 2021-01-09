@@ -1,3 +1,5 @@
+@import "../../styles/colors";
+
 .footer {
   background: #ebebeb;
   border-top: solid #dddddd 1px;
@@ -22,6 +24,6 @@
   padding-top: 40px;
 
   a {
-    color: #0292B7;
+    color: $base-font-color;
   }
 }

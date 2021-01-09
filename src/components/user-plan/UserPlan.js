@@ -1,6 +1,6 @@
-import {Button} from "../button/Button";
 import React from "react";
 import "./UserPlan.scss"
+import {TransparentButton} from "../button/TransparentButton";
 
 export const UserPlan = ({
                              title,
@@ -23,12 +23,10 @@ export const UserPlan = ({
         <div className="userPlan">
             <h2 className={titleClassname}>{title}</h2>
             <h3>{description}</h3>
-            <Button
+            <TransparentButton
                 action={action}
                 mainText={buttonText}
-                secondaryText={buttonSecondaryText}
-                color={buttonColor}
-                textColor={buttonTextColor}/>
+                secondaryText={buttonSecondaryText}/>
         </div>
     </div>
 );

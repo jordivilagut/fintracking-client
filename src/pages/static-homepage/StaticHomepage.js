@@ -22,8 +22,8 @@ export const StaticHomepage = () => {
                 title="Investor"
                 titleClassname="zelda"
                 buttonText={t("get.started")}
-                buttonColor="#0292B7"
-                buttonTextColor="#FFFFFF"/>
+                buttonColor="#dddddd"
+                buttonTextColor="#000000"/>
             <UserPlan
                 imageUrl="https://jw-webmagazine.com/wp-content/uploads/2019/06/jw-5d1448522b66d3.01045017.jpeg"
                 title="Start-Up"
