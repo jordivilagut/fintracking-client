@@ -5,6 +5,16 @@
     padding-bottom: 8px;
 }
 
+.incomeOrExpense {
+    justify-content: space-around;
+
+    button {
+        flex-grow: 1;
+        margin: 4px;
+        height: 40px;
+    }
+}
+
 .cashierRow #operationDropdown {
     margin-right: 4px;
 }

@@ -11,7 +11,12 @@ export const TransactionsBoard = ({refreshSummary}) => {
     const [transactions, setTransactions] = useState([])
     const [searchText, setSearchText] = useState("")
     const [showModal, setShowModal] = useState(false)
-    const toggleModal = () => setShowModal(!showModal)
+    const [showFirstStepModal, setShowFirstStepModal] = useState(true)
+    const hideFirstStep = () => setShowFirstStepModal(false)
+    const toggleModal = () => {
+        setShowModal(!showModal)
+        setShowFirstStepModal(!showModal)
+    }
     const searchBoxHandler = e => setSearchText(e.target.value)
     const refreshTransactions = () => TransactionsService.getCurrentMonthTransactions().then(response => {
         setTransactions(response.body)
@@ -34,6 +39,8 @@ export const TransactionsBoard = ({refreshSummary}) => {
             transactions={filteredTransactions}
             refreshTransactions={refreshTransactions}/>
         <AddTransactionModal
+            firstStepVisible={showFirstStepModal}
+            hideFirstStep={hideFirstStep}
             showModal={showModal}
             toggleModal={toggleModal}
             refreshTransactions={refreshTransactions}/>

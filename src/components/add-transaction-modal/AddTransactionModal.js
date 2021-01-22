@@ -11,22 +11,32 @@ import {TransactionForm} from "../../model/TransactionForm";
 import {TransactionsApi} from "../../api/TransactionsApi";
 import {useTranslation} from "react-i18next";
 
-export const AddTransactionModal = props => {
+export const AddTransactionModal = ({showModal, firstStepVisible, hideFirstStep, toggleModal, refreshTransactions}) => {
 
     const {t} = useTranslation();
-    const {showModal, toggleModal, refreshTransactions} = props
     const [validForm] = useState(true)
     const [operations, setOperations] = useState([])
     const [expenseTypes, setExpenseTypes] = useState([])
-    const [selectedOperation, setSelectedOperation] = useState(null)
+    const [selectedOperation, setSelectedOperation] = useState("INCOME")
     const [selectedExpenseType, setSelectedExpenseType] = useState(null)
     const [amount, setAmount] = useState(0)
     const [description, setDescription] = useState("")
 
-    const operationChangeHandler = operation => setSelectedOperation(operation)
     const expenseTypeChangeHandler = expenseType => setSelectedExpenseType(expenseType)
     const amountChangeHandler = e => setAmount(e.target.value)
     const descriptionChangeHandler = e => setDescription(e.target.value)
+
+    const setIncomeTransaction = () => {
+        hideFirstStep()
+        setSelectedOperation(operations[1])
+        setSelectedExpenseType("SALARY")
+    }
+
+    const setExpenseTransaction = () => {
+        hideFirstStep()
+        setSelectedOperation(operations[0])
+        setSelectedExpenseType("CLOTHING")
+    }
 
     const handleSubmit = () => {
         toggleModal()
@@ -36,7 +46,7 @@ export const AddTransactionModal = props => {
             selectedExpenseType,
             selectedOperation)
 
-        TransactionsApi.addTransaction(form).then(response => refreshTransactions())
+        TransactionsApi.addTransaction(form).then(() => refreshTransactions())
     }
 
     const fetchModalData = () => {
@@ -56,7 +66,7 @@ export const AddTransactionModal = props => {
 
     return <Modal show={showModal} centered>
         <Modal.Header>
-            <Modal.Title>{t("new.transaction")}</Modal.Title>
+            <Modal.Title>{t(firstStepVisible ? "new.transaction" : selectedOperation)}</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
@@ -65,29 +75,39 @@ export const AddTransactionModal = props => {
                 variant={validForm ? "success" : "danger"}>
                 <p>This is an alert message.</p>
             </Alert>
-            <div className="cashierRow">
-                <CustomDropdown
-                    values={operations}
-                    selected={selectedOperation}
-                    handler={operationChangeHandler}/>
-                <AmountInput
-                    value={amount}
-                    handler={amountChangeHandler}/>
+            <div className="incomeOrExpense" style={{display: firstStepVisible? "flex" : "none"}}>
+                <Button
+                    variant="success"
+                    onClick={setIncomeTransaction}>
+                    {t("INCOME")}
+                </Button>
+                <Button
+                    variant="danger"
+                    onClick={setExpenseTransaction}>
+                    {t("EXPENSE")}
+                </Button>
             </div>
-            <div className="cashierRow">
-                <CustomInput
-                    placeholder={t("description.placeholder")}
-                    name="description"
-                    value={description}
-                    handler={descriptionChangeHandler}/>
-                <CustomDropdown
-                    values={expenseTypes}
-                    selected={selectedExpenseType}
-                    handler={expenseTypeChangeHandler}/>
+            <div style={{display: firstStepVisible? "none" : "block"}}>
+                <div className="cashierRow">
+                    <CustomDropdown
+                        values={expenseTypes}
+                        selected={selectedExpenseType}
+                        handler={expenseTypeChangeHandler}/>
+                    <AmountInput
+                        value={amount}
+                        handler={amountChangeHandler}/>
+                </div>
+                <div className="cashierRow">
+                    <CustomInput
+                        placeHolder={t("description.placeholder")}
+                        name="description"
+                        value={description}
+                        handler={descriptionChangeHandler}/>
+                </div>
             </div>
         </Modal.Body>
 
-        <Modal.Footer>
+        <Modal.Footer style={{display: firstStepVisible? "none" : "flex"}}>
             <Button
                 variant="secondary"
                 onClick={toggleModal}>
@@ -97,7 +117,7 @@ export const AddTransactionModal = props => {
                 id="submitButton"
                 variant="primary"
                 onClick={handleSubmit}>
-                {t("add.transaction")}
+                {t("general.save")}
             </Button>
         </Modal.Footer>
     </Modal>

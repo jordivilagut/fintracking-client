@@ -4,9 +4,6 @@ import FormControl from "react-bootstrap/FormControl";
 
 export const AmountInput = ({value, handler}) => (
     <InputGroup id="amountInput">
-        <InputGroup.Prepend>
-            <InputGroup.Text>€</InputGroup.Text>
-        </InputGroup.Prepend>
         <FormControl
             aria-label="Amount (to the nearest dollar)"
             name="amount"
@@ -14,7 +11,7 @@ export const AmountInput = ({value, handler}) => (
             type='number'
             value={value}/>
         <InputGroup.Append>
-            <InputGroup.Text>.00</InputGroup.Text>
+            <InputGroup.Text>€</InputGroup.Text>
         </InputGroup.Append>
     </InputGroup>
 )

@@ -89,7 +89,7 @@ i18n
                 "edit.current.funds": "Edit Current Funds",
 
                 //TRANSACTIONS MODAL
-                "description.placeholder": "Description: e.g. &quot;Grocery Shopping&quot;",
+                "description.placeholder": "Description: e.g. 'Grocery Shopping'",
 
                 //OPERATION TYPES
                 "EXPENSE": "Expense",
@@ -198,7 +198,7 @@ i18n
                 "edit.current.funds": "Editar Fondos",
 
                 //TRANSACTIONS MODAL
-                "description.placeholder": "Descripción: ej. &quot;Compra en supermercado&quot;",
+                "description.placeholder": "Descripción: ej. 'Compra en supermercado'",
 
                 //OPERATION TYPES
                 "EXPENSE": "Gasto",
