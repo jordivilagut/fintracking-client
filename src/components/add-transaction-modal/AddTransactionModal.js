@@ -11,7 +11,7 @@ import {TransactionForm} from "../../model/TransactionForm";
 import {TransactionsApi} from "../../api/TransactionsApi";
 import {useTranslation} from "react-i18next";
 
-export const AddTransactionModal = ({showModal, firstStepVisible, hideFirstStep, toggleModal, refreshTransactions}) => {
+export const AddTransactionModal = ({show, closeModal, firstStepVisible, hideFirstStep, refreshTransactions}) => {
 
     const {t} = useTranslation();
     const [validForm] = useState(true)
@@ -39,7 +39,7 @@ export const AddTransactionModal = ({showModal, firstStepVisible, hideFirstStep,
     }
 
     const handleSubmit = () => {
-        toggleModal()
+        closeModal()
         const form = new TransactionForm(
             amount,
             description,
@@ -64,8 +64,8 @@ export const AddTransactionModal = ({showModal, firstStepVisible, hideFirstStep,
 
     useEffect(() => {fetchModalData()}, []);
 
-    return <Modal show={showModal} centered>
-        <Modal.Header>
+    return <Modal show={show} centered onHide={closeModal}>
+        <Modal.Header closeButton>
             <Modal.Title>{t(firstStepVisible ? "new.transaction" : selectedOperation)}</Modal.Title>
         </Modal.Header>
 
@@ -110,7 +110,7 @@ export const AddTransactionModal = ({showModal, firstStepVisible, hideFirstStep,
         <Modal.Footer style={{display: firstStepVisible? "none" : "flex"}}>
             <Button
                 variant="secondary"
-                onClick={toggleModal}>
+                onClick={closeModal}>
                 {t("general.close")}
             </Button>
             <Button
