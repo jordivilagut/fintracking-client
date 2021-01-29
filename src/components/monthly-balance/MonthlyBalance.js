@@ -1,6 +1,5 @@
 import React from "react";
-import "./MonthlyBalance.scss"
-import {TwoBarChart} from "../two-bar-chart/TwoBarChart";
+import {TwoBarChart} from "../charts/TwoBarChart";
 import {useTranslation} from "react-i18next";
 
 export function MonthlyBalance({income, expenses}) {
@@ -9,7 +8,7 @@ export function MonthlyBalance({income, expenses}) {
     const incomeHeight = income/40;
     const expensesHeight = expenses/40;
 
-    return <div className="monthlyBalance light-border nightGradient">
+    return <div className="chartWrapper light-border base-background">
         <h2>{t("this.month")}</h2>
         <TwoBarChart
             height1={incomeHeight}

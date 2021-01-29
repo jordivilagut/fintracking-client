@@ -11,7 +11,7 @@ export const SearchAndAction = ({searchPlaceholder, searchBoxHandler, buttonActi
         <Button
             action={buttonAction}
             mainText={buttonText}
-            color="#161459"
+            color="#006494"
             textColor="#FFFFFF"/>
     </div>
 )

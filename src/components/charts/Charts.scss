@@ -1,0 +1,34 @@
+
+.chart {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-around;
+}
+
+.chartWrapper {
+
+  color: white;
+  flex-grow: 2;
+  padding: 20px;
+  margin-bottom: 10px;
+
+  h2 {
+    font-size: 18px;
+    padding-bottom: 40px;
+  }
+
+  .bar {
+    border: solid white 1px;
+    border-radius: 4px;
+    margin: 0 2px;
+
+    &.bar-md {
+      width: 80px;
+    }
+
+    &.bar-xs {
+      width: 20px;
+    }
+  }
+
+}

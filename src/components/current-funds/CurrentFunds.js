@@ -13,7 +13,7 @@ export const CurrentFunds = ({currentFunds, refreshSummary}) => {
     const editIconVisibility = registeredFunds ? "block" : "none"
     const modalTitle = registeredFunds ?  t("edit.current.funds") : t("add.current.funds")
 
-    return <div className="scoreboard light-border">
+    return <div className="scoreboard light-border light-gray">
         <div className="topElements">
             <p style={{display: editIconVisibility}}>
                 <FontAwesomeIcon

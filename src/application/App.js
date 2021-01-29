@@ -15,6 +15,7 @@ import {MobileMenu} from "../pages/mobile-menu/MobileMenu";
 import {ForgotPassword} from "../pages/forgot-pwd/ForgotPassword";
 import {RecoverPassword} from "../pages/recover-pwd/RecoverPassword";
 import {WelcomeBanner} from "../components/welcome-banner/WelcomeBanner";
+import {Budget} from "../pages/budget/Budget";
 
 const App = (props) => {
 
@@ -67,6 +68,7 @@ const App = (props) => {
             <div className="page">
                 <Route exact path="/" render={() => (<Homepage user={user}/>)}/>
                 <Route exact path="/home" render={() => (<Homepage user={user}/>)}/>
+                <Route exact path="/budget" render={() => (<Budget user={user}/>)}/>
                 <Route exact path="/login" render={() => (
                     <Login
                         authHandler={authenticateUser}

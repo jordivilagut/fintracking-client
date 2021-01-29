@@ -4,7 +4,9 @@ export const DateUtils = {
     formatDate,
     now,
     getStartOfMonth,
-    getEndOfMonth
+    getEndOfMonth,
+    getStartOfYear,
+    getEndOfYear
 };
 
 function formatDate (timestamp) {
@@ -21,6 +23,14 @@ function getStartOfMonth() {
 
 function getEndOfMonth() {
     return timestamp(now().endOf('month'))
+}
+
+function getStartOfYear() {
+    return timestamp(now().startOf('year'))
+}
+
+function getEndOfYear() {
+    return timestamp(now().endOf('year'))
 }
 
 function timestamp(date) {

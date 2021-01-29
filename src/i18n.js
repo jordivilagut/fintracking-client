@@ -83,6 +83,7 @@ i18n
                 //DASHBOARD
                 "current.funds": "Current Funds",
                 "add.transaction": "Add Transaction",
+                "add.item": "Add Item",
                 "new.transaction": "New Transaction",
                 "this.month": "This Month",
                 "add.current.funds": "Add Current Funds",
@@ -192,6 +193,7 @@ i18n
                 //DASHBOARD
                 "current.funds": "Fondos actuales",
                 "add.transaction": "Añadir transacción",
+                "add.item": "Añadir ítem",
                 "new.transaction": "Nueva transacción",
                 "this.month": "Mes actual",
                 "add.current.funds": "Añadir Fondos",

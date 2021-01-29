@@ -1,3 +1,4 @@
+@import "/colors";
 
 .solarGradient {
   background: rgb(222,52,24);
@@ -7,4 +8,51 @@
 .nightGradient {
   background: rgb(1,3,33);
   background: linear-gradient(153deg, rgba(1,3,33,0.8337710084033614) 0%, rgba(22,20,89,0.8253676470588236) 33%, rgba(1,2,8,0.9374124649859944) 100%);
+}
+
+.seaBlue {
+  background: #004085;
+}
+
+.glass {
+  background: rgba(255,255,255,0.5);
+}
+
+.glass2 {
+  background: rgba(255,255,255,1);
+}
+
+.base-background {
+  background: $base-font-color;
+}
+
+.futuristic-gray {
+  background: $futuristic-gray;
+  color: $futuristic-water;
+}
+
+.futuristic-sand {
+  background: $futuristic-sand;
+}
+
+.futuristic-wheat {
+  background: $futuristic-wheat;
+}
+
+.futuristic-turquoise {
+  background: $futuristic-turquoise;
+}
+
+.futuristic-water {
+  background: $futuristic-water;
+}
+
+.light-gray {
+  background: lightgray;
+  color: $base-font-color;
+}
+
+.azure-gray {
+  background: $azure-gray;
+  color: $base-font-color;
 }

@@ -1,3 +1,4 @@
+@import "../../styles/colors";
 
 #transactionsBoard {
     display: flex;
@@ -15,7 +16,7 @@
 #transaction {
     background: white;
     display: flex;
-    color: dimgray;
+    color: $base-font-color;
     margin-bottom: 5px;
     border-radius: 4px;
     align-items: center;
