@@ -1,9 +1,9 @@
 import {useTranslation} from "react-i18next";
 import React, {useEffect, useState} from "react";
 import {SearchAndAction} from "../search-and-action/SearchAndAction";
-import {Transactions} from "../transactions/Transactions";
-import {AddTransactionModal} from "../add-transaction-modal/AddTransactionModal";
 import {BudgetService} from "../../services/BudgetService";
+import {RecurringPayments} from "../recurring-payments/RecurringPayments";
+import {AddPaymentModal} from "../add-payment-modal/AddPaymentModal";
 
 export const BudgetPaymentsBoard = ({refreshBudget}) => {
 
@@ -11,16 +11,13 @@ export const BudgetPaymentsBoard = ({refreshBudget}) => {
     const [payments, setPayments] = useState([])
     const [searchText, setSearchText] = useState("")
     const [showModal, setShowModal] = useState(false)
-    const [showFirstStepModal, setShowFirstStepModal] = useState(true)
-    const hideFirstStep = () => setShowFirstStepModal(false)
     const closeModal = () => setShowModal(false)
     const openModal = () => {
         setShowModal(true)
-        setShowFirstStepModal(true)
     }
 
     const searchBoxHandler = e => setSearchText(e.target.value)
-    const refreshSubscriptions = () => BudgetService.getCurrentYearBudget().then(response => {
+    const refreshPayments = () => BudgetService.getCurrentYearBudget().then(response => {
         setPayments(response.body)
         refreshBudget()
     })
@@ -37,14 +34,12 @@ export const BudgetPaymentsBoard = ({refreshBudget}) => {
             searchBoxHandler={searchBoxHandler}
             buttonText={t("add.item")}
             buttonAction={openModal}/>
-        <Transactions
-            transactions={filteredPayments}
-            refreshTransactions={refreshSubscriptions}/>
-        <AddTransactionModal
-            firstStepVisible={showFirstStepModal}
-            hideFirstStep={hideFirstStep}
+        <RecurringPayments
+            payments={filteredPayments}
+            refreshPayments={refreshPayments}/>
+        <AddPaymentModal
             show={showModal}
             closeModal={closeModal}
-            refreshTransactions={refreshSubscriptions}/>
+            refreshPayments={refreshPayments}/>
     </div>
 }

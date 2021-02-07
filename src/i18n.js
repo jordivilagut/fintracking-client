@@ -112,7 +112,17 @@ i18n
                 "CHARITY": "Charity",
                 "HOUSING": "Housing",
                 "HOUSEHOLD_SUPPLIES": "Household Supplies",
-                "OTHER": "Other"
+                "OTHER": "Other",
+
+                //BUDGET
+                "RECURRING": "Subscription/Recurring Payment",
+                "SINGLE": "Single Payment",
+                "new.payment": "New Payment",
+                "new.subscription": "New Subscription",
+                "new.single.payment": "New Single Payment",
+                "YEARLY": "Yearly",
+                "MONTHLY": "Monthly",
+                "WEEKLY": "Weekly",
             }
         },
         spanish: {
@@ -222,7 +232,17 @@ i18n
                 "CHARITY": "Caridad",
                 "HOUSING": "Alojamiento",
                 "HOUSEHOLD_SUPPLIES": "Gastos (Electricidad, agua,...)",
-                "OTHER": "Otros"
+                "OTHER": "Otros",
+
+                //BUDGET
+                "RECURRING": "Suscripción/Pago recurrente",
+                "SINGLE": "Pago único",
+                "new.payment": "Nuevo pago",
+                "new.subscription": "Nueva suscripción",
+                "new.single.payment": "Nuevo pago único",
+                "YEARLY": "Anual",
+                "MONTHLY": "Mensual",
+                "WEEKLY": "Semanal",
             }
         },
 

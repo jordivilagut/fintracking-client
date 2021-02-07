@@ -77,12 +77,12 @@ export const AddTransactionModal = ({show, closeModal, firstStepVisible, hideFir
             </Alert>
             <div className="incomeOrExpense" style={{display: firstStepVisible? "flex" : "none"}}>
                 <Button
-                    variant="success"
+                    variant="primary"
                     onClick={setIncomeTransaction}>
                     {t("INCOME")}
                 </Button>
                 <Button
-                    variant="danger"
+                    variant="dark"
                     onClick={setExpenseTransaction}>
                     {t("EXPENSE")}
                 </Button>
