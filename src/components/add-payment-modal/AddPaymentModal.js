@@ -77,7 +77,7 @@ export const AddPaymentModal = ({show, closeModal, refreshPayments}) => {
             setRecurrence(recurrence)
             setSelectedRecurrence(recurrence[0])
         })
-    }, []);
+    }, [operationFunctions, paymentFunctions, recurrenceFunctions]);
 
     return <Modal show={show} centered onHide={closeModal}>
         <Modal.Header closeButton>
