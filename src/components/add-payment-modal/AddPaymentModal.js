@@ -47,7 +47,7 @@ export const AddPaymentModal = ({show, closeModal, refreshPayments}) => {
         PaymentsApi.addPayment(form).then(() => refreshPayments())*/
     }
 
-    const fillPaymentModal = () => {
+    useEffect(() => {
         GeneralApi.getOperationTypes().then(response => {
             const operations = response.body
             operations.forEach(r => {
@@ -77,9 +77,7 @@ export const AddPaymentModal = ({show, closeModal, refreshPayments}) => {
             setRecurrence(recurrence)
             setSelectedRecurrence(recurrence[0])
         })
-    }
-
-    useEffect(() => {fillPaymentModal()}, []);
+    }, []);
 
     return <Modal show={show} centered onHide={closeModal}>
         <Modal.Header closeButton>
