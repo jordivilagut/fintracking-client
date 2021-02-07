@@ -45,6 +45,10 @@ code {
   flex: 1 0 auto;
 }
 
+.hidden {
+  display: none;
+}
+
 .page {
   max-width: 920px;
   margin: auto;

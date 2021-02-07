@@ -11,6 +11,10 @@ function getLanguageFromSymbol(lang) {
         case "Es":
         case "Es-es":
         case "Es-mx":
+        case "ca-es":
+        case "ca-ad":
+        case "ca-ES":
+        case "ca-AD":
             return "spanish";
         default:
             return "english";

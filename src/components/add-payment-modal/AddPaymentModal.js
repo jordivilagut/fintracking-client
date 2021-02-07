@@ -8,6 +8,9 @@ import {CustomDropdown} from "../custom-dropdown/CustomDropdown";
 import {AmountInput} from "../amount-input/AmountInput";
 import {CustomInput} from "../custom-input/CustomInput";
 import {SwitchButtonGroup} from "../switch-button-group/SwitchButtonGroup";
+import {CustomCalendar} from "../custom-calendar/CustomCalendar";
+import "./AddPaymentModal.scss"
+import {CustomCalendarWithEndDate} from "../custom-calendar/CustomCalendarWithEndDate";
 
 export const AddPaymentModal = ({show, closeModal, refreshPayments}) => {
 
@@ -24,12 +27,14 @@ export const AddPaymentModal = ({show, closeModal, refreshPayments}) => {
     const [selectedPayment, setSelectedPayment] = useState("RECURRING")
     const [selectedExpenseType, setSelectedExpenseType] = useState(null)
     const [selectedRecurrence, setSelectedRecurrence] = useState(null)
+    const [endlessSubscription, setEndlessSubscription] = useState(true)
     const [amount, setAmount] = useState(0)
     const [description, setDescription] = useState("")
 
     const expenseTypeChangeHandler = expenseType => setSelectedExpenseType(expenseType)
     const amountChangeHandler = e => setAmount(e.target.value)
     const descriptionChangeHandler = e => setDescription(e.target.value)
+    const uniquePayment = selectedPayment !== "RECURRING"
 
     const handleSubmit = () => {
         closeModal()
@@ -101,9 +106,22 @@ export const AddPaymentModal = ({show, closeModal, refreshPayments}) => {
             </div>
             <div className="cashierRow">
                 <SwitchButtonGroup
+                    hidden={uniquePayment}
                     elements={recurrence}
                     selectedElement={selectedRecurrence}
                     functions={recurrenceFunctions}/>
+            </div>
+            <div className={uniquePayment ? "hidden" : "checkboxRow"}>
+                <input
+                    id="paymentDuration"
+                    type="checkbox"
+                    value={endlessSubscription}
+                    checked={endlessSubscription}
+                    onChange={() => setEndlessSubscription(!endlessSubscription)}/>
+                <label htmlFor="paymentDuration">Endless subscription</label>
+            </div>
+            <div className="cashierRow calendarRow">
+                {endlessSubscription || uniquePayment? <CustomCalendar/> : <CustomCalendarWithEndDate/>}
             </div>
             <div className="cashierRow">
                 <CustomDropdown
