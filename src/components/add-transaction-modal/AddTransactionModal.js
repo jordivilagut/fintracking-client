@@ -49,7 +49,7 @@ export const AddTransactionModal = ({show, closeModal, firstStepVisible, hideFir
         TransactionsApi.addTransaction(form).then(() => refreshTransactions())
     }
 
-    const fetchModalData = () => {
+    const fillTransactionModal = () => {
         GeneralApi.getOperationTypes().then(response => {
             const operations = response.body
             setOperations(operations)
@@ -62,7 +62,7 @@ export const AddTransactionModal = ({show, closeModal, firstStepVisible, hideFir
         })
     }
 
-    useEffect(() => {fetchModalData()}, []);
+    useEffect(() => {fillTransactionModal()}, []);
 
     return <Modal show={show} centered onHide={closeModal}>
         <Modal.Header closeButton>

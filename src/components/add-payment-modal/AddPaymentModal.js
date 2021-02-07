@@ -47,7 +47,7 @@ export const AddPaymentModal = ({show, closeModal, refreshPayments}) => {
         PaymentsApi.addPayment(form).then(() => refreshPayments())*/
     }
 
-    const fetchModalData = () => {
+    const fillPaymentModal = () => {
         GeneralApi.getOperationTypes().then(response => {
             const operations = response.body
             operations.forEach(r => {
@@ -79,7 +79,7 @@ export const AddPaymentModal = ({show, closeModal, refreshPayments}) => {
         })
     }
 
-    useEffect(() => {fetchModalData()}, []);
+    useEffect(() => {fillPaymentModal()}, []);
 
     return <Modal show={show} centered onHide={closeModal}>
         <Modal.Header closeButton>
