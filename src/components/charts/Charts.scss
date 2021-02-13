@@ -3,6 +3,12 @@
   display: flex;
   align-items: baseline;
   justify-content: space-around;
+  padding-bottom: 10px;
+}
+
+.chart-inverted {
+  display: flex;
+  justify-content: space-around;
 }
 
 .chartWrapper {

@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {YearGraph} from "../../components/charts/YearGraph";
 import {YearBarChart} from "../../components/charts/YearBarChart";
-import {BudgetPaymentsBoard} from "../../components/subscriptions-board/BudgetPaymentsBoard";
+import {BudgetItemsBoard} from "../../components/subscriptions-board/BudgetItemsBoard";
 import "./Budget.scss"
 
 export const Budget = ({user}) => {
@@ -13,6 +13,6 @@ export const Budget = ({user}) => {
     return <div>
         <YearGraph/>
         <YearBarChart/>
-        <BudgetPaymentsBoard/>
+        <BudgetItemsBoard/>
     </div>
 }

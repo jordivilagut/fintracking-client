@@ -115,11 +115,11 @@ i18n
                 "OTHER": "Other",
 
                 //BUDGET
-                "RECURRING": "Subscription/Recurring Payment",
-                "SINGLE": "Single Payment",
-                "new.payment": "New Payment",
+                "RECURRING": "Subscription/Recurring BudgetItem",
+                "SINGLE": "Single BudgetItem",
+                "new.payment": "New BudgetItem",
                 "new.subscription": "New Subscription",
-                "new.single.payment": "New Single Payment",
+                "new.single.payment": "New Single BudgetItem",
                 "YEARLY": "Yearly",
                 "MONTHLY": "Monthly",
                 "WEEKLY": "Weekly",

@@ -6,11 +6,17 @@ export const DateUtils = {
     getStartOfMonth,
     getEndOfMonth,
     getStartOfYear,
-    getEndOfYear
+    getEndOfYear,
+    toUTC
 };
 
 function formatDate (timestamp) {
     return new Date(timestamp).toDateString();
+}
+
+function toUTC(timestamp) {
+    const date = new Date(timestamp)
+    return Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds())
 }
 
 function now() {

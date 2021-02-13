@@ -1,11 +1,9 @@
-import React, { useState } from 'react'
-import { enGB } from 'date-fns/locale'
-import { DateRangePicker, START_DATE, END_DATE } from 'react-nice-dates'
+import React from 'react'
+import {enGB} from 'date-fns/locale'
+import {DateRangePicker, END_DATE, START_DATE} from 'react-nice-dates'
 import 'react-nice-dates/build/style.css'
 
-export const CustomCalendarWithEndDate = () =>  {
-    const [startDate, setStartDate] = useState()
-    const [endDate, setEndDate] = useState()
+export const CustomCalendarWithEndDate = ({startDate, endDate, setStartDate, setEndDate}) =>  {
     return <DateRangePicker
         startDate={startDate}
         endDate={endDate}

@@ -9,15 +9,18 @@ import {AmountInput} from "../amount-input/AmountInput";
 import {CustomInput} from "../custom-input/CustomInput";
 import {SwitchButtonGroup} from "../switch-button-group/SwitchButtonGroup";
 import {CustomCalendar} from "../custom-calendar/CustomCalendar";
-import "./AddPaymentModal.scss"
+import "./AddBudgetItemModal.scss"
 import {CustomCalendarWithEndDate} from "../custom-calendar/CustomCalendarWithEndDate";
+import {BudgetApi} from "../../api/BudgetApi";
+import {BudgetItemForm} from "../../model/BudgetItemForm";
+import {DateUtils} from "../../utils/DateUtils";
 
-export const AddPaymentModal = ({show, closeModal, refreshPayments}) => {
+export const AddBudgetItemModal = ({show, closeModal, refreshBudget}) => {
 
     const {t} = useTranslation();
     const [validForm] = useState(true)
     const [operations, setOperations] = useState([])
-    const [payments, setPayments] = useState([])
+    const [budgetItems, setBudgetItems] = useState([])
     const [expenseTypes, setExpenseTypes] = useState([])
     const [recurrence, setRecurrence] = useState([])
     const [operationFunctions] = useState([])
@@ -28,6 +31,8 @@ export const AddPaymentModal = ({show, closeModal, refreshPayments}) => {
     const [selectedExpenseType, setSelectedExpenseType] = useState(null)
     const [selectedRecurrence, setSelectedRecurrence] = useState(null)
     const [endlessSubscription, setEndlessSubscription] = useState(true)
+    const [startDate, setStartDate] = useState(null)
+    const [endDate, setEndDate] = useState(null)
     const [amount, setAmount] = useState(0)
     const [description, setDescription] = useState("")
 
@@ -38,13 +43,20 @@ export const AddPaymentModal = ({show, closeModal, refreshPayments}) => {
 
     const handleSubmit = () => {
         closeModal()
-        /*const form = new PaymentForm(
+        const start = DateUtils.toUTC(Date.parse(startDate.toString()))
+        const end = endDate != null ? DateUtils.toUTC(Date.parse(startDate.toString())) : null
+
+        const form = new BudgetItemForm(
             amount,
             description,
+            start,
+            end,
             selectedExpenseType,
-            selectedPayment)
+            selectedOperation,
+            selectedPayment,
+            selectedRecurrence)
 
-        PaymentsApi.addPayment(form).then(() => refreshPayments())*/
+        BudgetApi.addPayment(form).then(() => refreshBudget())
     }
 
     useEffect(() => {
@@ -57,12 +69,12 @@ export const AddPaymentModal = ({show, closeModal, refreshPayments}) => {
             setSelectedOperation(operations[0])
         })
         GeneralApi.getPaymentTypes().then(response => {
-            const payments = response.body
-            payments.forEach(r => {
+            const budgetItems = response.body
+            budgetItems.forEach(r => {
                 paymentFunctions.push(() => setSelectedPayment(r))
             })
-            setPayments(payments)
-            setSelectedPayment(payments[0])
+            setBudgetItems(budgetItems)
+            setSelectedPayment(budgetItems[0])
         })
         GeneralApi.getExpenseTypes().then(response => {
             const expenseTypes = response.body
@@ -98,7 +110,7 @@ export const AddPaymentModal = ({show, closeModal, refreshPayments}) => {
             </div>
             <div className="cashierRow">
                 <SwitchButtonGroup
-                    elements={payments}
+                    elements={budgetItems}
                     selectedElement={selectedPayment}
                     functions={paymentFunctions}/>
             </div>
@@ -119,7 +131,15 @@ export const AddPaymentModal = ({show, closeModal, refreshPayments}) => {
                 <label htmlFor="paymentDuration">Endless subscription</label>
             </div>
             <div className="cashierRow calendarRow">
-                {endlessSubscription || uniquePayment? <CustomCalendar/> : <CustomCalendarWithEndDate/>}
+                {endlessSubscription || uniquePayment?
+                    <CustomCalendar
+                        date={startDate}
+                        setDate={setStartDate}/> :
+                    <CustomCalendarWithEndDate
+                        startDate={startDate}
+                        setStartDate={setStartDate}
+                        endDate={endDate}
+                        setEndDate={setEndDate}/>}
             </div>
             <div className="cashierRow">
                 <CustomDropdown

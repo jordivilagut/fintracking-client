@@ -1,0 +1,14 @@
+@import "../../styles/colors";
+
+#budgetItem {
+  background: white;
+  display: flex;
+  color: $base-font-color;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  align-items: center;
+  min-height: 40px;
+  box-shadow: 0 0 2px lightgray;
+  justify-content: space-between;
+  padding: 0 10px;
+}

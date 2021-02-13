@@ -2,13 +2,13 @@ import {useTranslation} from "react-i18next";
 import React, {useEffect, useState} from "react";
 import {SearchAndAction} from "../search-and-action/SearchAndAction";
 import {BudgetService} from "../../services/BudgetService";
-import {RecurringPayments} from "../recurring-payments/RecurringPayments";
-import {AddPaymentModal} from "../add-payment-modal/AddPaymentModal";
+import {BudgetItems} from "../budget-items/BudgetItems";
+import {AddBudgetItemModal} from "../add-budget-item-modal/AddBudgetItemModal";
 
-export const BudgetPaymentsBoard = ({refreshBudget}) => {
+export const BudgetItemsBoard = ({refreshBudgetChart}) => {
 
     const {t} = useTranslation();
-    const [payments, setPayments] = useState([])
+    const [budgetItems, setBudgetItems] = useState([])
     const [searchText, setSearchText] = useState("")
     const [showModal, setShowModal] = useState(false)
     const closeModal = () => setShowModal(false)
@@ -17,15 +17,15 @@ export const BudgetPaymentsBoard = ({refreshBudget}) => {
     }
 
     const searchBoxHandler = e => setSearchText(e.target.value)
-    const refreshPayments = () => BudgetService.getCurrentYearBudget().then(response => {
-        setPayments(response.body)
-        refreshBudget()
+    const refreshBudgetItems = () => BudgetService.getCurrentYearBudget().then(response => {
+        setBudgetItems(response.body)
+        //refreshBudgetChart()
     })
-    const paymentsFilter = p => p.description.toLowerCase().includes(searchText.toLowerCase())
-    const filteredPayments = payments.filter(paymentsFilter)
+    const budgetItemsFilter = p => p.description.toLowerCase().includes(searchText.toLowerCase())
+    const filteredBudgetItems = budgetItems.filter(budgetItemsFilter)
 
     useEffect(() => {
-        //BudgetService.getCurrentYearBudget().then(response => setPayments(response.body))
+        BudgetService.getCurrentYearBudget().then(response => setBudgetItems(response.body))
     }, []);
 
     return <div id="transactionsBoard">
@@ -34,12 +34,12 @@ export const BudgetPaymentsBoard = ({refreshBudget}) => {
             searchBoxHandler={searchBoxHandler}
             buttonText={t("add.item")}
             buttonAction={openModal}/>
-        <RecurringPayments
-            payments={filteredPayments}
-            refreshPayments={refreshPayments}/>
-        <AddPaymentModal
+        <BudgetItems
+            budgetItems={filteredBudgetItems}
+            refreshBudget={refreshBudgetItems}/>
+        <AddBudgetItemModal
             show={showModal}
             closeModal={closeModal}
-            refreshPayments={refreshPayments}/>
+            refreshBudget={refreshBudgetItems}/>
     </div>
 }

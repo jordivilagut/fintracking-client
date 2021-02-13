@@ -6,19 +6,19 @@ import {faTrash} from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import {BudgetApi} from "../../api/BudgetApi";
 
-export const Payment = ({payment, refreshPayments}) => {
+export const BudgetItem = ({payment, refreshBudget}) => {
 
     const deletePayment = () => {
         BudgetApi.deletePayment(payment.id).then(
-            () => refreshPayments(),  //success
+            () => refreshBudget(),  //success
             () => console.log("error"))  //error
     }
 
-    return  <div id="payment">
+    return  <div id="budgetItem">
         <p><FontAwesomeIcon icon={IconUtils.getIconFromExpenseType(payment.expenseType)} /></p>
         <p className="no-wrap">{CurrencyUtils.formatCurrency(payment.amount)}</p>
         <p className="ellipsis">{payment.description}</p>
-        <p className="text-right ellipsis">{DateUtils.formatDate(payment.date)}</p>
+        <p className="text-right ellipsis">{DateUtils.formatDate(payment.start)}</p>
         <p className="clickable">
             <FontAwesomeIcon
                 icon={faTrash}
