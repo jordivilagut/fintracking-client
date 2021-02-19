@@ -15,7 +15,7 @@
   .together {
     display: flex;
 
-    &.last {
+    &:last-child {
       justify-content: flex-end;
     }
 
@@ -26,9 +26,13 @@
 }
 
 .budgetItem > * {
-  flex: 1;
-}
+  flex: 4;
 
-.budgetItem:last-child {
-  align-self: flex-end;
+  &:first-child {
+    flex: 1;
+  }
+
+  &:last-child {
+    flex: 1;
+  }
 }

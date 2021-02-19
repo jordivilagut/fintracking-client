@@ -29,7 +29,7 @@ export const BudgetItem = ({item, refreshBudget}) => {
         <p className="no-wrap">{CurrencyUtils.formatCurrency(item.amount)}</p>
         <p className="ellipsis">{item.description}</p>
         {recurrenceBlock}
-        <div className="together last">
+        <div className="together">
             <p className="clickable">
                 <FontAwesomeIcon
                     icon={faEdit}
