@@ -13,7 +13,7 @@
     width: 100vh;
 }
 
-#transaction {
+.transaction {
     background: white;
     display: flex;
     color: $base-font-color;
@@ -24,14 +24,26 @@
     box-shadow: 0 0 2px lightgray;
     justify-content: space-between;
     padding: 0 10px;
+
+    .together {
+        display: flex;
+
+        p {
+            padding-left: 10px;
+        }
+    }
 }
 
-#transaction p {
+.transaction > * {
+    flex: 1;
+}
+
+.transaction p {
     padding: 0 5px;
 }
 
 @media screen and (max-width: 600px) {
-    #transaction {
+    .transaction {
         font-size: 13px;
     }
 }

@@ -1,6 +1,7 @@
 import moment from "moment";
 
 export const DateUtils = {
+    dayMonthFormat,
     formatDate,
     now,
     getStartOfMonth,
@@ -12,6 +13,10 @@ export const DateUtils = {
 
 function formatDate (timestamp) {
     return new Date(timestamp).toDateString();
+}
+
+function dayMonthFormat (timestamp) {
+    return new Date(timestamp).toISOString().substr(5,5).replace("-","/");
 }
 
 function toUTC(timestamp) {

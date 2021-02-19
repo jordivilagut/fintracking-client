@@ -14,12 +14,12 @@ export const Transaction = ({transaction, refreshTransactions}) => {
                     error => console.log("error"))      //error
         }
 
-        return  <div id="transaction">
+        return <div className="transaction">
                 <p><FontAwesomeIcon icon={IconUtils.getIconFromExpenseType(transaction.expenseType)} /></p>
                 <p className="no-wrap">{CurrencyUtils.formatCurrency(transaction.amount)}</p>
                 <p className="ellipsis">{transaction.description}</p>
-                <p className="text-right ellipsis">{DateUtils.formatDate(transaction.date)}</p>
-                <p className="clickable">
+                <p className="ellipsis">{DateUtils.formatDate(transaction.date)}</p>
+                <p className="clickable text-right">
                         <FontAwesomeIcon
                             icon={faTrash}
                             onClick={deleteTransaction}/>

@@ -1,6 +1,6 @@
 @import "../../styles/colors";
 
-#budgetItem {
+.budgetItem {
   background: white;
   display: flex;
   color: $base-font-color;
@@ -11,4 +11,24 @@
   box-shadow: 0 0 2px lightgray;
   justify-content: space-between;
   padding: 0 10px;
+
+  .together {
+    display: flex;
+
+    &.last {
+      justify-content: flex-end;
+    }
+
+    p {
+      padding-left: 10px;
+    }
+  }
+}
+
+.budgetItem > * {
+  flex: 1;
+}
+
+.budgetItem:last-child {
+  align-self: flex-end;
 }

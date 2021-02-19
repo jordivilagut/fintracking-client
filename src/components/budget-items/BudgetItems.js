@@ -4,8 +4,8 @@ import "./BudgetItems.scss"
 
 export const BudgetItems = ({budgetItems, refreshBudget}) => (
     <div id="budgetItems">
-        {budgetItems.map(t  => <BudgetItem
-            key={t.id} payment={t}
+        {budgetItems.map(i  => <BudgetItem
+            key={i.id} item={i}
             refreshBudget={refreshBudget}/>)}
     </div>
 );
