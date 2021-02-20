@@ -16,11 +16,6 @@ import {BudgetApi} from "../../api/BudgetApi";
 
 export const BudgetItemModal = ({item, setItem, editMode, formElements, show, closeModal, refreshBudget}) => {
 
-    //TODO - Get item from itemId and set all the properties
-    //TODO 2 - Implement edit and delete buttons for transactions
-    //TODO 3 - Get Chart from BE
-    //TODO 4 - Add selector to change year on budget / month on transactions
-
     const {t} = useTranslation();
     const [validForm] = useState(true)
     const expenseTypeChangeHandler = expenseType => setItem({...item, expenseType: expenseType})
@@ -35,7 +30,7 @@ export const BudgetItemModal = ({item, setItem, editMode, formElements, show, cl
         const form = new BudgetItemForm(item, start, end)
 
         if (editMode) {
-            console.log("Edit payment", form)
+            BudgetApi.updateItem(item.id, form).then(() => refreshBudget())
         } else {
             BudgetApi.addItem(form).then(() => refreshBudget())
         }

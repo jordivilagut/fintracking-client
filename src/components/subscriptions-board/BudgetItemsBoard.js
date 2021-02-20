@@ -10,14 +10,13 @@ import {GeneralApi} from "../../api/GeneralApi";
 
 export const BudgetItemsBoard = ({refreshBudgetChart}) => {
 
-    //TODO - Get item from itemId and set all the properties
     //TODO 2 - Implement edit and delete buttons for transactions
     //TODO 3 - Get Chart from BE
     //TODO 4 - Add selector to change year on budget / month on transactions
 
     const {t} = useTranslation();
     const [budgetItems, setBudgetItems] = useState([])
-    const [item, setItem] = useState({
+    const itemInitialState = {
         id: null,
         startDate: new Date(),
         endDate: null,
@@ -28,8 +27,9 @@ export const BudgetItemsBoard = ({refreshBudgetChart}) => {
         expenseType: "CLOTHING",
         paymentType: "SINGLE",
         recurrence: null
-    })
+    };
 
+    const [item, setItem] = useState(itemInitialState)
     const [searchText, setSearchText] = useState("")
     const [editMode, setEditMode] = useState(false)
     const [showItemModal, setShowItemModal] = useState(false)
@@ -54,6 +54,7 @@ export const BudgetItemsBoard = ({refreshBudgetChart}) => {
     }
 
     const openAddModal = () => {
+        setItem(itemInitialState)
         setEditMode(false)
         setShowItemModal(true)
     }
