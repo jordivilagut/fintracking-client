@@ -14,7 +14,7 @@ export const BudgetItem = ({item, refreshBudget, openEditModal, openDeleteModal}
         </div> :
         <div className="together">
             <p><FontAwesomeIcon icon={faInfinity}/></p>
-            <p className="ellipsis">{item.paymentRecurrence}</p>
+            <p className="ellipsis">{item.recurrence}</p>
         </div>
 
     return <div className="budgetItem">

@@ -3,10 +3,10 @@ import React, {useEffect, useState} from "react";
 import {SearchAndAction} from "../search-and-action/SearchAndAction";
 import {BudgetService} from "../../services/BudgetService";
 import {BudgetItems} from "../budget-items/BudgetItems";
-import {AddBudgetItemModal} from "../add-budget-item-modal/AddBudgetItemModal";
 import {ConfirmationModal} from "../confirmation-modal/ConfirmationModal";
 import {BudgetApi} from "../../api/BudgetApi";
-import {EditBudgetItemModal} from "../add-budget-item-modal/EditBudgetItemModal";
+import {BudgetItemModal} from "../add-budget-item-modal/BudgetItemModal";
+import {GeneralApi} from "../../api/GeneralApi";
 
 export const BudgetItemsBoard = ({refreshBudgetChart}) => {
 
@@ -17,7 +17,7 @@ export const BudgetItemsBoard = ({refreshBudgetChart}) => {
 
     const {t} = useTranslation();
     const [budgetItems, setBudgetItems] = useState([])
-    const [focusedItem, setFocusedItem] = useState({
+    const [item, setItem] = useState({
         id: null,
         startDate: new Date(),
         endDate: null,
@@ -27,28 +27,41 @@ export const BudgetItemsBoard = ({refreshBudgetChart}) => {
         endlessSubscription: true,
         expenseType: "CLOTHING",
         paymentType: "SINGLE",
-        paymentRecurrence: null
+        recurrence: null
     })
 
     const [searchText, setSearchText] = useState("")
-    const [showAddItemModal, setShowAddItemModal] = useState(false)
-    const [showEditItemModal, setShowEditItemModal] = useState(false)
+    const [editMode, setEditMode] = useState(false)
+    const [showItemModal, setShowItemModal] = useState(false)
     const [showConfirmationModal, setShowConfirmationModal] = useState(false)
+    const [operations, setOperations] = useState([])
+    const [paymentTypes, setPaymentTypes] = useState([])
+    const [expenseTypes, setExpenseTypes] = useState([])
+    const [recurrence, setRecurrence] = useState([])
+    const formElements = {
+        operations: operations,
+        paymentTypes: paymentTypes,
+        expenseTypes: expenseTypes,
+        recurrence: recurrence,
+    }
 
-    const closeAddItemModal = () => setShowAddItemModal(false)
-    const closeEditItemModal = () => setShowEditItemModal(false)
+    const closeItemModal = () => setShowItemModal(false)
     const closeDeleteModal = () => setShowConfirmationModal(false)
-    const openAddItemModal = () => setShowAddItemModal(true)
 
     const openDeleteModal = (id) => {
-        setFocusedItem(id)
+        setItem(id)
         setShowConfirmationModal(true)
+    }
+
+    const openAddModal = () => {
+        setEditMode(false)
+        setShowItemModal(true)
     }
 
     const openEditModal = (id) => {
         BudgetApi.getItem(id).then(response => {
             const fromDB = response.body
-            setFocusedItem(
+            setItem(
                 {
                     id: fromDB.id,
                     startDate: fromDB.start != null ? new Date(fromDB.start) : null,
@@ -59,15 +72,16 @@ export const BudgetItemsBoard = ({refreshBudgetChart}) => {
                     endlessSubscription: fromDB.end == null,
                     expenseType: fromDB.expenseType,
                     paymentType: fromDB.paymentType,
-                    paymentRecurrence: fromDB.paymentRecurrence
+                    recurrence: fromDB.recurrence
                 }
             )
         })
-        setShowEditItemModal(true)
+        setEditMode(true)
+        setShowItemModal(true)
     }
 
     const deletePayment = () => {
-        BudgetApi.deleteItem(focusedItem).then(
+        BudgetApi.deleteItem(item).then(
             () => { //success
                 closeDeleteModal()
                 refreshBudgetItems()
@@ -86,6 +100,10 @@ export const BudgetItemsBoard = ({refreshBudgetChart}) => {
 
     useEffect(() => {
         BudgetService.getCurrentYearBudget().then(response => setBudgetItems(response.body))
+        GeneralApi.getOperationTypes().then(response => setOperations(response.body))
+        GeneralApi.getPaymentTypes().then(response => setPaymentTypes(response.body))
+        GeneralApi.getExpenseTypes().then(response => setExpenseTypes(response.body))
+        GeneralApi.getRecurrenceTypes().then(response => setRecurrence(response.body))
     }, []);
 
     return <div id="transactionsBoard">
@@ -93,21 +111,19 @@ export const BudgetItemsBoard = ({refreshBudgetChart}) => {
             searchPlaceholder={t("general.search")}
             searchBoxHandler={searchBoxHandler}
             buttonText={t("add.item")}
-            buttonAction={openAddItemModal}/>
+            buttonAction={openAddModal}/>
         <BudgetItems
             openEditModal={openEditModal}
             openDeleteModal={openDeleteModal}
             budgetItems={filteredBudgetItems}
             refreshBudget={refreshBudgetItems}/>
-        <AddBudgetItemModal
-            show={showAddItemModal}
-            closeModal={closeAddItemModal}
-            refreshBudget={refreshBudgetItems}/>
-        <EditBudgetItemModal
-            item={focusedItem}
-            setItem={setFocusedItem}
-            show={showEditItemModal}
-            closeModal={closeEditItemModal}
+        <BudgetItemModal
+            item={item}
+            setItem={setItem}
+            editMode={editMode}
+            formElements={formElements}
+            show={showItemModal}
+            closeModal={closeItemModal}
             refreshBudget={refreshBudgetItems}/>
         <ConfirmationModal
             show={showConfirmationModal}

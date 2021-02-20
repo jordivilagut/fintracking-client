@@ -1,6 +1,5 @@
 import {useTranslation} from "react-i18next";
-import React, {useEffect, useState} from "react";
-import {GeneralApi} from "../../api/GeneralApi";
+import React, {useState} from "react";
 import Modal from "react-bootstrap/Modal";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
@@ -13,8 +12,9 @@ import "./AddBudgetItemModal.scss"
 import {CustomCalendarWithEndDate} from "../custom-calendar/CustomCalendarWithEndDate";
 import {BudgetItemForm} from "../../model/BudgetItemForm";
 import {DateUtils} from "../../utils/DateUtils";
+import {BudgetApi} from "../../api/BudgetApi";
 
-export const EditBudgetItemModal = ({item, setItem, show, closeModal, refreshBudget}) => {
+export const BudgetItemModal = ({item, setItem, editMode, formElements, show, closeModal, refreshBudget}) => {
 
     //TODO - Get item from itemId and set all the properties
     //TODO 2 - Implement edit and delete buttons for transactions
@@ -23,14 +23,6 @@ export const EditBudgetItemModal = ({item, setItem, show, closeModal, refreshBud
 
     const {t} = useTranslation();
     const [validForm] = useState(true)
-    const [operations, setOperations] = useState([])
-    const [paymentTypes, setPaymentTypes] = useState([])
-    const [expenseTypes, setExpenseTypes] = useState([])
-    const [recurrence, setRecurrence] = useState([])
-    const [operationFunctions] = useState([])
-    const [paymentFunctions] = useState([])
-    const [recurrenceFunctions] = useState([])
-
     const expenseTypeChangeHandler = expenseType => setItem({...item, expenseType: expenseType})
     const amountChangeHandler = e => setItem({...item, amount: e.target.value})
     const descriptionChangeHandler = e => setItem({...item, description: e.target.value})
@@ -40,52 +32,14 @@ export const EditBudgetItemModal = ({item, setItem, show, closeModal, refreshBud
         closeModal()
         const start = DateUtils.toUTC(Date.parse(item.startDate.toString()))
         const end = item.endDate != null ? DateUtils.toUTC(Date.parse(item.endDate.toString())) : null
+        const form = new BudgetItemForm(item, start, end)
 
-        const form = new BudgetItemForm(
-            item.amount,
-            item.description,
-            start,
-            end,
-            item.expenseType,
-            item.operationType,
-            item.paymentType,
-            item.paymentRecurrence)
-
-        console.log("Edit payment", form)
+        if (editMode) {
+            console.log("Edit payment", form)
+        } else {
+            BudgetApi.addItem(form).then(() => refreshBudget())
+        }
     }
-
-    useEffect(() => {
-        GeneralApi.getOperationTypes().then(response => {
-            const operations = response.body
-            operations.forEach(r => {
-                operationFunctions.push(() => setItem({...item, operationType: r}))
-            })
-            setOperations(operations)
-            setItem({...item, operationType: operations[0]})
-        })
-        GeneralApi.getPaymentTypes().then(response => {
-            const paymentTypes = response.body
-            paymentTypes.forEach(r => {
-                paymentFunctions.push(() => setItem({...item, paymentType: r}))
-            })
-            setPaymentTypes(paymentTypes)
-            setItem({...item, paymentType: paymentTypes[0]})
-        })
-        GeneralApi.getExpenseTypes().then(response => {
-            const expenseTypes = response.body
-            setExpenseTypes(expenseTypes)
-            setItem({...item, expenseType: expenseTypes[0]})
-        })
-        GeneralApi.getRecurrenceTypes().then(response => {
-            const recurrence = response.body
-            recurrence.forEach(r => {
-                recurrenceFunctions.push(() => setItem({...item, description: r}))
-            })
-            setRecurrence(recurrence)
-            setItem({...item, description: recurrence[0]})
-        })
-
-    }, [operationFunctions, paymentFunctions, recurrenceFunctions]);
 
     return <Modal show={show} centered onHide={closeModal}>
         <Modal.Header closeButton>
@@ -100,22 +54,28 @@ export const EditBudgetItemModal = ({item, setItem, show, closeModal, refreshBud
             </Alert>
             <div className="cashierRow">
                 <SwitchButtonGroup
-                    elements={operations}
-                    selectedElement={item.operationType}
-                    functions={operationFunctions}/>
+                    item={item}
+                    setItem={setItem}
+                    field="operationType"
+                    elements={formElements.operations}
+                    selectedElement={item.operationType}/>
             </div>
             <div className="cashierRow">
                 <SwitchButtonGroup
-                    elements={paymentTypes}
-                    selectedElement={item.paymentType}
-                    functions={paymentFunctions}/>
+                    item={item}
+                    setItem={setItem}
+                    field="paymentType"
+                    elements={formElements.paymentTypes}
+                    selectedElement={item.paymentType}/>
             </div>
             <div className="cashierRow">
                 <SwitchButtonGroup
+                    item={item}
+                    setItem={setItem}
+                    field="recurrence"
                     hidden={uniquePayment}
-                    elements={recurrence}
-                    selectedElement={item.paymentRecurrence}
-                    functions={recurrenceFunctions}/>
+                    elements={formElements.recurrence}
+                    selectedElement={item.recurrence}/>
             </div>
             <div className={uniquePayment ? "hidden" : "checkboxRow"}>
                 <input
@@ -139,7 +99,7 @@ export const EditBudgetItemModal = ({item, setItem, show, closeModal, refreshBud
             </div>
             <div className="cashierRow">
                 <CustomDropdown
-                    values={expenseTypes}
+                    values={formElements.expenseTypes}
                     selected={item.expenseType}
                     handler={expenseTypeChangeHandler}/>
                 <AmountInput

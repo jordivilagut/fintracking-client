@@ -3,15 +3,15 @@ import {ButtonGroup} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import {useTranslation} from "react-i18next";
 
-export const SwitchButtonGroup = ({hidden, elements, selectedElement, functions}) => {
+export const SwitchButtonGroup = ({hidden, field, item, setItem, elements, selectedElement}) => {
 
     const {t} = useTranslation();
     return <ButtonGroup size="sm" className={hidden? "hidden" : ""}>
-        {elements.map((e,i) => (
+        {elements.map(e => (
             <Button
                 key={e}
                 variant={selectedElement === e ? "primary" : "light"}
-                onClick={functions[i]}>
+                onClick={() => setItem({...item, [field]: e})}>
                 {t(e)}
             </Button>
         ))}

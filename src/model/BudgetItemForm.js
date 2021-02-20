@@ -1,13 +1,13 @@
 export class BudgetItemForm {
 
-    constructor(amount, description, start, end, expenseType, operationType, paymentType, paymentRecurrence) {
-        this.amount = amount;
-        this.description = description;
+    constructor(item, start, end) {
+        this.amount = item.amount;
+        this.description = item.description;
         this.start = start;
         this.end = end;
-        this.expenseType = expenseType;
-        this.operationType = operationType;
-        this.paymentType = paymentType;
-        this.paymentRecurrence = paymentRecurrence;
+        this.expenseType = item.expenseType;
+        this.operationType = item.operationType;
+        this.paymentType = item.paymentType;
+        this.recurrence = item.recurrence;
     }
 }
