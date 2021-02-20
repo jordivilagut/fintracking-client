@@ -16,6 +16,7 @@ i18n
                 "app.subtitle.old": "Pocket Finance Advisor",
 
                 //GENERAL
+                "endless.subscription": "Not ending soon",
                 "general.about": "About",
                 "general.team": "The Team",
                 "general.support": "Support",
@@ -143,6 +144,7 @@ i18n
                 "app.subtitle.old": "Pocket Finance Advisor",
 
                 //GENERAL
+                "endless.subscription": "Sin final previsto",
                 "general.about": "Sobre Fintracking",
                 "general.team": "Equipo",
                 "general.support": "Soporte",

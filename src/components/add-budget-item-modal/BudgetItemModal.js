@@ -78,8 +78,8 @@ export const BudgetItemModal = ({item, setItem, editMode, formElements, show, cl
                     type="checkbox"
                     value={item.endlessSubscription}
                     checked={item.endlessSubscription}
-                    onChange={() => setItem({...item, endlessSubscription: !item.endlessSubscription})}/>
-                <label htmlFor="paymentDuration">Endless subscription</label>
+                    onChange={() => setItem({...item, endDate: null, endlessSubscription: !item.endlessSubscription})}/>
+                <label htmlFor="paymentDuration">{t("endless.subscription")}</label>
             </div>
             <div className="cashierRow calendarRow">
                 {item.endlessSubscription || uniquePayment?
