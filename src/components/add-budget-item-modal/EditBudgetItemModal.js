@@ -11,84 +11,80 @@ import {SwitchButtonGroup} from "../switch-button-group/SwitchButtonGroup";
 import {CustomCalendar} from "../custom-calendar/CustomCalendar";
 import "./AddBudgetItemModal.scss"
 import {CustomCalendarWithEndDate} from "../custom-calendar/CustomCalendarWithEndDate";
-import {BudgetApi} from "../../api/BudgetApi";
 import {BudgetItemForm} from "../../model/BudgetItemForm";
 import {DateUtils} from "../../utils/DateUtils";
 
-export const AddBudgetItemModal = ({show, closeModal, refreshBudget}) => {
+export const EditBudgetItemModal = ({item, setItem, show, closeModal, refreshBudget}) => {
+
+    //TODO - Get item from itemId and set all the properties
+    //TODO 2 - Implement edit and delete buttons for transactions
+    //TODO 3 - Get Chart from BE
+    //TODO 4 - Add selector to change year on budget / month on transactions
 
     const {t} = useTranslation();
     const [validForm] = useState(true)
     const [operations, setOperations] = useState([])
-    const [budgetItems, setBudgetItems] = useState([])
+    const [paymentTypes, setPaymentTypes] = useState([])
     const [expenseTypes, setExpenseTypes] = useState([])
     const [recurrence, setRecurrence] = useState([])
     const [operationFunctions] = useState([])
     const [paymentFunctions] = useState([])
     const [recurrenceFunctions] = useState([])
-    const [selectedOperation, setSelectedOperation] = useState("INCOME")
-    const [selectedPayment, setSelectedPayment] = useState("RECURRING")
-    const [selectedExpenseType, setSelectedExpenseType] = useState(null)
-    const [selectedRecurrence, setSelectedRecurrence] = useState(null)
-    const [endlessSubscription, setEndlessSubscription] = useState(true)
-    const [startDate, setStartDate] = useState(null)
-    const [endDate, setEndDate] = useState(null)
-    const [amount, setAmount] = useState(0)
-    const [description, setDescription] = useState("")
 
-    const expenseTypeChangeHandler = expenseType => setSelectedExpenseType(expenseType)
-    const amountChangeHandler = e => setAmount(e.target.value)
-    const descriptionChangeHandler = e => setDescription(e.target.value)
-    const uniquePayment = selectedPayment !== "RECURRING"
+    const expenseTypeChangeHandler = expenseType => setItem({...item, expenseType: expenseType})
+    const amountChangeHandler = e => setItem({...item, amount: e.target.value})
+    const descriptionChangeHandler = e => setItem({...item, description: e.target.value})
+    const uniquePayment = item.paymentType === "SINGLE"
 
     const handleSubmit = () => {
         closeModal()
-        const start = DateUtils.toUTC(Date.parse(startDate.toString()))
-        const end = endDate != null ? DateUtils.toUTC(Date.parse(startDate.toString())) : null
+        const start = DateUtils.toUTC(Date.parse(item.startDate.toString()))
+        const end = item.endDate != null ? DateUtils.toUTC(Date.parse(item.endDate.toString())) : null
 
         const form = new BudgetItemForm(
-            amount,
-            description,
+            item.amount,
+            item.description,
             start,
             end,
-            selectedExpenseType,
-            selectedOperation,
-            selectedPayment,
-            selectedRecurrence)
+            item.expenseType,
+            item.operationType,
+            item.paymentType,
+            item.paymentRecurrence)
 
-        BudgetApi.addItem(form).then(() => refreshBudget())
+        console.log("Edit payment", form)
     }
 
     useEffect(() => {
         GeneralApi.getOperationTypes().then(response => {
             const operations = response.body
             operations.forEach(r => {
-                operationFunctions.push(() => setSelectedOperation(r))
+                operationFunctions.push(() => setItem({...item, operationType: r}))
             })
             setOperations(operations)
-            setSelectedOperation(operations[0])
+            setItem({...item, operationType: operations[0]})
         })
         GeneralApi.getPaymentTypes().then(response => {
-            const budgetItems = response.body
-            budgetItems.forEach(r => {
-                paymentFunctions.push(() => setSelectedPayment(r))
+            const paymentTypes = response.body
+            paymentTypes.forEach(r => {
+                paymentFunctions.push(() => setItem({...item, paymentType: r}))
             })
-            setBudgetItems(budgetItems)
-            setSelectedPayment(budgetItems[0])
+            setPaymentTypes(paymentTypes)
+            setItem({...item, paymentType: paymentTypes[0]})
         })
         GeneralApi.getExpenseTypes().then(response => {
             const expenseTypes = response.body
             setExpenseTypes(expenseTypes)
-            setSelectedExpenseType(expenseTypes[0])
+            setItem({...item, expenseType: expenseTypes[0]})
         })
         GeneralApi.getRecurrenceTypes().then(response => {
             const recurrence = response.body
             recurrence.forEach(r => {
-                recurrenceFunctions.push(() => setSelectedRecurrence(r))
+                recurrenceFunctions.push(() => setItem({...item, description: r}))
             })
             setRecurrence(recurrence)
-            setSelectedRecurrence(recurrence[0])
+            setItem({...item, description: recurrence[0]})
         })
+
     }, [operationFunctions, paymentFunctions, recurrenceFunctions]);
 
     return <Modal show={show} centered onHide={closeModal}>
@@ -105,56 +101,56 @@ export const AddBudgetItemModal = ({show, closeModal, refreshBudget}) => {
             <div className="cashierRow">
                 <SwitchButtonGroup
                     elements={operations}
-                    selectedElement={selectedOperation}
+                    selectedElement={item.operationType}
                     functions={operationFunctions}/>
             </div>
             <div className="cashierRow">
                 <SwitchButtonGroup
-                    elements={budgetItems}
-                    selectedElement={selectedPayment}
+                    elements={paymentTypes}
+                    selectedElement={item.paymentType}
                     functions={paymentFunctions}/>
             </div>
             <div className="cashierRow">
                 <SwitchButtonGroup
                     hidden={uniquePayment}
                     elements={recurrence}
-                    selectedElement={selectedRecurrence}
+                    selectedElement={item.paymentRecurrence}
                     functions={recurrenceFunctions}/>
             </div>
             <div className={uniquePayment ? "hidden" : "checkboxRow"}>
                 <input
                     id="paymentDuration"
                     type="checkbox"
-                    value={endlessSubscription}
-                    checked={endlessSubscription}
-                    onChange={() => setEndlessSubscription(!endlessSubscription)}/>
+                    value={item.endlessSubscription}
+                    checked={item.endlessSubscription}
+                    onChange={() => setItem({...item, endlessSubscription: !item.endlessSubscription})}/>
                 <label htmlFor="paymentDuration">Endless subscription</label>
             </div>
             <div className="cashierRow calendarRow">
-                {endlessSubscription || uniquePayment?
+                {item.endlessSubscription || uniquePayment?
                     <CustomCalendar
-                        date={startDate}
-                        setDate={setStartDate}/> :
+                        date={item.startDate}
+                        setDate={d => setItem({...item, startDate: d})}/> :
                     <CustomCalendarWithEndDate
-                        startDate={startDate}
-                        setStartDate={setStartDate}
-                        endDate={endDate}
-                        setEndDate={setEndDate}/>}
+                        startDate={item.startDate}
+                        setStartDate={d => setItem({...item, startDate: d})}
+                        endDate={item.endDate}
+                        setEndDate={d => setItem({...item, endDate: d})}/>}
             </div>
             <div className="cashierRow">
                 <CustomDropdown
                     values={expenseTypes}
-                    selected={selectedExpenseType}
+                    selected={item.expenseType}
                     handler={expenseTypeChangeHandler}/>
                 <AmountInput
-                    value={amount}
+                    value={item.amount}
                     handler={amountChangeHandler}/>
             </div>
             <div className="cashierRow">
                 <CustomInput
                     placeHolder={t("budget.description.placeholder")}
                     name="description"
-                    value={description}
+                    value={item.description}
                     handler={descriptionChangeHandler}/>
             </div>
         </Modal.Body>

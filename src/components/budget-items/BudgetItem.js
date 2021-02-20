@@ -4,15 +4,8 @@ import {CurrencyUtils} from "../../utils/CurrencyUtils";
 import {DateUtils} from "../../utils/DateUtils";
 import {faDiceOne, faEdit, faInfinity, faTrash} from "@fortawesome/free-solid-svg-icons";
 import React from "react";
-import {BudgetApi} from "../../api/BudgetApi";
 
-export const BudgetItem = ({item, refreshBudget}) => {
-
-    const deletePayment = () => {
-        BudgetApi.deletePayment(item.id).then(
-            () => refreshBudget(),  //success
-            () => console.log("error"))  //error
-    }
+export const BudgetItem = ({item, refreshBudget, openEditModal, openDeleteModal}) => {
 
     const recurrenceBlock = item.paymentType === "SINGLE" ?
         <div className="together">
@@ -33,12 +26,12 @@ export const BudgetItem = ({item, refreshBudget}) => {
             <p className="clickable">
                 <FontAwesomeIcon
                     icon={faEdit}
-                    onClick={console.log("edit payment")}/>
+                    onClick={() => openEditModal(item.id)}/>
             </p>
             <p className="clickable">
                 <FontAwesomeIcon
                     icon={faTrash}
-                    onClick={deletePayment}/>
+                    onClick={() => openDeleteModal(item.id)}/>
             </p>
         </div>
     </div>

@@ -26,6 +26,7 @@ i18n
                 "general.name": "Name",
                 "general.search": "Search...",
                 "general.save": "Save",
+                "general.delete": "Delete",
                 "coming.soon": "Coming Soon",
                 "password.about": "Password must be at least 8 alhpanumeric characters",
                 "forgot.password": "I forgot my password",
@@ -92,6 +93,14 @@ i18n
                 //TRANSACTIONS MODAL
                 "description.placeholder": "Description: e.g. 'Grocery Shopping'",
 
+                //BUDGET MODAL
+                "budget.description.placeholder": "Netflix Subscription",
+                "new.budget.item": "New Forecast",
+
+                //MODAL DELETE
+                "delete.item": "Delete Item",
+                "delete.item.confirmation": "Are you sure you want to delete this?",
+
                 //OPERATION TYPES
                 "EXPENSE": "Expense",
                 "INCOME": "Income",
@@ -144,6 +153,7 @@ i18n
                 "general.name": "Nombre",
                 "general.search": "Buscar...",
                 "general.save": "Guardar",
+                "general.delete": "Eliminar",
                 "coming.soon": "Próximamente",
                 "password.about": "La contraseña debe tener al menos 8 caracteres alfanuméricos.",
                 "forgot.password": "Olvidé mi contraseña",
@@ -211,6 +221,14 @@ i18n
 
                 //TRANSACTIONS MODAL
                 "description.placeholder": "Descripción: ej. 'Compra en supermercado'",
+
+                //BUDGET MODAL
+                "budget.description.placeholder": "Suscripción Netflix",
+                "new.budget.item": "Nueva previsión",
+
+                //MODAL DELETE
+                "delete.item": "Eliminar",
+                "delete.item.confirmation": "¿Estás seguro que quieres eliminar?",
 
                 //OPERATION TYPES
                 "EXPENSE": "Gasto",

@@ -13,5 +13,5 @@ function getCurrentYearBudget() {
     filter.skip = 0
     filter.limit = 10
 
-    return BudgetApi.getBudgetItems(filter)
+    return BudgetApi.getItems(filter)
 }

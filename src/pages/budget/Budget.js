@@ -13,6 +13,7 @@ export const Budget = ({user}) => {
     return <div>
         <YearGraph/>
         <YearBarChart/>
-        <BudgetItemsBoard/>
+        <BudgetItemsBoard
+            refreshBudgetChart={refreshCharts}/>
     </div>
 }
