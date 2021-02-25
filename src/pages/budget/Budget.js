@@ -7,7 +7,7 @@ import {FinanceApi} from "../../api/FinanceApi";
 
 export const Budget = ({user}) => {
 
-    const [year, setYear] = useState(new Date().getFullYear())
+    const [year] = useState(new Date().getFullYear())
     const [monthStats, setMonthStats] = useState([])
 
     const refreshCharts = () => {
