@@ -18,7 +18,7 @@ export const Dashboard = () => {
     useEffect(() => {
         FinanceApi.getMonthlySummary(month, year).then(response => setMonthlySummary(response.body))
         FinanceApi.getCurrentFunds().then(response => setCurrentFunds(response.body))
-    }, []);
+    }, [month, year]);
 
     return <div>
         <p>{month}</p>
