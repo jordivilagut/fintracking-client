@@ -15,7 +15,10 @@ export const Dashboard = () => {
         FinanceApi.getCurrentFunds().then(response => setCurrentFunds(response.body))
     }
 
-    useEffect(() => {refreshSummary()}, []);
+    useEffect(() => {
+        FinanceApi.getMonthlySummary(month, year).then(response => setMonthlySummary(response.body))
+        FinanceApi.getCurrentFunds().then(response => setCurrentFunds(response.body))
+    }, []);
 
     return <div>
         <p>{month}</p>

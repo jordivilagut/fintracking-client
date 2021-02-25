@@ -14,7 +14,9 @@ export const Budget = ({user}) => {
         FinanceApi.getYearlySummary(year).then(response => setMonthStats(response.body.months))
     }
 
-    useEffect(() => {refreshCharts()}, []);
+    useEffect(() => {
+        FinanceApi.getYearlySummary(year).then(response => setMonthStats(response.body.months))
+    }, []);
 
     return <div>
         <YearGraph/>
