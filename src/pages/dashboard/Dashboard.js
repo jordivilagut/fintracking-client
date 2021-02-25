@@ -7,8 +7,8 @@ export const Dashboard = () => {
 
     const [monthlySummary, setMonthlySummary] = useState({})
     const [currentFunds, setCurrentFunds] = useState(null)
-    const [month, setMonth] = useState(new Date().getMonth())
-    const [year, setYear] = useState(new Date().getFullYear())
+    const [month] = useState(new Date().getMonth())
+    const [year] = useState(new Date().getFullYear())
 
     const refreshSummary = () => {
         FinanceApi.getMonthlySummary(month, year).then(response => setMonthlySummary(response.body))
