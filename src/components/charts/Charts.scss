@@ -18,6 +18,15 @@
   padding: 20px;
   margin-bottom: 10px;
 
+  .topBar {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .monthName {
+    padding: 0 10px;
+  }
+
   h2 {
     font-size: 18px;
     padding-bottom: 40px;

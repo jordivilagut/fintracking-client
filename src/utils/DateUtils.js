@@ -4,6 +4,7 @@ export const DateUtils = {
     dayMonthFormat,
     formatDate,
     now,
+    getMonthNames,
     getStartOfMonth,
     getEndOfMonth,
     getStartOfYear,
@@ -46,4 +47,9 @@ function getEndOfYear() {
 
 function timestamp(date) {
     return date.unix() * 1000
+}
+
+function getMonthNames() {
+    return ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"];
 }

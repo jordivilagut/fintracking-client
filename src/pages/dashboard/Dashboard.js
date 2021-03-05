@@ -7,7 +7,7 @@ export const Dashboard = () => {
 
     const [monthlySummary, setMonthlySummary] = useState({})
     const [currentFunds, setCurrentFunds] = useState(null)
-    const [month] = useState(new Date().getMonth())
+    const [month, setMonth] = useState(new Date().getMonth())
     const [year] = useState(new Date().getFullYear())
 
     const refreshSummary = () => {
@@ -21,9 +21,9 @@ export const Dashboard = () => {
     }, [month, year]);
 
     return <div>
-        <p>{month}</p>
-        <p>{year}</p>
         <FinancialSnapshot
+            month={month}
+            setMonth={setMonth}
             currentFunds={currentFunds}
             monthlySummary={monthlySummary}
             refreshSummary={refreshSummary}/>
