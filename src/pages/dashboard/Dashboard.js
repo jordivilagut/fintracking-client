@@ -9,14 +9,15 @@ export const Dashboard = () => {
     const [currentFunds, setCurrentFunds] = useState(null)
     const [month, setMonth] = useState(new Date().getMonth())
     const [year] = useState(new Date().getFullYear())
+    function baseOneMonth(m) { return m + 1 }
 
     const refreshSummary = () => {
-        FinanceApi.getMonthlySummary(month, year).then(response => setMonthlySummary(response.body))
+        FinanceApi.getMonthlySummary(baseOneMonth(month), year).then(response => setMonthlySummary(response.body))
         FinanceApi.getCurrentFunds().then(response => setCurrentFunds(response.body))
     }
 
     useEffect(() => {
-        FinanceApi.getMonthlySummary(month, year).then(response => setMonthlySummary(response.body))
+        FinanceApi.getMonthlySummary(baseOneMonth(month), year).then(response => setMonthlySummary(response.body))
         FinanceApi.getCurrentFunds().then(response => setCurrentFunds(response.body))
     }, [month, year]);
 
