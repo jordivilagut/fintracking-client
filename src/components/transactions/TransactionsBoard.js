@@ -1,22 +1,78 @@
 import React, {useEffect, useState} from "react";
 import {Transactions} from "./Transactions";
-import {AddTransactionModal} from "../add-transaction-modal/AddTransactionModal";
+import {TransactionModal} from "../add-transaction-modal/TransactionModal";
 import {SearchAndAction} from "../search-and-action/SearchAndAction";
 import {useTranslation} from "react-i18next";
 import {TransactionsService} from "../../services/TransactionsService";
+import {TransactionsApi} from "../../api/TransactionsApi";
+import {ConfirmationModal} from "../confirmation-modal/ConfirmationModal";
+import {GeneralApi} from "../../api/GeneralApi";
+import {BudgetApi} from "../../api/BudgetApi";
 
 export const TransactionsBoard = ({refreshSummary}) => {
 
     const {t} = useTranslation();
     const [transactions, setTransactions] = useState([])
+    const transactionInitialState = {
+        id: null,
+        date: new Date(),
+        amount: 0,
+        description: "",
+        operationType: "EXPENSE",
+        expenseType: "CLOTHING",
+    };
+
+    const [transaction, setTransaction] = useState(transactionInitialState)
     const [searchText, setSearchText] = useState("")
-    const [showModal, setShowModal] = useState(false)
-    const [showFirstStepModal, setShowFirstStepModal] = useState(true)
-    const hideFirstStep = () => setShowFirstStepModal(false)
-    const closeModal = () => setShowModal(false)
-    const openModal = () => {
-        setShowModal(true)
-        setShowFirstStepModal(true)
+    const [editMode, setEditMode] = useState(false)
+    const [showTransactionModal, setShowTransactionModal] = useState(false)
+    const [showConfirmationModal, setShowConfirmationModal] = useState(false)
+    const [operations, setOperations] = useState([])
+    const [expenseTypes, setExpenseTypes] = useState([])
+    const formElements = {
+        operations: operations,
+        expenseTypes: expenseTypes,
+    }
+
+    const closeTransactionsModal = () => setShowTransactionModal(false)
+    const closeDeleteModal = () => setShowConfirmationModal(false)
+
+    const openDeleteModal = (id) => {
+        BudgetApi.getItem(id).then(response => { setTransaction(response.body) })
+        setShowConfirmationModal(true)
+    }
+
+    const openAddModal = () => {
+        setTransaction(transactionInitialState)
+        setEditMode(false)
+        setShowTransactionModal(true)
+    }
+
+    const openEditModal = (id) => {
+        TransactionsApi.getTransaction(id).then(response => {
+            const fromDB = response.body
+            setTransaction(
+                {
+                    id: fromDB.id,
+                    date: fromDB.start != null ? new Date(fromDB.start) : null,
+                    amount: fromDB.amount,
+                    description: fromDB.description,
+                    operationType: fromDB.amount > 0 ? "INCOME" : "EXPENSE",
+                    expenseType: fromDB.expenseType,
+                }
+            )
+        })
+        setEditMode(true)
+        setShowTransactionModal(true)
+    }
+
+    const deleteTransaction = () => {
+        TransactionsApi.deleteTransaction(transaction.id).then(
+            () => { //success
+                closeDeleteModal()
+                refreshTransactions()
+            },
+            () => console.log("error"))  //error
     }
 
     const searchBoxHandler = e => setSearchText(e.target.value)
@@ -29,6 +85,8 @@ export const TransactionsBoard = ({refreshSummary}) => {
 
     useEffect(() => {
         TransactionsService.getCurrentMonthTransactions().then(response => setTransactions(response.body))
+        GeneralApi.getOperationTypes().then(response => setOperations(response.body))
+        GeneralApi.getExpenseTypes().then(response => setExpenseTypes(response.body))
     }, []);
 
     return <div id="transactionsBoard">
@@ -36,15 +94,23 @@ export const TransactionsBoard = ({refreshSummary}) => {
             searchPlaceholder={t("general.search")}
             searchBoxHandler={searchBoxHandler}
             buttonText={t("add.transaction")}
-            buttonAction={openModal}/>
+            buttonAction={openAddModal}/>
         <Transactions
+            openEditModal={openEditModal}
+            openDeleteModal={openDeleteModal}
             transactions={filteredTransactions}
             refreshTransactions={refreshTransactions}/>
-        <AddTransactionModal
-            firstStepVisible={showFirstStepModal}
-            hideFirstStep={hideFirstStep}
-            show={showModal}
-            closeModal={closeModal}
+        <TransactionModal
+            transaction={transaction}
+            setTransaction={setTransaction}
+            editMode={editMode}
+            formElements={formElements}
+            show={showTransactionModal}
+            closeModal={closeTransactionsModal}
             refreshTransactions={refreshTransactions}/>
+        <ConfirmationModal
+            show={showConfirmationModal}
+            closeModal={closeDeleteModal}
+            action={deleteTransaction}/>
     </div>
 }

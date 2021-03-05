@@ -10,10 +10,6 @@ import {GeneralApi} from "../../api/GeneralApi";
 
 export const BudgetItemsBoard = ({refreshBudgetChart}) => {
 
-    //TODO 2 - Implement edit and delete buttons for transactions
-    //TODO 3 - Get Chart from BE
-    //TODO 4 - Add selector to change year on budget / month on transactions
-
     const {t} = useTranslation();
     const [budgetItems, setBudgetItems] = useState([])
     const itemInitialState = {
@@ -49,7 +45,7 @@ export const BudgetItemsBoard = ({refreshBudgetChart}) => {
     const closeDeleteModal = () => setShowConfirmationModal(false)
 
     const openDeleteModal = (id) => {
-        setItem(id)
+        BudgetApi.getItem(id).then(response => { setItem(response.body) })
         setShowConfirmationModal(true)
     }
 
@@ -82,7 +78,7 @@ export const BudgetItemsBoard = ({refreshBudgetChart}) => {
     }
 
     const deletePayment = () => {
-        BudgetApi.deleteItem(item).then(
+        BudgetApi.deleteItem(item.id).then(
             () => { //success
                 closeDeleteModal()
                 refreshBudgetItems()
@@ -94,7 +90,7 @@ export const BudgetItemsBoard = ({refreshBudgetChart}) => {
     const searchBoxHandler = e => setSearchText(e.target.value)
     const refreshBudgetItems = () => BudgetService.getCurrentYearBudget().then(response => {
         setBudgetItems(response.body)
-        //refreshBudgetChart()
+        refreshBudgetChart()
     })
     const budgetItemsFilter = p => p.description.toLowerCase().includes(searchText.toLowerCase())
     const filteredBudgetItems = budgetItems.filter(budgetItemsFilter)

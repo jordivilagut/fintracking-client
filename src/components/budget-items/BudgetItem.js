@@ -6,7 +6,7 @@ import {faDiceOne, faEdit, faInfinity, faTrash} from "@fortawesome/free-solid-sv
 import React from "react";
 import {useTranslation} from "react-i18next";
 
-export const BudgetItem = ({item, refreshBudget, openEditModal, openDeleteModal}) => {
+export const BudgetItem = ({item, openEditModal, openDeleteModal}) => {
 
     const {t} = useTranslation();
     const recurrenceBlock = item.paymentType === "SINGLE" ?

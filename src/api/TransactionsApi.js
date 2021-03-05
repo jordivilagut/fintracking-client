@@ -8,6 +8,8 @@ export const TransactionsApi = {
         api.post('/transactions', filter).set("Authorization", CookiesService.get("authToken")),
     addTransaction: (transaction) =>
         api.post('/transactions/add', transaction).set("Authorization", CookiesService.get("authToken")),
-    deleteTransactions: (id) =>
+    updateTransaction: (id, transaction) =>
+        api.post('/transactions/' + id, transaction).set("Authorization", CookiesService.get("authToken")),
+    deleteTransaction: (id) =>
         api.del('/transactions/' + id).set("Authorization", CookiesService.get("authToken"))
 };
