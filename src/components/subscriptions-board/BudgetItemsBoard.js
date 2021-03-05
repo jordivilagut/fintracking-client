@@ -82,7 +82,6 @@ export const BudgetItemsBoard = ({refreshBudgetChart}) => {
             () => { //success
                 closeDeleteModal()
                 refreshBudgetItems()
-                refreshBudgetChart()
             },
             () => console.log("error"))  //error
     }
