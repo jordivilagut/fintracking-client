@@ -7,7 +7,6 @@ import {TransactionsService} from "../../services/TransactionsService";
 import {TransactionsApi} from "../../api/TransactionsApi";
 import {ConfirmationModal} from "../confirmation-modal/ConfirmationModal";
 import {GeneralApi} from "../../api/GeneralApi";
-import {BudgetApi} from "../../api/BudgetApi";
 
 export const TransactionsBoard = ({refreshSummary}) => {
 
@@ -38,7 +37,7 @@ export const TransactionsBoard = ({refreshSummary}) => {
     const closeDeleteModal = () => setShowConfirmationModal(false)
 
     const openDeleteModal = (id) => {
-        BudgetApi.getItem(id).then(response => { setTransaction(response.body) })
+        TransactionsApi.getTransaction(id).then(response => { setTransaction(response.body) })
         setShowConfirmationModal(true)
     }
 
