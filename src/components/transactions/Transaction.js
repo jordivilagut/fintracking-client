@@ -6,10 +6,12 @@ import {IconUtils} from "../../utils/IconUtils";
 import {faEdit, faTrash} from "@fortawesome/free-solid-svg-icons";
 
 export const Transaction = ({transaction, openEditModal, openDeleteModal}) => {
-
+        const isExpense = transaction.operationType === "EXPENSE"
         return <div className="transaction">
                 <p><FontAwesomeIcon icon={IconUtils.getIconFromExpenseType(transaction.expenseType)} /></p>
-                <p className="no-wrap">{CurrencyUtils.formatCurrency(transaction.amount)}</p>
+                <p className={isExpense? "no-wrap" : "green-text no-wrap"}>
+                        {isExpense? "-":""}{CurrencyUtils.formatCurrency(transaction.amount)}
+                </p>
                 <p className="ellipsis">{transaction.description}</p>
                 <p className="ellipsis">{DateUtils.formatDate(transaction.date)}</p>
                 <div className="together">

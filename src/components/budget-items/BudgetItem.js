@@ -9,6 +9,7 @@ import {useTranslation} from "react-i18next";
 export const BudgetItem = ({item, openEditModal, openDeleteModal}) => {
 
     const {t} = useTranslation();
+    const isExpense = item.operationType === "EXPENSE"
     const recurrenceBlock = item.paymentType === "SINGLE" ?
         <div className="together">
             <p><FontAwesomeIcon icon={faDiceOne}/></p>
@@ -21,7 +22,9 @@ export const BudgetItem = ({item, openEditModal, openDeleteModal}) => {
 
     return <div className="budgetItem">
         <p><FontAwesomeIcon icon={IconUtils.getIconFromExpenseType(item.expenseType)} /></p>
-        <p className="no-wrap">{CurrencyUtils.formatCurrency(item.amount)}</p>
+        <p className={isExpense? "no-wrap" : "green-text no-wrap"}>
+            {isExpense? "-":""}{CurrencyUtils.formatCurrency(item.amount)}
+        </p>
         <p className="ellipsis">{item.description}</p>
         {recurrenceBlock}
         <div className="together">
