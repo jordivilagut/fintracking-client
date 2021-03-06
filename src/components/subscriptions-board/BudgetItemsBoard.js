@@ -9,7 +9,7 @@ import {BudgetItemModal} from "../add-budget-item-modal/BudgetItemModal";
 import {GeneralApi} from "../../api/GeneralApi";
 import {ListEmptyState} from "../list-empty-state/ListEmptyState";
 
-export const BudgetItemsBoard = ({refreshBudgetChart}) => {
+export const BudgetItemsBoard = ({year, refreshBudgetChart}) => {
 
     const {t} = useTranslation();
     const [budgetItems, setBudgetItems] = useState([])
@@ -88,7 +88,7 @@ export const BudgetItemsBoard = ({refreshBudgetChart}) => {
     }
 
     const searchBoxHandler = e => setSearchText(e.target.value)
-    const refreshBudgetItems = () => BudgetService.getCurrentYearBudget().then(response => {
+    const refreshBudgetItems = () => BudgetService.getYearBudget(year).then(response => {
         setBudgetItems(response.body)
         refreshBudgetChart()
     })
@@ -96,12 +96,12 @@ export const BudgetItemsBoard = ({refreshBudgetChart}) => {
     const filteredBudgetItems = budgetItems.filter(budgetItemsFilter)
 
     useEffect(() => {
-        BudgetService.getCurrentYearBudget().then(response => setBudgetItems(response.body))
+        BudgetService.getYearBudget(year).then(response => setBudgetItems(response.body))
         GeneralApi.getOperationTypes().then(response => setOperations(response.body))
         GeneralApi.getPaymentTypes().then(response => setPaymentTypes(response.body))
         GeneralApi.getExpenseTypes().then(response => setExpenseTypes(response.body))
         GeneralApi.getRecurrenceTypes().then(response => setRecurrence(response.body))
-    }, []);
+    }, [year]);
 
     return <div id="transactionsBoard">
         <SearchAndAction
@@ -116,7 +116,7 @@ export const BudgetItemsBoard = ({refreshBudgetChart}) => {
             refreshBudget={refreshBudgetItems}/>
         <ListEmptyState
             hidden={filteredBudgetItems.length > 0}
-            message={t("empty.transactions")}/>
+            message={t("empty.budget")}/>
         <BudgetItemModal
             item={item}
             setItem={setItem}

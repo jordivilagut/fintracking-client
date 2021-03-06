@@ -2,8 +2,7 @@ import React from "react";
 import {TwoBarChart} from "../charts/TwoBarChart";
 import {useTranslation} from "react-i18next";
 import {DateUtils} from "../../utils/DateUtils";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faChevronLeft, faChevronRight} from "@fortawesome/free-solid-svg-icons";
+import {TextCarousel} from "../text-carousel/TextCarousel";
 
 export function MonthlyBalance({setMonth, month, income, expenses}) {
 
@@ -17,19 +16,10 @@ export function MonthlyBalance({setMonth, month, income, expenses}) {
     return <div className="chartWrapper light-border base-background">
         <div className="topBar">
             <h2>{t("this.month")}</h2>
-            <h2>
-                <span className="clickable">
-                    <FontAwesomeIcon
-                        icon={faChevronLeft}
-                        onClick={monthMinusOne}/>
-                </span>
-                <span className="monthName">{DateUtils.getMonthNames()[month]}</span>
-                <span className="clickable">
-                    <FontAwesomeIcon
-                        icon={faChevronRight}
-                        onClick={monthPlusOne}
-                /></span>
-            </h2>
+            <TextCarousel
+                text={DateUtils.getMonthNames()[month]}
+                actionLeft={monthMinusOne}
+                actionRight={monthPlusOne}/>
         </div>
         <TwoBarChart
             height1={incomeHeight}

@@ -3,13 +3,13 @@ import {DateUtils} from "../utils/DateUtils";
 import {BudgetApi} from "../api/BudgetApi";
 
 export const BudgetService = {
-    getCurrentYearBudget
+    getYearBudget
 };
 
-function getCurrentYearBudget() {
+function getYearBudget(year) {
     const filter = new TransactionsFilter()
-    filter.from = DateUtils.getStartOfYear()
-    filter.to = DateUtils.getEndOfYear()
+    filter.from = DateUtils.getStartOfYear(year)
+    filter.to = DateUtils.getEndOfYear(year)
     filter.skip = 0
     filter.limit = 10
 

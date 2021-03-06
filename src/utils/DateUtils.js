@@ -37,12 +37,12 @@ function getEndOfMonth(month) {
     return timestamp(now().set({'month': month}).endOf('month'))
 }
 
-function getStartOfYear() {
-    return timestamp(now().startOf('year'))
+function getStartOfYear(year) {
+    return timestamp(now().set({'year': year}).startOf('year'))
 }
 
-function getEndOfYear() {
-    return timestamp(now().endOf('year'))
+function getEndOfYear(year) {
+    return timestamp(now().set({'year': year}).endOf('year'))
 }
 
 function timestamp(date) {

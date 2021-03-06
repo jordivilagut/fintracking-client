@@ -5,9 +5,9 @@ import {BudgetItemsBoard} from "../../components/subscriptions-board/BudgetItems
 import "./Budget.scss"
 import {FinanceApi} from "../../api/FinanceApi";
 
-export const Budget = ({user}) => {
+export const Budget = () => {
 
-    const [year] = useState(new Date().getFullYear())
+    const [year, setYear] = useState(new Date().getFullYear())
     const [monthStats, setMonthStats] = useState([])
 
     const refreshCharts = () => {
@@ -20,8 +20,12 @@ export const Budget = ({user}) => {
 
     return <div>
         <YearGraph/>
-        <YearBarChart monthStats={monthStats} />
+        <YearBarChart
+            year={year}
+            setYear={setYear}
+            monthStats={monthStats} />
         <BudgetItemsBoard
+            year={year}
             refreshBudgetChart={refreshCharts}/>
     </div>
 }

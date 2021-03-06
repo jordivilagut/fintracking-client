@@ -73,7 +73,7 @@ const App = (props) => {
                 <Route exact path="/" render={() => (<StaticHomepage user={user}/>)}/>
                 <Route exact path="/home" render={() => (<StaticHomepage user={user}/>)}/>
                 <Route exact path="/finance" render={() => (<Dashboard user={user}/>)}/>
-                <Route exact path="/budget" render={() => (<Budget user={user}/>)}/>
+                <Route exact path="/budget" render={() => (<Budget/>)}/>
                 <Route exact path="/login" render={() => (
                     <Login
                         loading={loginLoading}
