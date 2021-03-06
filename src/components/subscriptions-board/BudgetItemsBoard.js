@@ -65,7 +65,7 @@ export const BudgetItemsBoard = ({refreshBudgetChart}) => {
                     endDate: fromDB.end != null ? new Date(fromDB.end) : null,
                     amount: fromDB.amount,
                     description: fromDB.description,
-                    operationType: fromDB.amount > 0 ? "INCOME" : "EXPENSE",
+                    operationType: fromDB.operationType,
                     endlessSubscription: fromDB.end == null,
                     expenseType: fromDB.expenseType,
                     paymentType: fromDB.paymentType,

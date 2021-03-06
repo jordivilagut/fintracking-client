@@ -57,7 +57,7 @@ export const TransactionsBoard = ({refreshSummary}) => {
                     date: fromDB.start != null ? new Date(fromDB.start) : null,
                     amount: fromDB.amount,
                     description: fromDB.description,
-                    operationType: fromDB.amount > 0 ? "INCOME" : "EXPENSE",
+                    operationType: fromDB.operationType,
                     expenseType: fromDB.expenseType,
                 }
             )
