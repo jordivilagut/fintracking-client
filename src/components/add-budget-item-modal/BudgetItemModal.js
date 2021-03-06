@@ -22,6 +22,8 @@ export const BudgetItemModal = ({item, setItem, editMode, formElements, show, cl
     const amountChangeHandler = e => setItem({...item, amount: e.target.value})
     const descriptionChangeHandler = e => setItem({...item, description: e.target.value})
     const uniquePayment = item.paymentType === "SINGLE"
+    if (!uniquePayment && item.recurrence == null) setItem({...item, recurrence: "MONTHLY"})
+    if (uniquePayment && item.recurrence != null) setItem({...item, recurrence: null})
 
     const handleSubmit = () => {
         closeModal()
