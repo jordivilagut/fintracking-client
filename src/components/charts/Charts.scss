@@ -2,8 +2,11 @@
 .chart {
   display: flex;
   align-items: baseline;
-  justify-content: space-around;
   padding-bottom: 10px;
+
+  &.small {
+    justify-content: space-around;
+  }
 }
 
 .chart-inverted {
@@ -45,5 +48,37 @@
       width: 20px;
     }
   }
+}
 
+.bigChartWrapper {
+
+  color: white;
+  flex-grow: 2;
+  padding: 20px;
+  margin-bottom: 10px;
+
+  .hScrollable {
+    overflow-x: scroll;
+  }
+
+  .topBar {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .monthName {
+    padding: 0 10px;
+  }
+
+  h2 {
+    font-size: 18px;
+    padding-bottom: 40px;
+  }
+
+  .bar {
+    border: solid white 1px;
+    border-radius: 4px;
+    margin: 10px;
+    width: 40px;
+  }
 }

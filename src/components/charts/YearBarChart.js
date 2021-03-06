@@ -13,7 +13,7 @@ export const YearBarChart = ({monthStats, year, setYear}) => {
         const monthPlusOne = () => setYear(year + 1);
         const monthMinusOne = () => setYear(year - 1);
 
-        return <div className="chartWrapper light-border base-background">
+        return <div className="bigChartWrapper light-border base-background">
                 <div className="topBar">
                         <h2>{StringUtils.capitalise(t("menu.budget").toLowerCase())}</h2>
                         <TextCarousel
@@ -21,21 +21,19 @@ export const YearBarChart = ({monthStats, year, setYear}) => {
                             actionLeft={monthMinusOne}
                             actionRight={monthPlusOne}/>
                 </div>
-                <div className="chart">
+                <div className="chart hScrollable">
                         {monthStats.map(m =>
-                            <MonthChartBar
-                                key={"c" + m.name}
-                                month={m}
-                                max={Math.max(...incomeValues)}
-                                extraClass="green-glass bar bar-xs"/>)}
-                </div>
-                <div className="chart-inverted">
-                        {monthStats.map(m =>
-                            <InvertedMonthChartBar
-                                key={"i" + m.name}
-                                month={m}
-                                max={Math.max(...expenseValues)}
-                                extraClass="red-glass bar bar-xs"/>)}
+                            <div key={"id" + m.name}>
+                                    <MonthChartBar
+                                        month={m}
+                                        max={Math.max(...incomeValues)}
+                                        extraClass="green-glass bar bar-xs"/>
+                                    <InvertedMonthChartBar
+                                        month={m}
+                                        max={Math.max(...expenseValues)}
+                                        extraClass="red-glass bar bar-xs"/>
+                            </div>
+                        )}
                 </div>
         </div>
 }
