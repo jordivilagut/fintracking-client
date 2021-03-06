@@ -1,17 +1,14 @@
 import {Button} from "../button/Button";
-import React, {useState} from "react";
+import React from "react";
 import {useTranslation} from "react-i18next";
 import {AddFundsModal} from "../add-funds-modal/AddFundsModal";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit} from "@fortawesome/free-regular-svg-icons";
 
-export const CurrentFunds = ({currentFunds, refreshSummary}) => {
+export const CurrentFunds = ({funds, submitFunds, showModal, toggleModal, refreshSummary}) => {
     const {t} = useTranslation();
-    const [showModal, setShowModal] = useState(false)
-    const toggleModal = () => setShowModal(!showModal)
-    const registeredFunds = currentFunds != null
-    const editIconVisibility = registeredFunds ? "block" : "none"
-    const modalTitle = registeredFunds ?  t("edit.current.funds") : t("add.current.funds")
+    const editIconVisibility = funds !== 0 ? "block" : "none"
+    const modalTitle = funds !== 0 ?  t("edit.current.funds") : t("add.current.funds")
 
     return <div className="scoreboard light-border light-gray">
         <div className="topElements">
@@ -23,17 +20,18 @@ export const CurrentFunds = ({currentFunds, refreshSummary}) => {
         </div>
         <div className="bottomElements">
             <div>
-                <h1>{currentFunds != null ? currentFunds : "???"}€</h1>
+                <h1>{funds != null ? funds : "???"}€</h1>
                 <p>{t("current.funds")}</p>
             </div>
             <Button
-                hidden={currentFunds != null}
+                hidden={funds != null}
                 color="#dddddd"
                 action={toggleModal}
                 mainText={t("add.current.funds")}/>
             <AddFundsModal
                 modalTitle={modalTitle}
-                initialAmount={registeredFunds ? currentFunds : 0}
+                handleSubmit={submitFunds}
+                initialAmount={funds}
                 showModal={showModal}
                 toggleModal={toggleModal}
                 refreshSummary={refreshSummary}/>

@@ -1,20 +1,13 @@
 import {useTranslation} from "react-i18next";
-import React, {useState} from "react";
+import React from "react";
 import Modal from "react-bootstrap/Modal";
 import {AmountInput} from "../amount-input/AmountInput";
 import Button from "react-bootstrap/Button";
-import {FinanceApi} from "../../api/FinanceApi";
 
-export const AddFundsModal = ({modalTitle, showModal, toggleModal, refreshSummary}) => {
+export const AddFundsModal = ({funds, setFunds, modalTitle, showModal, toggleModal, handleSubmit}) => {
 
     const {t} = useTranslation();
-    const [amount, setAmount] = useState(0) //TODO - getCurrentFunds
-    const amountChangeHandler = e => setAmount(e.target.value)
-
-    const handleSubmit = () => {
-        toggleModal()
-        FinanceApi.setCurrentFunds(amount).then(response => refreshSummary())
-    }
+    const amountChangeHandler = e => setFunds(e.target.value)
 
     return <Modal show={showModal} centered>
         <Modal.Header>
@@ -24,7 +17,7 @@ export const AddFundsModal = ({modalTitle, showModal, toggleModal, refreshSummar
         <Modal.Body>
             <div className="cashierRow">
                 <AmountInput
-                    value={amount}
+                    value={funds}
                     handler={amountChangeHandler}/>
             </div>
         </Modal.Body>
