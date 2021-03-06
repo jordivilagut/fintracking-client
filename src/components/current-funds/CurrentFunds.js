@@ -5,7 +5,7 @@ import {AddFundsModal} from "../add-funds-modal/AddFundsModal";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit} from "@fortawesome/free-regular-svg-icons";
 
-export const CurrentFunds = ({funds, submitFunds, showModal, toggleModal, refreshSummary}) => {
+export const CurrentFunds = ({funds, setFunds, submitFunds, showModal, toggleModal, refreshSummary}) => {
     const {t} = useTranslation();
     const editIconVisibility = funds !== 0 ? "block" : "none"
     const modalTitle = funds !== 0 ?  t("edit.current.funds") : t("add.current.funds")
@@ -31,7 +31,8 @@ export const CurrentFunds = ({funds, submitFunds, showModal, toggleModal, refres
             <AddFundsModal
                 modalTitle={modalTitle}
                 handleSubmit={submitFunds}
-                initialAmount={funds}
+                funds={funds}
+                setFunds={setFunds}
                 showModal={showModal}
                 toggleModal={toggleModal}
                 refreshSummary={refreshSummary}/>
