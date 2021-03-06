@@ -109,3 +109,15 @@ a:hover {
 .green-text {
   color: green;
 }
+
+.calendarRow input{
+  display: block;
+  width: 100%;
+  height: calc(1.5em + .75rem + 2px);
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  padding: .375rem .75rem;
+  font-weight: 400;
+  font-family: Roboto, serif;
+  color: #495057;
+}

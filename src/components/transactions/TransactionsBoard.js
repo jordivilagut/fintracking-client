@@ -53,7 +53,7 @@ export const TransactionsBoard = ({refreshSummary}) => {
             setTransaction(
                 {
                     id: fromDB.id,
-                    date: fromDB.start != null ? new Date(fromDB.start) : null,
+                    date: fromDB.date,
                     amount: fromDB.amount,
                     description: fromDB.description,
                     operationType: fromDB.operationType,

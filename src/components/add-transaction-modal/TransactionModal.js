@@ -10,6 +10,8 @@ import {TransactionForm} from "../../model/TransactionForm";
 import {TransactionsApi} from "../../api/TransactionsApi";
 import {useTranslation} from "react-i18next";
 import {SwitchButtonGroup} from "../switch-button-group/SwitchButtonGroup";
+import {DateUtils} from "../../utils/DateUtils";
+import {CustomCalendar} from "../custom-calendar/CustomCalendar";
 
 export const TransactionModal = ({transaction, setTransaction, editMode, formElements, show, closeModal, refreshTransactions}) => {
 
@@ -25,7 +27,8 @@ export const TransactionModal = ({transaction, setTransaction, editMode, formEle
             transaction.amount,
             transaction.description,
             transaction.expenseType,
-            transaction.operationType)
+            transaction.operationType,
+            DateUtils.toUTC(Date.parse(transaction.date.toString())))
 
         if (editMode) {
             TransactionsApi.updateTransaction(transaction.id, form).then(() => refreshTransactions())
@@ -53,6 +56,11 @@ export const TransactionModal = ({transaction, setTransaction, editMode, formEle
                         field="operationType"
                         elements={formElements.operations}
                         selectedElement={transaction.operationType}/>
+                </div>
+                <div className="cashierRow calendarRow">
+                    <CustomCalendar
+                        date={transaction.date}
+                        setDate={d => setTransaction({...transaction, date: d})}/>
                 </div>
                 <div className="cashierRow">
                     <CustomDropdown
