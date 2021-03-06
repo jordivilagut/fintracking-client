@@ -36,3 +36,9 @@
     flex: 1;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .budgetItem {
+    font-size: 13px;
+  }
+}
