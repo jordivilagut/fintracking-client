@@ -8,7 +8,6 @@ import {User} from "../model/User";
 import {ServerError} from "../pages/server-error/ServerError";
 import {UserProfile} from "../pages/user-profile/UserProfile";
 import {UserApi} from "../api/UserApi";
-import {Homepage} from "../pages/homepage/Homepage";
 import {FintrackingFooter} from "../components/footer/FintrackingFooter";
 import {DateUtils as LanguageUtils} from "../utils/LanguageUtils";
 import {MobileMenu} from "../pages/mobile-menu/MobileMenu";
@@ -16,6 +15,8 @@ import {ForgotPassword} from "../pages/forgot-pwd/ForgotPassword";
 import {RecoverPassword} from "../pages/recover-pwd/RecoverPassword";
 import {WelcomeBanner} from "../components/welcome-banner/WelcomeBanner";
 import {Budget} from "../pages/budget/Budget";
+import {Dashboard} from "../pages/dashboard/Dashboard";
+import {StaticHomepage} from "../pages/static-homepage/StaticHomepage";
 
 const App = (props) => {
 
@@ -52,7 +53,7 @@ const App = (props) => {
             UserApi.autoLogin()
                 .then(
                     response => setUser(response.body),
-                    error => {
+                    () => {
                         setUser(null)
                         CookiesService.removeCookie("authToken")
                         props.history.push("home")
@@ -66,8 +67,9 @@ const App = (props) => {
             <Route exact path="/" render={() => (<WelcomeBanner user={user}/>)}/>
             <Route exact path="/home" render={() => (<WelcomeBanner user={user}/>)}/>
             <div className="page">
-                <Route exact path="/" render={() => (<Homepage user={user}/>)}/>
-                <Route exact path="/home" render={() => (<Homepage user={user}/>)}/>
+                <Route exact path="/" render={() => (<StaticHomepage user={user}/>)}/>
+                <Route exact path="/home" render={() => (<StaticHomepage user={user}/>)}/>
+                <Route exact path="/finance" render={() => (<Dashboard user={user}/>)}/>
                 <Route exact path="/budget" render={() => (<Budget user={user}/>)}/>
                 <Route exact path="/login" render={() => (
                     <Login

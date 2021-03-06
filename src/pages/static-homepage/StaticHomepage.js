@@ -5,14 +5,15 @@ import "./StaticHomepage.scss"
 import {AppFeatures} from "../../components/app-feature/AppFeatures";
 import {UserPlans} from "../../components/user-plan/UserPlans";
 
-export const StaticHomepage = () => {
+export const StaticHomepage = ({user}) => {
 
     const {t} = useTranslation();
     const history = useHistory();
+    const userIsLogged = user != null;
 
     const getStartedHandler = e => {
         e.preventDefault()
-        history.push("login")
+        history.push(userIsLogged ? "finance" : "login")
     }
 
     return <div className="homepage">

@@ -13,7 +13,7 @@ export const FintrackingNavBar = ({user}) => {
                 <Link to="/">
                     <Logo/>
                 </Link>
-                <Link to="/"><p>{t("menu.home")}</p></Link>
+                <Link to="/finance"><p hidden={user == null}>{t("menu.finance")}</p></Link>
                 <Link to="/budget"><p hidden={user == null}>{t("menu.budget")}</p></Link>
             </div>
             <NavBarIcons user={user}/>

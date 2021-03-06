@@ -13,11 +13,10 @@ export const WelcomeBanner = ({user}) => {
 
     const getStartedHandler = e => {
         e.preventDefault()
-        history.push("login")
+        history.push(userIsLogged ? "finance" : "login")
     }
 
-    return userIsLogged ? <div/> :
-        <div className="welcomeBannerWrapper">
+    return <div className="welcomeBannerWrapper">
             <div className="welcomeBanner nightGradient">
                 <div className="page">
                     <Image imageUrl=""/>

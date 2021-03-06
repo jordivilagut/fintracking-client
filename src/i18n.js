@@ -38,6 +38,7 @@ i18n
 
                 //MENU
                 "menu.home": "HOME",
+                "menu.finance": "FINANCE",
                 "menu.budget": "BUDGET",
                 "menu.profile": "MI PROFILE",
 
@@ -170,6 +171,7 @@ i18n
 
                 //MENU
                 "menu.home": "INICIO",
+                "menu.finance": "MIS FINANZAS",
                 "menu.budget": "PRESUPUESTO",
                 "menu.profile": "MI USUARIO",
 
