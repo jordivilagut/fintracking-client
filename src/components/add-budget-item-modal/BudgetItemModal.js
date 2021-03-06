@@ -1,5 +1,5 @@
 import {useTranslation} from "react-i18next";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Modal from "react-bootstrap/Modal";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
@@ -22,8 +22,6 @@ export const BudgetItemModal = ({item, setItem, editMode, formElements, show, cl
     const amountChangeHandler = e => setItem({...item, amount: e.target.value})
     const descriptionChangeHandler = e => setItem({...item, description: e.target.value})
     const uniquePayment = item.paymentType === "SINGLE"
-    if (!uniquePayment && item.recurrence == null) setItem({...item, recurrence: "MONTHLY"})
-    if (uniquePayment && item.recurrence != null) setItem({...item, recurrence: null})
 
     const handleSubmit = () => {
         closeModal()
@@ -37,6 +35,12 @@ export const BudgetItemModal = ({item, setItem, editMode, formElements, show, cl
             BudgetApi.addItem(form).then(() => refreshBudget())
         }
     }
+
+    useEffect(() => {
+        const unique = item.paymentType === "SINGLE"
+        if (!unique && item.recurrence == null) setItem({...item, recurrence: "MONTHLY"})
+        if (unique && item.recurrence != null) setItem({...item, recurrence: null})
+    },[item, setItem])
 
     return <Modal show={show} centered onHide={closeModal}>
         <Modal.Header closeButton>
