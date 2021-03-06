@@ -29,11 +29,11 @@ function now() {
     return moment().clone()
 }
 
-function getStartOfMonth() {
+function getStartOfMonth(month) {
     return timestamp(now().startOf('month'))
 }
 
-function getEndOfMonth() {
+function getEndOfMonth(month) {
     return timestamp(now().endOf('month'))
 }
 

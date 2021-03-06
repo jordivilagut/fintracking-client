@@ -8,7 +8,7 @@ import {TransactionsApi} from "../../api/TransactionsApi";
 import {ConfirmationModal} from "../confirmation-modal/ConfirmationModal";
 import {GeneralApi} from "../../api/GeneralApi";
 
-export const TransactionsBoard = ({refreshSummary}) => {
+export const TransactionsBoard = ({month, refreshSummary}) => {
 
     const {t} = useTranslation();
     const [transactions, setTransactions] = useState([])
@@ -75,7 +75,7 @@ export const TransactionsBoard = ({refreshSummary}) => {
     }
 
     const searchBoxHandler = e => setSearchText(e.target.value)
-    const refreshTransactions = () => TransactionsService.getCurrentMonthTransactions().then(response => {
+    const refreshTransactions = () => TransactionsService.getCurrentMonthTransactions(month).then(response => {
         setTransactions(response.body)
         refreshSummary()
     })
@@ -83,10 +83,10 @@ export const TransactionsBoard = ({refreshSummary}) => {
     const filteredTransactions = transactions.filter(transactionsFilter)
 
     useEffect(() => {
-        TransactionsService.getCurrentMonthTransactions().then(response => setTransactions(response.body))
+        TransactionsService.getCurrentMonthTransactions(month).then(response => setTransactions(response.body))
         GeneralApi.getOperationTypes().then(response => setOperations(response.body))
         GeneralApi.getExpenseTypes().then(response => setExpenseTypes(response.body))
-    }, []);
+    }, [month]);
 
     return <div id="transactionsBoard">
         <SearchAndAction

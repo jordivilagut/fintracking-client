@@ -7,10 +7,10 @@ export const TransactionsService = {
     getCurrentMonthTransactions
 };
 
-function getCurrentMonthTransactions() {
+function getCurrentMonthTransactions(month) {
     const filter = new TransactionsFilter()
-    filter.from = DateUtils.getStartOfMonth()
-    filter.to = DateUtils.getEndOfMonth()
+    filter.from = DateUtils.getStartOfMonth(month)
+    filter.to = DateUtils.getEndOfMonth(month)
     filter.skip = 0
     filter.limit = 10
 

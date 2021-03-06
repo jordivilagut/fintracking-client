@@ -28,6 +28,8 @@ export const Dashboard = () => {
             currentFunds={currentFunds}
             monthlySummary={monthlySummary}
             refreshSummary={refreshSummary}/>
-        <TransactionsBoard refreshSummary={refreshSummary}/>
+        <TransactionsBoard
+            month={month}
+            refreshSummary={refreshSummary}/>
     </div>
 }
