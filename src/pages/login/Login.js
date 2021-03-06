@@ -7,18 +7,19 @@ import {Link} from "react-router-dom";
 import {UserApi} from "../../api/UserApi";
 import {useTranslation} from "react-i18next";
 import {GoogleLogin} from "react-google-login"
+import {Spinner} from "react-bootstrap";
 
-export const Login = props => {
+export const Login = ({authHandler, authFailedHandler, loading, setLoading}) => {
 
     const {t} = useTranslation();
     const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID
-    const {authHandler, authFailedHandler} = props
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const emailChangeHandler = e => setEmail(e.target.value)
     const passwordChangeHandler = e => setPassword(e.target.value)
     const handleSubmit = e => {
         e.preventDefault();
+        setLoading(true)
         UserApi.login(email, password)
             .then(
                 response => authHandler(response.body),
@@ -27,6 +28,7 @@ export const Login = props => {
 
     const handleSuccessfulGoogleLogin = response => {
         const idToken = response.getAuthResponse().id_token
+        setLoading(true)
         UserApi.googleLogin(idToken)
             .then(
                 response => authHandler(response.body),
@@ -36,7 +38,13 @@ export const Login = props => {
     const handleFailedGoogleLogin = response => authFailedHandler(response.details)
 
     return <div className="userForm">
-        <h2>{t("log.in")}</h2>
+        <div className="formTop">
+            <h2>{t("log.in")}</h2>
+            <Spinner
+                className={loading? "" : "hidden"}
+                animation="grow"
+                variant="primary" />
+        </div>
         <form onSubmit={handleSubmit}>
             <EmailInput onChangeHandler={emailChangeHandler}/>
             <PasswordInput

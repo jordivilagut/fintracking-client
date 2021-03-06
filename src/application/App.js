@@ -21,6 +21,7 @@ import {StaticHomepage} from "../pages/static-homepage/StaticHomepage";
 const App = (props) => {
 
     const [user, setUser] = useState(null)
+    const [loginLoading, setLoginLoading] = useState(false)
     const [languages] = useState(["english ", "spanish"])
     const [language, setLanguage] = useState(null)
     const redirectTo = (url) => props.history.push(url)
@@ -31,13 +32,15 @@ const App = (props) => {
     }
 
     const authenticateUser = (auth) => {
+        setLoginLoading(false)
         const user = new User(auth.name, auth.email, auth.token)
         setUser(user)
         CookiesService.storeCookie("authToken", auth.token)
-        redirectTo("home")
+        redirectTo("finance")
     }
 
     const logUserOut = (errorMessage, redirectUrl) => {
+        setLoginLoading(false)
         setUser(null)
         CookiesService.removeCookie("authToken")
         if (errorMessage != null) alert(errorMessage)
@@ -73,10 +76,14 @@ const App = (props) => {
                 <Route exact path="/budget" render={() => (<Budget user={user}/>)}/>
                 <Route exact path="/login" render={() => (
                     <Login
+                        loading={loginLoading}
+                        setLoading={setLoginLoading}
                         authHandler={authenticateUser}
                         authFailedHandler={logUserOut}/>)}/>
                 <Route exact path="/signup" render={() => (
                     <Signup
+                        loading={loginLoading}
+                        setLoading={setLoginLoading}
                         authHandler={authenticateUser}
                         authFailedHandler={logUserOut}/>)}/>
                 <Route exact path="/profile" render={() => (
