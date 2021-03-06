@@ -30,11 +30,11 @@ function now() {
 }
 
 function getStartOfMonth(month) {
-    return timestamp(now().startOf('month'))
+    return timestamp(now().set({'month': month}).startOf('month'))
 }
 
 function getEndOfMonth(month) {
-    return timestamp(now().endOf('month'))
+    return timestamp(now().set({'month': month}).endOf('month'))
 }
 
 function getStartOfYear() {
