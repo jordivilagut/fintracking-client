@@ -7,6 +7,7 @@ import {ConfirmationModal} from "../confirmation-modal/ConfirmationModal";
 import {BudgetApi} from "../../api/BudgetApi";
 import {BudgetItemModal} from "../add-budget-item-modal/BudgetItemModal";
 import {GeneralApi} from "../../api/GeneralApi";
+import {ListEmptyState} from "../list-empty-state/ListEmptyState";
 
 export const BudgetItemsBoard = ({refreshBudgetChart}) => {
 
@@ -113,6 +114,9 @@ export const BudgetItemsBoard = ({refreshBudgetChart}) => {
             openDeleteModal={openDeleteModal}
             budgetItems={filteredBudgetItems}
             refreshBudget={refreshBudgetItems}/>
+        <ListEmptyState
+            hidden={filteredBudgetItems.length > 0}
+            message={t("empty.transactions")}/>
         <BudgetItemModal
             item={item}
             setItem={setItem}

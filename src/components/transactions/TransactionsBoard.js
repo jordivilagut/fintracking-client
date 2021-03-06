@@ -7,6 +7,7 @@ import {TransactionsService} from "../../services/TransactionsService";
 import {TransactionsApi} from "../../api/TransactionsApi";
 import {ConfirmationModal} from "../confirmation-modal/ConfirmationModal";
 import {GeneralApi} from "../../api/GeneralApi";
+import {ListEmptyState} from "../list-empty-state/ListEmptyState";
 
 export const TransactionsBoard = ({month, refreshSummary}) => {
 
@@ -99,6 +100,9 @@ export const TransactionsBoard = ({month, refreshSummary}) => {
             openDeleteModal={openDeleteModal}
             transactions={filteredTransactions}
             refreshTransactions={refreshTransactions}/>
+        <ListEmptyState
+            hidden={filteredTransactions.length > 0}
+            message={t("empty.transactions")}/>
         <TransactionModal
             transaction={transaction}
             setTransaction={setTransaction}

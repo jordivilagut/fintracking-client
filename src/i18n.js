@@ -133,6 +133,10 @@ i18n
                 "YEARLY": "Yearly",
                 "MONTHLY": "Monthly",
                 "WEEKLY": "Weekly",
+
+                //EMPTY STATES
+                "empty.transactions": "There are no transactions.",
+                "empty.budget": "There are no items."
             }
         },
         spanish: {
@@ -263,6 +267,10 @@ i18n
                 "YEARLY": "Anual",
                 "MONTHLY": "Mensual",
                 "WEEKLY": "Semanal",
+
+                //EMPTY STATES
+                "empty.transactions": "No hay transacciones.",
+                "empty.budget": "No hay ítems."
             }
         },
 
