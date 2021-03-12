@@ -16,7 +16,6 @@
 
 .chartWrapper {
 
-  color: white;
   flex-grow: 2;
   padding: 20px;
   margin-bottom: 10px;
@@ -52,7 +51,6 @@
 
 .bigChartWrapper {
 
-  color: white;
   flex-grow: 2;
   padding: 20px;
   margin-bottom: 10px;
@@ -82,3 +80,75 @@
     width: 40px;
   }
 }
+
+.month-bar {
+
+  width: 40px;
+
+  &.first {
+    margin: 0 10px 10px 10px;
+    border-style: solid;
+    border-radius: 0 0 4px 4px;
+  }
+
+  &.second {
+    margin: 10px 10px 0 10px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  &.middle {
+
+  }
+
+  &.green {
+    border-color: #438c1a;
+    background: repeating-linear-gradient(
+                    45deg,
+                    #4eb564,
+                    #4eb564 10px,
+                    #28a744 10px,
+                    #28a744 20px);
+  }
+
+  &.yellow {
+    border-color: #ddc162;
+    background: repeating-linear-gradient(
+                    45deg,
+                    #ffc107,
+                    #ffc107 10px,
+                    #ffca35 10px,
+                    #ffca35 20px);
+  }
+
+  &.blue {
+    border-color: #465298;
+    background: repeating-linear-gradient(
+                    45deg,
+                    #606dbc,
+                    #606dbc 10px,
+                    #465298 10px,
+                    #465298 20px);
+  }
+
+  &.light-gray {
+    background: lightgray;
+  }
+
+  &.red {
+    border-color: #dc3644;
+    background: repeating-linear-gradient(
+                    45deg,
+                    #e15864,
+                    #e15864 10px,
+                    #dc3644 10px,
+                    #dc3644 20px);
+  }
+
+  &.transparent {
+    background: transparent;
+  }
+}
+
+
+
+

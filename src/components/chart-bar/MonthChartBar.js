@@ -1,15 +1,16 @@
 import React from "react";
 
-export const MonthChartBar = ({month, max, extraClass}) => {
-    const budgetValue = month.budgetIncome/max * 140
-    const budgetHeight = Number.isNaN(budgetValue) ? 0 : budgetValue;
-    //const value = month.income/max * 140
-    //const height = Number.isNaN(value) ? 0 : value;
+export const MonthChartBar = ({month, max}) => {
+
+    const firstBar = 5 + Math.min(month.budgetIncome, month.income)/max * 140
+    const secondBar = 5 + Math.abs(month.budgetIncome - month.income)/max * 140
+    const exceedsBudget = month.income > month.budgetIncome
 
     return <div className="barFrame">
         <h3>{month.name}</h3>
-        <div className={extraClass}
-             style={{height: `${budgetHeight}px`}}/>
-        <p>{month.budgetIncome}</p>
+        <div className="month-bar first green" style={{height: `${firstBar}px`}}/>
+        <div className="month-bar middle transparent" style={{height: `2px`}}/>
+        <div className={exceedsBudget ? "month-bar second green" : "month-bar second yellow"} style={{height: `${secondBar}px`}}/>
+        <p>{month.income} / {month.budgetIncome}</p>
     </div>
 }

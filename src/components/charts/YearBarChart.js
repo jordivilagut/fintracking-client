@@ -13,7 +13,7 @@ export const YearBarChart = ({monthStats, year, setYear}) => {
         const monthPlusOne = () => setYear(year + 1);
         const monthMinusOne = () => setYear(year - 1);
 
-        return <div className="bigChartWrapper light-border base-background">
+        return <div className="bigChartWrapper light-border year-chart-background">
                 <div className="topBar">
                         <h2>{StringUtils.capitalise(t("menu.budget").toLowerCase())}</h2>
                         <TextCarousel
@@ -26,12 +26,10 @@ export const YearBarChart = ({monthStats, year, setYear}) => {
                             <div key={"id" + m.name}>
                                     <MonthChartBar
                                         month={m}
-                                        max={Math.max(...incomeValues)}
-                                        extraClass="green-glass bar bar-xs"/>
+                                        max={Math.max(...incomeValues)}/>
                                     <InvertedMonthChartBar
                                         month={m}
-                                        max={Math.max(...expenseValues)}
-                                        extraClass="red-glass bar bar-xs"/>
+                                        max={Math.max(...expenseValues)}/>
                             </div>
                         )}
                 </div>
