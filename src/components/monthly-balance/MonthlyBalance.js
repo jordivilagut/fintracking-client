@@ -13,7 +13,7 @@ export function MonthlyBalance({setMonth, month, income, expenses}) {
     const monthPlusOne = () => setMonth(month === 11? 0 : month + 1);
     const monthMinusOne = () => setMonth(month === 0? 11 : month - 1);
 
-    return <div className="chartWrapper light-border base-background">
+    return <div className="chartWrapper light-border year-chart-background">
         <div className="topBar">
             <h2>{t("this.month")}</h2>
             <TextCarousel
