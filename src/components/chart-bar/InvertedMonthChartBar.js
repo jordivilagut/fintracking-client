@@ -9,9 +9,6 @@ export const InvertedMonthChartBar = ({month, max}) => {
     const firstBarHeight = Number.isNaN(firstBar) ? 5 : firstBar;
     const secondBarHeight = Number.isNaN(secondBar) ? 5 : secondBar;
 
-    console.log(firstBar)
-    console.log(secondBar)
-
     return <div className="barFrame inverted">
         <div className="month-bar second red" style={{height: `${firstBarHeight}px`}}/>
         <div className="month-bar middle transparent" style={{height: `2px`}}/>
