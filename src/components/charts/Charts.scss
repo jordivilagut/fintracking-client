@@ -1,3 +1,4 @@
+@import "../../styles/colors";
 
 .chart {
   display: flex;
@@ -146,6 +147,26 @@
                     #e15864 10px,
                     #dc3644 10px,
                     #dc3644 20px);
+  }
+
+  &.primary-blue {
+    border-color: $base-font-color;
+    background: repeating-linear-gradient(
+                    135deg,
+                    $old-base-font-color,
+                    $old-base-font-color 10px,
+                    $base-font-color 10px,
+                    $base-font-color 20px);
+  }
+
+  &.secondary-blue {
+    border-color: $base-font-color;
+    background: repeating-linear-gradient(
+                    135deg,
+                    $old-base-font-color,
+                    $old-base-font-color 10px,
+                    $secondary-color 10px,
+                    $secondary-color 20px);
   }
 
   &.transparent {

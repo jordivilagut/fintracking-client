@@ -6,9 +6,12 @@ import {useTranslation} from "react-i18next";
 export const Logo = () => {
     const {t} = useTranslation();
     return <div className="logo">
-        <div className="appTitle">
-            <h1>Fintracking</h1><Badge variant="secondary">Beta</Badge>
+        <div className="logoImg"/>
+        <div className="logoText">
+            <div className="appTitle">
+                <h1>Fintracking</h1><Badge variant="secondary">Beta</Badge>
+            </div>
+            <h4>{t("app.subtitle")}</h4>
         </div>
-        <h4>{t("app.subtitle")}</h4>
     </div>
 }
